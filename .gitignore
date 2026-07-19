@@ -1,0 +1,5 @@
+node_modules/
+Trips/
+.DS_Store
+Thumbs.db
+npm-debug.log*
