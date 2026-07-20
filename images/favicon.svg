@@ -1,12 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <path fill="#2d5a4a" d="M50 30
-    c-16 0-24 14-24 30
-    c0 16 8 28 24 28
-    s24-12 24-28
-    c0-16-8-30-24-30z"/>
-  <circle fill="#2d5a4a" cx="27" cy="26" r="8.5"/>
-  <circle fill="#2d5a4a" cx="41" cy="15" r="7.5"/>
-  <circle fill="#2d5a4a" cx="57" cy="12" r="7.5"/>
-  <circle fill="#2d5a4a" cx="72" cy="17" r="7"/>
-  <circle fill="#2d5a4a" cx="83" cy="28" r="6"/>
+  <g stroke="#2d5a4a" fill="none" stroke-linecap="round">
+    <!-- torso (hunched, leaning forward) -->
+    <line x1="58" y1="30" x2="46" y2="58" stroke-width="18"/>
+    <!-- back arm, swung back -->
+    <line x1="55" y1="34" x2="68" y2="52" stroke-width="9"/>
+    <line x1="68" y1="52" x2="66" y2="66" stroke-width="8"/>
+    <!-- front arm, swung forward -->
+    <line x1="52" y1="35" x2="36" y2="46" stroke-width="9"/>
+    <line x1="36" y1="46" x2="30" y2="58" stroke-width="8"/>
+    <!-- back leg, trailing -->
+    <line x1="47" y1="58" x2="58" y2="76" stroke-width="12"/>
+    <line x1="58" y1="76" x2="70" y2="90" stroke-width="10"/>
+    <!-- front leg, planted forward -->
+    <line x1="45" y1="58" x2="34" y2="78" stroke-width="12"/>
+    <line x1="34" y1="78" x2="22" y2="90" stroke-width="10"/>
+  </g>
+  <circle fill="#2d5a4a" cx="61" cy="18" r="11"/>
 </svg>

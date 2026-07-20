@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Nick's Trip Log</title>
+  <meta property="og:title" content="Gallery - Nick's Trip Log">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-title"><a href="index.html">Nick's Trip Log</a></h1>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <button type="button" class="theme-toggle" aria-label="Toggle theme">Dark mode</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-content">
+      <h1>Gallery</h1>
+      <p class="map-instruction">Every photo from every trip, newest first. Search by name, place, or date, or browse by map.</p>
+
+      <div class="gallery-controls">
+        <input type="search" id="gallery-search" class="trip-search" placeholder="Search by trip, place, or date">
+        <button type="button" id="toggle-gallery-map" class="map-back">Browse by map</button>
+      </div>
+
+      <div id="gallery-map-section" class="map-container gallery-map-section" style="display:none;">
+        <div class="map-controls" id="gallery-map-controls" style="display:none;">
+          <button type="button" class="map-back" id="gallery-back-to-world">&larr; Back to world</button>
+        </div>
+        <div id="gallery-leaflet-map" class="leaflet-map"></div>
+      </div>
+
+      <div id="gallery-filter-chip" class="gallery-filter-chip" style="display:none;"></div>
+      <p id="gallery-count" class="post-meta"></p>
+      <div id="gallery-grid" class="gallery-grid"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+    </nav>
+    <p>Contact: <a href="about.html">Get in touch</a></p>
+  </footer>
+
+  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top">&uarr; Back to top</button>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="data/gallery.js"></script>
+  <script src="data/map-data.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

@@ -302,46 +302,8 @@
     });
   }
 
-  function initBackToTop() {
-    const btn = document.getElementById("back-to-top");
-    if (!btn) return;
-    window.addEventListener(
-      "scroll",
-      () => {
-        btn.classList.toggle("visible", window.scrollY > 500);
-      },
-      { passive: true }
-    );
-    btn.addEventListener("click", () => {
-      btn.classList.remove("visible"); // hide immediately rather than waiting on scroll events
-      smoothScrollToTop();
-    });
-  }
-
-  // Manual setTimeout-stepped scroll rather than relying on native
-  // `scrollTo({behavior:'smooth'})` (inconsistent across environments) or
-  // requestAnimationFrame (paused entirely on hidden/backgrounded tabs).
-  function smoothScrollToTop() {
-    const startY = window.scrollY;
-    if (startY <= 0) return;
-    const duration = 400;
-    const stepMs = 16;
-    const steps = Math.max(1, Math.round(duration / stepMs));
-    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-    let i = 0;
-    (function tick() {
-      i++;
-      const t = Math.min(1, i / steps);
-      window.scrollTo(0, Math.round(startY * (1 - easeOutCubic(t))));
-      if (t < 1) setTimeout(tick, stepMs);
-    })();
-  }
-
   if (document.getElementById("map-container")) {
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
     else init();
   }
-
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initBackToTop);
-  else initBackToTop();
 })();

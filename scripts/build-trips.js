@@ -335,12 +335,52 @@ function slugFile(name) {
   return name.replace(/[^A-Za-z0-9.\-]/g, '_');
 }
 
+// Multi-city trips don't tag each day with a location field, but most day labels
+// already name the city in parens ("Friday (Salzburg)", "Sunday (Nice-Èze-Monaco)").
+// Pull those hints out and match them against the trip's location list so gallery
+// photos can be filtered by place, not just by trip; falls back to the trip's
+// primary location when a day doesn't name one (e.g. "Day 1 - Travel").
+function matchDayLocations(label, locations) {
+  const parenMatch = label.match(/\(([^)]+)\)/);
+  if (!parenMatch) return [locations[0]];
+  const candidates = parenMatch[1].split(/[\/,-]/).map((s) => s.trim()).filter(Boolean);
+  const matched = [];
+  for (const loc of locations) {
+    const locLower = loc.name.toLowerCase();
+    const isMatch = candidates.some((c) => {
+      const cLower = c.toLowerCase();
+      return locLower.includes(cLower) || cLower.includes(locLower);
+    });
+    if (isMatch) matched.push(loc);
+  }
+  return matched.length ? matched : [locations[0]];
+}
+
+function collectGalleryImages(days, locations, mediaMap) {
+  const entries = [];
+  for (const day of days) {
+    const dayLocations = matchDayLocations(day.label, locations);
+    const scan = (nodes) => {
+      for (const n of nodes) {
+        if (n.media && n.media.type === 'image') {
+          const dest = mediaMap.get(n.media.file);
+          if (dest) entries.push({ src: dest, locations: dayLocations });
+        }
+        scan(n.children);
+      }
+    };
+    scan(day.children);
+  }
+  return entries;
+}
+
 function main() {
   fs.mkdirSync(OUT_DATA, { recursive: true });
   fs.mkdirSync(OUT_BUILD, { recursive: true });
 
   const posts = [];
   const mediaManifest = []; // { src: abs path, dest: relative "images/trips/slug/name" }
+  const galleryImages = [];
   // Grouped by "country|name" so two trips touching the exact same real place (e.g.
   // Barcelona, or the Zion stop inside the Southwest road trip) share one pin.
   const pinIndex = new Map();
@@ -410,6 +450,19 @@ function main() {
       }
       pinIndex.get(key).tripIds.push(t.slug);
     }
+
+    for (const img of collectGalleryImages(days, t.locations, mediaMap)) {
+      galleryImages.push({
+        src: img.src,
+        tripId: t.slug,
+        tripTitle: t.title,
+        locations: img.locations.map((l) => l.name),
+        country: primary.country,
+        date_start: t.dateStart,
+        date_end: t.dateEnd,
+        date_precision: t.datePrecision || 'day',
+      });
+    }
   }
 
   // sort posts by date (unknown dates last), most recent first for "latest trip" stat
@@ -443,8 +496,17 @@ function main() {
 
   fs.writeFileSync(path.join(OUT_BUILD, 'media-manifest.json'), JSON.stringify(mediaManifest, null, 2));
 
+  // sort gallery most-recent-trip-first, matching the homepage default
+  const galWithDate = galleryImages.filter((g) => g.date_start);
+  const galWithoutDate = galleryImages.filter((g) => !g.date_start);
+  galWithDate.sort((a, b) => (a.date_start < b.date_start ? 1 : -1));
+  const sortedGallery = [...galWithDate, ...galWithoutDate];
+  const galleryData = { images: sortedGallery };
+  fs.writeFileSync(path.join(OUT_DATA, 'gallery.json'), JSON.stringify(galleryData, null, 2));
+  fs.writeFileSync(path.join(OUT_DATA, 'gallery.js'), `window.__GALLERY__ = ${JSON.stringify(galleryData, null, 2)};\n`);
+
   const multiTripPins = [...pinIndex.values()].filter((p) => p.tripIds.length > 1);
-  console.log(`\nWrote ${sortedPosts.length} trips, ${pinIndex.size} map pins (${multiTripPins.length} shared by multiple trips), ${mediaManifest.length} media files to convert.`);
+  console.log(`\nWrote ${sortedPosts.length} trips, ${sortedGallery.length} gallery photos, ${pinIndex.size} map pins (${multiTripPins.length} shared by multiple trips), ${mediaManifest.length} media files to convert.`);
   for (const p of multiTripPins) console.log(`  shared pin: ${p.name}, ${p.country} -> ${p.tripIds.join(', ')}`);
 }
 
