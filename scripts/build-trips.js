@@ -83,7 +83,7 @@ const REGIONS = {
   monaco: { label: 'Monaco', country: 'monaco' },
 };
 
-// Every trip carries a `locations[]` list of every real place it touched — there is
+// Every trip carries a `locations[]` list of every real place it touched - there is
 // no single "main pin" anymore. Each location becomes its own map pin; when two
 // different trips touch the exact same place (matched by country+name), that pin
 // shows a chooser instead of merging or duplicating.
@@ -115,7 +115,7 @@ const trips = [
   },
   {
     slug: 'puerto-rico-spring-break-2026', title: 'PUERTO RICO SPRING BREAK 2026',
-    location: 'San Juan / El Yunque', dateStart: null, dateEnd: null,
+    location: 'San Juan / El Yunque', dateStart: '2026-03-01', dateEnd: '2026-03-01', datePrecision: 'month',
     sourceFile: "PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish)/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish).md",
     attachmentsDir: "PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish)/Attachments",
     locations: [
@@ -136,13 +136,13 @@ const trips = [
   },
   {
     slug: 'tetons', title: 'TETONS',
-    location: 'Grand Teton National Park', dateStart: null, dateEnd: null,
+    location: 'Grand Teton National Park', dateStart: '2023-07-01', dateEnd: '2023-07-01', datePrecision: 'month',
     sourceFile: 'TETONS/TETONS.md', attachmentsDir: 'TETONS/Attachments',
     locations: [{ name: 'Grand Teton National Park', country: 'usa', region: 'wyoming', lat: 43.7904, lon: -110.6818 }],
   },
   {
     slug: 'zion-2024', title: 'ZION 2024',
-    location: 'Zion National Park / Bryce Canyon', dateStart: '2024-01-01', dateEnd: null,
+    location: 'Zion National Park / Bryce Canyon', dateStart: null, dateEnd: null,
     sourceFile: 'ZION 2024/ZION 2024.md', attachmentsDir: 'ZION 2024/Attachments',
     locations: [
       { name: 'Zion National Park', country: 'usa', region: 'utah', lat: 37.2982, lon: -113.0263 },
@@ -397,6 +397,7 @@ function main() {
       title: t.title,
       date_start: t.dateStart,
       date_end: t.dateEnd,
+      date_precision: t.datePrecision || 'day',
       total_miles: Math.round(totalMiles * 100) / 100,
       days: dayObjs,
       source_note: t.megaSection ? `Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#${t.megaSection}` : `Trips/${t.sourceFile}`,

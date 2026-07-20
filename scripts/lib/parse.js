@@ -8,7 +8,7 @@ function stripDecoration(s) {
 
 // Mileage sometimes appears wrapped in Apple Notes' smart-link syntax, e.g.
 // "([1.5 miles](x-apple-data-detectors://...))", occasionally with stray bold
-// markup inside the parens too — unwrap first, then match leniently.
+// markup inside the parens too - unwrap first, then match leniently.
 function extractMilesNum(rawS) {
   const s = unwrapDataDetectors(rawS);
   let m = s.match(/\([*+\s]*([\d]+(?:\.\d+)?)(?:\s*-\s*[\d.]+)?\s*(?:ish)?\+?\s*miles?[*+\s]*\)/i);

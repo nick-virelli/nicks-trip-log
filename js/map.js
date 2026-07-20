@@ -17,17 +17,18 @@
       .replace(/>/g, "&gt;");
   }
 
-  function fmtDate(d) {
+  function fmtDate(d, precision) {
     if (!d) return "";
     const parts = d.split("-").map(Number);
     const dt = new Date(parts[0], (parts[1] || 1) - 1, parts[2] || 1);
+    if (precision === "month") return dt.toLocaleDateString(undefined, { year: "numeric", month: "long" });
     return dt.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
   }
 
   function fmtDateRange(p) {
     if (!p.date_start) return "";
-    if (!p.date_end || p.date_end === p.date_start) return fmtDate(p.date_start);
-    return `${fmtDate(p.date_start)} – ${fmtDate(p.date_end)}`;
+    if (!p.date_end || p.date_end === p.date_start) return fmtDate(p.date_start, p.date_precision);
+    return `${fmtDate(p.date_start, p.date_precision)} - ${fmtDate(p.date_end, p.date_precision)}`;
   }
 
   function currentTheme() {
@@ -114,7 +115,7 @@
     document.getElementById("map-controls").style.display = "block";
 
     // Every place a trip touched gets its own pin (no single "main" pin). When two
-    // different trips touch the exact same place, that one pin lists both — click
+    // different trips touch the exact same place, that one pin lists both - click
     // opens a small chooser instead of guessing or dumping every article at once.
     const bounds = [];
     for (const regionKey in country.regions) {
@@ -130,7 +131,7 @@
 
         if (city.tripIds.length === 1) {
           const post = app.posts.find((p) => p.id === city.tripIds[0]);
-          marker.bindTooltip(`${esc(city.name)}${post ? " — " + esc(post.title) : ""}`, { direction: "top", className: "trip-pin-label" });
+          marker.bindTooltip(`${esc(city.name)}${post ? " - " + esc(post.title) : ""}`, { direction: "top", className: "trip-pin-label" });
           marker.on("click", () => showTrip(city.tripIds[0]));
         } else {
           marker.bindTooltip(`${esc(city.name)} (${city.tripIds.length} trips)`, { direction: "top", className: "trip-pin-label" });
@@ -209,8 +210,8 @@
     const count = posts.length;
     const heroCount = document.querySelector(".hero-count");
     const heroLabel = document.querySelector(".hero-stat-label");
-    if (heroCount) heroCount.textContent = Math.round(totalMiles).toLocaleString();
-    if (heroLabel) heroLabel.textContent = `miles hiked · ${count} trips`;
+    if (heroCount) heroCount.textContent = Math.round(totalMiles).toLocaleString() + "+";
+    if (heroLabel) heroLabel.textContent = `miles hiked (that we tracked) · ${count} trips`;
 
     const withDates = posts.filter((p) => p.date_start).sort((a, b) => (a.date_start < b.date_start ? 1 : -1));
     const latest = withDates[0] || posts[0];
@@ -228,12 +229,22 @@
     }
   }
 
-  function renderRecentList(posts) {
+  function renderRecentList(posts, query) {
     const listEl = document.getElementById("recent-posts-list");
     if (!listEl) return;
-    const withDates = posts.filter((p) => p.date_start).sort((a, b) => (a.date_start < b.date_start ? 1 : -1));
-    const withoutDates = posts.filter((p) => !p.date_start);
+    const q = (query || "").trim().toLowerCase();
+    const filtered = q
+      ? posts.filter((p) => `${p.title} ${p.location} ${fmtDateRange(p)}`.toLowerCase().includes(q))
+      : posts;
+    const withDates = filtered.filter((p) => p.date_start).sort((a, b) => (a.date_start < b.date_start ? 1 : -1));
+    const withoutDates = filtered.filter((p) => !p.date_start);
     const ordered = [...withDates, ...withoutDates];
+
+    if (!ordered.length) {
+      listEl.innerHTML = `<p class="post-meta">No trips match "${esc(query)}".</p>`;
+      return;
+    }
+
     listEl.innerHTML = ordered
       .map(
         (p) => `
@@ -255,6 +266,12 @@
     });
   }
 
+  function initTripSearch() {
+    const input = document.getElementById("trip-search");
+    if (!input) return;
+    input.addEventListener("input", () => renderRecentList(app.posts, input.value));
+  }
+
   async function init() {
     const [postsData, mapData] = await Promise.all([
       loadData("data/posts.json", "__POSTS__"),
@@ -265,6 +282,7 @@
 
     renderHero(app.posts);
     renderRecentList(app.posts);
+    initTripSearch();
 
     const container = document.getElementById("map-container");
     container.innerHTML = '<div id="leaflet-map" class="leaflet-map"></div>';

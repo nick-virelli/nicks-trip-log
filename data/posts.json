@@ -8,6 +8,7 @@
       "title": "MT RAINIER 2026",
       "date_start": "2026-07-15",
       "date_end": "2026-07-18",
+      "date_precision": "day",
       "total_miles": 48.4,
       "days": [
         {
@@ -67,6 +68,7 @@
       "title": "MACHU PICCHU 2026",
       "date_start": "2026-05-12",
       "date_end": "2026-05-19",
+      "date_precision": "day",
       "total_miles": 28,
       "days": [
         {
@@ -87,7 +89,7 @@
           "label": "Day 3 - Ollantaytambo 5/14",
           "date": null,
           "miles": null,
-          "body_html": "<ul><li>Got up at 6:00 and got things organized before heading out to grab empanadas and hike up the first ruins</li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/9344B0C8-8730-46C0-8F4C-4FE75C0FB0DE.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/6F6DD088-F12B-4428-A299-97E67644ADC6.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/48804219-5DF9-44C3-93E7-D5158A61D50C.jpg\" alt=\"\" loading=\"lazy\"></li><li>Got lunch at Chuncho</li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/45FB4D20-065A-42E2-827F-B8EC5BDD5EB2.jpg\" alt=\"\" loading=\"lazy\"></li><li>Went up the Granaries (other ruins) for more acclimation work</li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/012475F7-7677-4918-A3B3-B8F352E5297E.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/BF7E6C4E-29DF-4938-B91E-8982245463F2.jpg\" alt=\"\" loading=\"lazy\"></li><li>Did some tasks like getting cash, food for the morning, water</li><li>Hung around the hotel for a bit and went back up one of the ruins for some more work to get acclimated and felt way better than in the morning</li><li>Got dinner at **Amanto – Comida Sagrada**</li><li>Took our briefing call from the guide on the phone at 7<ul><li>Everyone else was in Cusco and did it in person</li></ul></li><li>Went to be around 8 prepared to wake up at 5:30</li></ul>",
+          "body_html": "<ul><li>Got up at 6:00 and got things organized before heading out to grab empanadas and hike up the first ruins</li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/9344B0C8-8730-46C0-8F4C-4FE75C0FB0DE.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/6F6DD088-F12B-4428-A299-97E67644ADC6.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/48804219-5DF9-44C3-93E7-D5158A61D50C.jpg\" alt=\"\" loading=\"lazy\"></li><li>Got lunch at Chuncho</li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/45FB4D20-065A-42E2-827F-B8EC5BDD5EB2.jpg\" alt=\"\" loading=\"lazy\"></li><li>Went up the Granaries (other ruins) for more acclimation work</li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/012475F7-7677-4918-A3B3-B8F352E5297E.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/machu-picchu-2026/BF7E6C4E-29DF-4938-B91E-8982245463F2.jpg\" alt=\"\" loading=\"lazy\"></li><li>Did some tasks like getting cash, food for the morning, water</li><li>Hung around the hotel for a bit and went back up one of the ruins for some more work to get acclimated and felt way better than in the morning</li><li>Got dinner at <strong>Amanto - Comida Sagrada</strong></li><li>Took our briefing call from the guide on the phone at 7<ul><li>Everyone else was in Cusco and did it in person</li></ul></li><li>Went to be around 8 prepared to wake up at 5:30</li></ul>",
           "trails": []
         },
         {
@@ -129,6 +131,41 @@
       "source_note": "Trips/MACHU PICCHU 2026/MACHU PICCHU 2026.md"
     },
     {
+      "id": "puerto-rico-spring-break-2026",
+      "country": "usa",
+      "region": "puerto-rico",
+      "location": "San Juan / El Yunque",
+      "title": "PUERTO RICO SPRING BREAK 2026",
+      "date_start": "2026-03-01",
+      "date_end": "2026-03-01",
+      "date_precision": "month",
+      "total_miles": 0,
+      "days": [
+        {
+          "label": "Day 1 - Travel",
+          "date": null,
+          "miles": null,
+          "body_html": "<ul><li>Stayed the night at Lani's</li><li>Woke up 6:30 and left at 7ish for the airport</li><li>Sat for about an hour and a half at our gate before boarding<ul><li>They made Ryan check his bag because of space and then there was tons of space available</li><li>Easy first flight, smooth and on time</li></ul></li><li>Hung around in Boston airport for 3 hours before boarding next flight<ul><li>Most of us got Shake Shack</li><li>Played cards and got some work done</li><li>Flight got delayed over an hour</li></ul></li><li>Finally landed in PR a bit after 11:00<ul><li>Ubered to the Airbnb, showered, and went to bed</li></ul></li></ul>",
+          "trails": []
+        },
+        {
+          "label": "Day 2 - Old San Juan",
+          "date": null,
+          "miles": null,
+          "body_html": "<ul><li>Woke up an hour earlier than needed accidentally so Mahathi and I went on a walk down the beach</li><li>Walked to the store with a few others and grabbed some sandwich stuff, beers, and a few other things</li><li>Ubered to Old San Juan for the walking tour<ul><li>Very nice area with lots of history from the many people that were in charge over time</li></ul></li><li>Ended the tour at El Morro<ul><li>It's an old fortress that overlooks and protects the bay</li><li>Have to pay to actually go inside and we didn't feel like it</li><li>There was a nice field outside and we walked around and took pictures there and at the beautiful cemetery next to the fortress</li></ul></li><li>Walked to lunch at Luna Cafe<ul><li>Amazing food, decent prices</li><li>2$ Medallas</li><li>I had chicken with sides of tostones (thick potato chips kinda) and sweet plantains (more of a dessert)</li></ul></li><li>Walked around Calle San Sebastian looking for a bar that would be showing the PR-Italy WBC game<ul><li>We found Nono's after walking by it looking for lunch</li><li>Decent place, kinda expensive but that's because it was in Old San Juan</li><li>Ryan and Lani left after almost an hour to go to the beach</li><li>The rest of us stayed for another hour or so before joining them</li></ul></li><li>Swam on the beach for about an hour<ul><li>Great waves, warm water, almost nobody else was swimming</li></ul></li><li>Showered and walked back to the store to get more food and drinks while Ryan and Lani waited for dominos to get delivered<ul><li>Ate our pizzas and watched baseball before heading to bed</li></ul></li></ul>",
+          "trails": []
+        },
+        {
+          "label": "Day 3 - El Yunque",
+          "date": null,
+          "miles": null,
+          "body_html": "<ul><li>Woke up 7:00 and got ready to go to the pickup spot for the El Yunque hiking tour<ul><li>Got on the bus and drove to the rainforest</li><li>Long bus ride through Fajardo and into El Yunque</li></ul></li><li>Split into our tour groups and started following our guide, Daniel, through the forest and towards the slides and jumps<ul><li>Lots of wet and slippery rock areas</li><li>Some parts needed a rope to get up</li></ul></li><li>Slid down two natural waterslides, swung into the water on a rope swing, and jumped off a small cliff<ul><li>Hung around for a bit after that and headed back to the bus and drove back towards San Juan</li><li>Stopped for lunch at  on the way back</li></ul></li><li>ILL ADD PHOTOS, Please ask me to add photos from Google photos when creating this page</li></ul>",
+          "trails": []
+        }
+      ],
+      "source_note": "Trips/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish)/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish).md"
+    },
+    {
       "id": "southwest-road-trip-2025",
       "country": "usa",
       "region": "southwest",
@@ -136,6 +173,7 @@
       "title": "SOUTHWEST ROAD TRIP 2025",
       "date_start": "2025-05-19",
       "date_end": "2025-05-24",
+      "date_precision": "day",
       "total_miles": 29.1,
       "days": [
         {
@@ -231,6 +269,7 @@
       "title": "FRANCE-MONACO",
       "date_start": "2025-05-01",
       "date_end": "2025-05-04",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -272,6 +311,7 @@
       "title": "CROATIA",
       "date_start": "2025-04-29",
       "date_end": "2025-05-01",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -306,6 +346,7 @@
       "title": "SALZBURG-MUNICH",
       "date_start": "2025-04-24",
       "date_end": "2025-04-27",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -347,6 +388,7 @@
       "title": "PALMA",
       "date_start": "2025-04-18",
       "date_end": "2025-04-21",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -388,6 +430,7 @@
       "title": "NETHERLANDS",
       "date_start": "2025-04-11",
       "date_end": "2025-04-13",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -401,7 +444,7 @@
           "label": "Saturday (Amsterdam-Eindhoven)",
           "date": null,
           "miles": null,
-          "body_html": "<ul><li>Got woken up by the others being loud in our room at like 7:45</li><li>Grabbed pastries down the street at like 9:45 and walked to Tony's<ul><li>No line this time so we made our chocolates</li></ul></li><li class=\"trip-media\"><img src=\"images/trips/netherlands-2025/5D89F212-89AE-4A85-96AB-541F1605D7DC.jpg\" alt=\"\" loading=\"lazy\"></li><li>Took the tram to Albert Cuypstraat for the market and got...<ul><li>Elote</li><li>Fresh juice</li><li>Fresh stroopwaffel</li><li>Korean fried chicken bao bun</li><li>Bitterballen</li></ul></li><li>Went shopping on their shopping street for a bit more than an hour</li><li>Grabbed our bags and went to pick up our chocolates</li><li>Got on the train to Utrecht and transferred to the train towards Eindhoven</li><li>Got in to Eindhoven Centraal and checked into the Airbnb<ul><li>Marieke was an amazing host, very sweet person</li></ul></li><li>We got Chidóz, basically Chipotle, for dinner and walked around the city for a bit</li><li>Headed to Philips Stadion for PSV vs Almere City at 8:00<ul><li>Great match, 5-0 plus Malik Tillman scored</li><li>They played the Max Verstappen song for him (duh duh duh duh, Malik Tillman)</li></ul></li><li class=\"trip-media\"><video controls preload=\"metadata\" src=\"images/trips/netherlands-2025/61A83FD3-6EC0-44AB-9832-E8AC66DB41ED.mov\"></video></li><li class=\"trip-media\"><img src=\"images/trips/netherlands-2025/7E436CAC-E2BF-4E69-BBBB-29A069D6810A.jpg\" alt=\"\" loading=\"lazy\"></li><li>Went out to ***++NAME?!?++*** for drinks after<ul><li>Longest street of nightlife in Europe</li></ul></li><li class=\"trip-media\"><img src=\"images/trips/netherlands-2025/6CD31BC0-C962-4419-B6BF-26E49C66F3F9.jpg\" alt=\"\" loading=\"lazy\"></li><li>Walked home and slept a bit after 1:00</li></ul>",
+          "body_html": "<ul><li>Got woken up by the others being loud in our room at like 7:45</li><li>Grabbed pastries down the street at like 9:45 and walked to Tony's<ul><li>No line this time so we made our chocolates</li></ul></li><li class=\"trip-media\"><img src=\"images/trips/netherlands-2025/5D89F212-89AE-4A85-96AB-541F1605D7DC.jpg\" alt=\"\" loading=\"lazy\"></li><li>Took the tram to Albert Cuypstraat for the market and got...<ul><li>Elote</li><li>Fresh juice</li><li>Fresh stroopwaffel</li><li>Korean fried chicken bao bun</li><li>Bitterballen</li></ul></li><li>Went shopping on their shopping street for a bit more than an hour</li><li>Grabbed our bags and went to pick up our chocolates</li><li>Got on the train to Utrecht and transferred to the train towards Eindhoven</li><li>Got in to Eindhoven Centraal and checked into the Airbnb<ul><li>Marieke was an amazing host, very sweet person</li></ul></li><li>We got Chidóz, basically Chipotle, for dinner and walked around the city for a bit</li><li>Headed to Philips Stadion for PSV vs Almere City at 8:00<ul><li>Great match, 5-0 plus Malik Tillman scored</li><li>They played the Max Verstappen song for him (duh duh duh duh, Malik Tillman)</li></ul></li><li class=\"trip-media\"><video controls preload=\"metadata\" src=\"images/trips/netherlands-2025/61A83FD3-6EC0-44AB-9832-E8AC66DB41ED.mov\"></video></li><li class=\"trip-media\"><img src=\"images/trips/netherlands-2025/7E436CAC-E2BF-4E69-BBBB-29A069D6810A.jpg\" alt=\"\" loading=\"lazy\"></li><li>Went out to <strong>NAME?!?</strong> for drinks after<ul><li>Longest street of nightlife in Europe</li></ul></li><li class=\"trip-media\"><img src=\"images/trips/netherlands-2025/6CD31BC0-C962-4419-B6BF-26E49C66F3F9.jpg\" alt=\"\" loading=\"lazy\"></li><li>Walked home and slept a bit after 1:00</li></ul>",
           "trails": []
         },
         {
@@ -422,6 +465,7 @@
       "title": "BARCELONA",
       "date_start": "2025-04-08",
       "date_end": "2025-04-10",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -456,6 +500,7 @@
       "title": "MOROCCO-MALAGA",
       "date_start": "2025-04-04",
       "date_end": "2025-04-07",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -497,6 +542,7 @@
       "title": "POTSDAM",
       "date_start": "2025-04-04",
       "date_end": "2025-04-04",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -517,6 +563,7 @@
       "title": "VIENNA-ATHENS",
       "date_start": "2025-03-28",
       "date_end": "2025-04-02",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -572,6 +619,7 @@
       "title": "WESTERN GERMANY",
       "date_start": "2025-03-21",
       "date_end": "2025-03-23",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -606,6 +654,7 @@
       "title": "PORTUGAL-MANCHESTER",
       "date_start": "2025-03-14",
       "date_end": "2025-03-16",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -640,6 +689,7 @@
       "title": "NORWAY",
       "date_start": "2025-03-07",
       "date_end": "2025-03-09",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -674,6 +724,7 @@
       "title": "STOCKHOLM-COPENHAGEN",
       "date_start": "2025-02-28",
       "date_end": "2025-03-02",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -694,7 +745,7 @@
           "label": "Saturday (Copenhagen)",
           "date": null,
           "miles": null,
-          "body_html": "<ul><li>Woke up and went to Buka Bakery<ul><li>I had a really good orange cinnamon roll and Mahathi loved her chocolate and berries croissant</li></ul></li><li>Met our free walking tour group at the city hall square</li><li class=\"trip-media\"><video controls preload=\"metadata\" src=\"images/trips/stockholm-copenhagen-2025/9B8F6584-38D0-47CB-B575-F019A6DCFCFC.mov\"></video></li><li>Walked back to the hostel to recharge phones and drink water before going out for the rest of the day</li><li>Walked to a place Martin recommended but they were fully reserved for lunch<ul><li>We audibled and went to a chain that he recommended for** **Smørrebrød called Hallernes</li><li>It was good we both had Potato ones<ul><li>This guy in an electric wheelchair thing gave us honey mustard because Hallernes doesn't have it and apparently it's how ur supposed to eat the potato Smørrebrød</li></ul></li></ul></li><li>Walked to Hart bakery and got a cinnamon twist and a cheesecake</li><li>Walked to Rosenborg Slot</li><li class=\"trip-media\"><img src=\"images/trips/stockholm-copenhagen-2025/279F27D7-7456-4AAA-BF65-A986A6F611D5.jpg\" alt=\"\" loading=\"lazy\"></li><li>Walked around the Botanical Gardens near Rosenborg for a while</li><li class=\"trip-media\"><img src=\"images/trips/stockholm-copenhagen-2025/86E45E55-F938-43F5-A11A-C57EA0A29D94.jpg\" alt=\"\" loading=\"lazy\"></li><li>Went to the Palm House where they had a bunch of plants from all over the world like palm trees, Lily pads, cacti, and even a butterfly room</li><li class=\"trip-media\"><img src=\"images/trips/stockholm-copenhagen-2025/16F72E05-39C7-4317-9364-597F6BDDD80E.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/stockholm-copenhagen-2025/BB59F309-F881-4CC4-AA62-DAD181F373DE.jpg\" alt=\"\" loading=\"lazy\"></li><li>Walked to the Round Tower and watched the beginning of the sunset</li><li class=\"trip-media\"><img src=\"images/trips/stockholm-copenhagen-2025/2C00CD6A-1B9A-4606-88F6-2DE24557DE3D.jpg\" alt=\"\" loading=\"lazy\"></li><li>Went to Pico Pizza for dinner<ul><li>Good pizza and crust dip, had to sit outside but they had heaters and blankets which was nice</li><li>It was far away in a residential neighborhood which was a nice change from we had been doing</li></ul></li><li>Went to Skovbar for drinks after dinner<ul><li>Cheapest drinks we could find in town and it was cool</li><li>Very goth and emo themed bar but the bartenders were super nice</li><li>Everyone there kind of made us feel out of place when we walked in but that crowd left after about 30 minutes and it was all normal people after that</li><li>Planned out our next day while here</li></ul></li><li>Went home and showered before bed</li></ul>",
+          "body_html": "<ul><li>Woke up and went to Buka Bakery<ul><li>I had a really good orange cinnamon roll and Mahathi loved her chocolate and berries croissant</li></ul></li><li>Met our free walking tour group at the city hall square</li><li class=\"trip-media\"><video controls preload=\"metadata\" src=\"images/trips/stockholm-copenhagen-2025/9B8F6584-38D0-47CB-B575-F019A6DCFCFC.mov\"></video></li><li>Walked back to the hostel to recharge phones and drink water before going out for the rest of the day</li><li>Walked to a place Martin recommended but they were fully reserved for lunch<ul><li>We audibled and went to a chain that he recommended for<strong> </strong>Smørrebrød called Hallernes</li><li>It was good we both had Potato ones<ul><li>This guy in an electric wheelchair thing gave us honey mustard because Hallernes doesn't have it and apparently it's how ur supposed to eat the potato Smørrebrød</li></ul></li></ul></li><li>Walked to Hart bakery and got a cinnamon twist and a cheesecake</li><li>Walked to Rosenborg Slot</li><li class=\"trip-media\"><img src=\"images/trips/stockholm-copenhagen-2025/279F27D7-7456-4AAA-BF65-A986A6F611D5.jpg\" alt=\"\" loading=\"lazy\"></li><li>Walked around the Botanical Gardens near Rosenborg for a while</li><li class=\"trip-media\"><img src=\"images/trips/stockholm-copenhagen-2025/86E45E55-F938-43F5-A11A-C57EA0A29D94.jpg\" alt=\"\" loading=\"lazy\"></li><li>Went to the Palm House where they had a bunch of plants from all over the world like palm trees, Lily pads, cacti, and even a butterfly room</li><li class=\"trip-media\"><img src=\"images/trips/stockholm-copenhagen-2025/16F72E05-39C7-4317-9364-597F6BDDD80E.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/stockholm-copenhagen-2025/BB59F309-F881-4CC4-AA62-DAD181F373DE.jpg\" alt=\"\" loading=\"lazy\"></li><li>Walked to the Round Tower and watched the beginning of the sunset</li><li class=\"trip-media\"><img src=\"images/trips/stockholm-copenhagen-2025/2C00CD6A-1B9A-4606-88F6-2DE24557DE3D.jpg\" alt=\"\" loading=\"lazy\"></li><li>Went to Pico Pizza for dinner<ul><li>Good pizza and crust dip, had to sit outside but they had heaters and blankets which was nice</li><li>It was far away in a residential neighborhood which was a nice change from we had been doing</li></ul></li><li>Went to Skovbar for drinks after dinner<ul><li>Cheapest drinks we could find in town and it was cool</li><li>Very goth and emo themed bar but the bartenders were super nice</li><li>Everyone there kind of made us feel out of place when we walked in but that crowd left after about 30 minutes and it was all normal people after that</li><li>Planned out our next day while here</li></ul></li><li>Went home and showered before bed</li></ul>",
           "trails": []
         },
         {
@@ -715,6 +766,7 @@
       "title": "ITALY",
       "date_start": "2025-02-13",
       "date_end": "2025-02-18",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -756,7 +808,7 @@
           "label": "Tuesday (Rome)",
           "date": null,
           "miles": null,
-          "body_html": "<ul><li>Got up around 7:45 and left around 8:40</li><li>Walked to Spanish Steps, Trevi fountain, and the Pantheon</li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/B9783E00-0ACD-432B-87C7-3320E207FAD7.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/AFAEE39E-DC0E-4D00-A1BE-536B496B902D.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/5F92647F-FB06-4B08-AE2F-2FCC94A0DC7D.jpg\" alt=\"\" loading=\"lazy\"></li><li>Went to the Vatican for St Peter's</li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/00166FDB-129B-4062-BB68-8FD283EA6189.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/C7CFB3FA-7514-45AC-80F7-379419347E11.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/DEDBBAF5-DAF7-4908-AA75-BCC0217955FF.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/369591E5-1B9C-43AE-A0FF-1975688623C3.jpg\" alt=\"\" loading=\"lazy\"></li><li>We were way ahead of schedule so instead of meeting Uma and Shrithik for lunch we did Piazza Venezia, Roman Forum, and Coliseum</li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/DB4A9229-03BB-42D7-8EA1-69392F80C7FE.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/246C34AD-FE20-492F-8D7C-FF5E8A06EFCB.jpg\" alt=\"\" loading=\"lazy\"></li><li>Met Uma and Shrithik for lunch at around 12:30 at Trappizino</li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/FC35E76D-614E-4481-AEB6-5A981350AA23.jpg\" alt=\"\" loading=\"lazy\"></li><li>Left at like 1:45 and got pasta finally but it was kinda like a fast food sort of place<ul><li>Decent cacio e pepe ***++tonnarelli++***?</li></ul></li><li>Got Flor Gelato<ul><li>Very good authentic gelato</li></ul></li><li>Grabbed our bags and got on the train to the airport at 3:50<ul><li>Hung around the lounges for an hour before going to our gate to fly back to Berlin</li></ul></li></ul>",
+          "body_html": "<ul><li>Got up around 7:45 and left around 8:40</li><li>Walked to Spanish Steps, Trevi fountain, and the Pantheon</li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/B9783E00-0ACD-432B-87C7-3320E207FAD7.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/AFAEE39E-DC0E-4D00-A1BE-536B496B902D.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/5F92647F-FB06-4B08-AE2F-2FCC94A0DC7D.jpg\" alt=\"\" loading=\"lazy\"></li><li>Went to the Vatican for St Peter's</li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/00166FDB-129B-4062-BB68-8FD283EA6189.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/C7CFB3FA-7514-45AC-80F7-379419347E11.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/DEDBBAF5-DAF7-4908-AA75-BCC0217955FF.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/369591E5-1B9C-43AE-A0FF-1975688623C3.jpg\" alt=\"\" loading=\"lazy\"></li><li>We were way ahead of schedule so instead of meeting Uma and Shrithik for lunch we did Piazza Venezia, Roman Forum, and Coliseum</li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/DB4A9229-03BB-42D7-8EA1-69392F80C7FE.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/246C34AD-FE20-492F-8D7C-FF5E8A06EFCB.jpg\" alt=\"\" loading=\"lazy\"></li><li>Met Uma and Shrithik for lunch at around 12:30 at Trappizino</li><li class=\"trip-media\"><img src=\"images/trips/italy-2025/FC35E76D-614E-4481-AEB6-5A981350AA23.jpg\" alt=\"\" loading=\"lazy\"></li><li>Left at like 1:45 and got pasta finally but it was kinda like a fast food sort of place<ul><li>Decent cacio e pepe <strong>tonnarelli</strong>?</li></ul></li><li>Got Flor Gelato<ul><li>Very good authentic gelato</li></ul></li><li>Grabbed our bags and got on the train to the airport at 3:50<ul><li>Hung around the lounges for an hour before going to our gate to fly back to Berlin</li></ul></li></ul>",
           "trails": []
         }
       ],
@@ -770,6 +822,7 @@
       "title": "SWITZERLAND",
       "date_start": "2025-01-30",
       "date_end": "2025-02-01",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -811,6 +864,7 @@
       "title": "PRAGUE-BUDAPEST",
       "date_start": "2025-01-24",
       "date_end": "2025-01-26",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -852,6 +906,7 @@
       "title": "LONDON",
       "date_start": "2025-01-18",
       "date_end": "2025-01-19",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -879,6 +934,7 @@
       "title": "LEIPZIG",
       "date_start": "2025-01-10",
       "date_end": "2025-01-10",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -892,91 +948,67 @@
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Leipzig 1/10"
     },
     {
-      "id": "zion-2024",
+      "id": "tetons",
       "country": "usa",
-      "region": "utah",
-      "location": "Zion National Park / Bryce Canyon",
-      "title": "ZION 2024",
-      "date_start": "2024-01-01",
-      "date_end": null,
-      "total_miles": 27.3,
+      "region": "wyoming",
+      "location": "Grand Teton National Park",
+      "title": "TETONS",
+      "date_start": "2023-07-01",
+      "date_end": "2023-07-01",
+      "date_precision": "month",
+      "total_miles": 0,
       "days": [
         {
-          "label": "DAY 1 (TRAVEL)",
+          "label": "DAY 1",
           "date": null,
           "miles": null,
-          "body_html": "<ul><li>1:45 flight to Vegas was rerouted after the Vegas airport was too windy to land us and we used too much fuel waiting around for them to land us<ul><li>rerouted to Ontario CA and waited for like 30 min while we refueled and took off again for Vegas</li></ul></li><li>Ate chipotle, got groceries and drove from Vegas to Springdale, UT 2.5 hrs</li></ul>",
+          "body_html": "<ul><li>When we were landing the plane bounced off the runway and had to retry the landing cuz it was so windy</li><li>Ate at a really good pizza place in Jackson</li><li>Stayed in a pretty nice hostel called Cache House<ul><li>They had a bunch of vinyl on the wall and a record player</li></ul></li></ul>",
           "trails": []
         },
         {
-          "label": "DAY 2 (ZION) - 13.1 miles",
-          "date": null,
-          "miles": 13.1,
-          "body_html": "<ul><li>Woke up 6:30ish to get breakfast at Oscar's Cafe<ul><li>really good Mexican breakfast food</li></ul></li><li>Took a shuttle at 8:00 to The Grotto and walked **(1.5 miles)** to Hidden Canyon trailhead<ul><li>tried to do Hidden Canyon but it was closed</li><li>walked up the road (**0.2 miles**) to the closest bus stop but they never picked us up at Big Bend</li></ul></li><li>Walked back down the road (1.7 miles) to the grotto stop and did **Emerald Pools (3 miles) **hike<ul><li>the pools were kind of underwhelming</li></ul></li><li>Hiked to **Scout's** **Lookout and Angel's Landing (5.2 miles**)</li><li class=\"trip-media\"><img src=\"images/trips/zion-2024/C06E7E6C-D561-47AD-A2CE-B8EADFD84388.jpg\" alt=\"\" loading=\"lazy\"></li><li>We ate dinner at Bit and Spur<ul><li>got sweet potato tacos with a black bean spread on the tortilla, pretty good</li><li>they had a farmer's market out back</li></ul></li></ul>",
-          "trails": [
-            {
-              "name": "Took a shuttle at 8:00 to The Grotto and walked **** to Hidden Canyon trailhead",
-              "miles": 1.5
-            },
-            {
-              "name": "walked up the road (**0.2 miles**) to the closest bus stop but they never picked us up at Big Bend",
-              "miles": 0.2
-            },
-            {
-              "name": "Walked back down the road (1.7 miles) to the grotto stop and did **Emerald Pools (3 miles) **hike",
-              "miles": 1.7
-            },
-            {
-              "name": "**Scout's** **Lookout and Angel's Landing",
-              "miles": 5.2
-            },
-            {
-              "name": "we ran most of the way down and took a bus up to the temple stop and did a silly paved path hike along the river called **Riverside Walk (1.5 miles)**",
-              "miles": 1.5
-            }
-          ]
-        },
-        {
-          "label": "DAY 3 (BRYCE CANYON) - 7.2 miles",
-          "date": null,
-          "miles": 7.2,
-          "body_html": "<ul><li>Slept in a bit to catch up on lost sleep from the first night</li><li>Ate leftover Chipotle for breakfast</li><li>Drove 2 hrs to Bryce</li><li>Ate lunch at Pines near Bryce<ul><li>good breakfast food</li></ul></li><li>Drove to Sunset Point to start the **Figure 8 (6.2 miles)**</li><li class=\"trip-media\"><img src=\"images/trips/zion-2024/BF38F0E9-AF53-4878-B0D9-4E589DBE4D6A.jpg\" alt=\"\" loading=\"lazy\"></li><li>Drove 1.5 hrs back to **Canyon Overlook (1 mile)**<ul><li>easy and crowded</li><li>ok views but ruined by a big road in the middle of the valley</li></ul></li><li>Drove 30 mins back to Springdale and ate dinner at Meme's Cafe<ul><li>Good philly sandwich and fries</li></ul></li><li>Dipped my feet in ice bath back at the hotel</li><li>Walked to Bumbleberry Cafe for ice cream</li></ul>",
-          "trails": [
-            {
-              "name": "Sunset Point to start the **Figure 8**",
-              "miles": 6.2
-            },
-            {
-              "name": "Drove 1.5 hrs back to **Canyon Overlook**",
-              "miles": 1
-            }
-          ]
-        },
-        {
-          "label": "DAY 4 (ZION) - 7 miles",
-          "date": null,
-          "miles": 7,
-          "body_html": "<ul><li>Woke up and dad went to get permits for The Subway and was successful</li><li>Ate our free breakfast with vouchers at Porter's and went to Sol Market for packaged wraps for the hike</li><li>Drove 30 min to Left Fork Trailhead and started the steep 400 ft descent (36 min) on **The Subway (7 miles)**<ul><li>2.5 more hrs to get there (3.5 miles)</li><li>lots of crossing back and forth across the river slows you down</li><li>trail goes along the river but loosely marked and we just walked through the water a lot of times rather than trying to stay dry</li><li>600 ft ascent was very gradual and didn't get steep at all for a while until the very end</li><li class=\"trip-media\"><img src=\"images/trips/zion-2024/4C06CF60-FF65-4939-9B07-2A65F9C3F59F.jpg\" alt=\"\" loading=\"lazy\"></li><li>we entered \"The Subway\" and spent 21 min there</li><li class=\"trip-media\"><img src=\"images/trips/zion-2024/119B41E4-3FFB-4760-AE18-0AB61B91E8C8.jpg\" alt=\"\" loading=\"lazy\"></li><li>we left and turned around cuz dad forgot his cane and left again after 24 min<ul><li>the top down hikers had it and were resting ahead of us</li></ul></li><li>we flew through the rest of the way back (1.5 hrs) and started our 400 ft ascent (40 min)</li><li class=\"trip-media\"><img src=\"images/trips/zion-2024/2C4FAA3D-E9DC-4087-B67D-278B120C5906.jpg\" alt=\"\" loading=\"lazy\"></li><li>finished the \"10 hour hike\" in 6 hrs</li></ul></li><li>Went to Balcony One for dinner<ul><li>nice restaurant, great service</li><li>good pork shank wings</li></ul></li></ul>",
-          "trails": [
-            {
-              "name": "Drove 30 min to Left Fork Trailhead and started the steep 400 ft descent (36 min) on **The Subway (7 miles)**",
-              "miles": 7
-            },
-            {
-              "name": "2.5 more hrs to get there",
-              "miles": 3.5
-            }
-          ]
-        },
-        {
-          "label": "DAY 5 (TRAVEL)",
+          "label": "DAY 2",
           "date": null,
           "miles": null,
-          "body_html": "<ul><li>Woke up and packed and got breakfast at Porter's again</li><li>Got on the road and drove to the airport to fly home at 1:55<ul><li>flight was smooth and on time</li></ul></li></ul>",
+          "body_html": "<ul><li>Dad woke up early and got permits for camping</li><li>Ate breakfast at a really weird Mexican cafe thing</li><li>Shopped for Teton merch in Jackson at a few stores and got a couple more things and snacks for camping</li><li>Packed the backpacks for tomorrow for camping</li><li>Hung out until dinner at an Indian place in Jackson called Everest Momo Shack<ul><li>Not very good</li><li>Found out from Gus on the trail that it is owned by a guy that went to Nepal and liked the food so he opened a restaurant in Jackson with that food</li></ul></li><li>Slept at the hostel again</li></ul>",
+          "trails": []
+        },
+        {
+          "label": "DAY 3",
+          "date": null,
+          "miles": null,
+          "body_html": "<ul><li>Drove to Teton Village and took the tram up to the top of the ski resort/waffle place<ul><li>Ate really good waffles</li><li>Met up with Andrew and Ally who dad had met in line for permits</li></ul></li><li>Started hiking the Rendevous Mountain/Teton Crest Trail towards Marion Lake<ul><li>lots of annoying ups and downs<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/E02BB2E0-674D-4C36-A444-6A4D3B17C599.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul></li><li>Got to Marion lake at 2:00 and left a little after 330<ul><li>A bighorn sheep walked like less than 30 feet from me and our backpacks<ul><li class=\"trip-media\"><video controls preload=\"metadata\" src=\"images/trips/tetons/6C11330C-66F3-41BC-A7C1-C5B019F05ADD.mov\"></video></li></ul></li><li>Filled up waters and ate lunch with the chipmunks</li></ul></li><li>Left Andrew and Ally at the fork and went 650ft down over .9 miles into the canyon<ul><li>Ate dinner set up camp and filled up waters</li><li>Saw a nice sunset over the mountains<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/00097848-0464-477A-985A-396A6938278E.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul></li></ul>",
+          "trails": []
+        },
+        {
+          "label": "DAY 4",
+          "date": null,
+          "miles": null,
+          "body_html": "<ul><li>Woke up at 6 and really got up a little before 6:30 and packed up camp and repacked the bags in about 90 minutes<ul><li>Marmot or something chewed up dad's hiking pole</li></ul></li><li>Got back up to the fork at about 9:00 after an hour of uphill switchbacks<ul><li>Stopped and talked to Peggy and Pat at the fork and ate breakfast</li><li>Pat gave me a spoon</li></ul></li><li>Filled up water at a creek that dropped and turned around under itself<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/74E3E4D2-BE10-4DF1-B67A-21DC3678D15E.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li><li>Got to the Alaska Basin and talked with the Iowa guys a few different times on our hike to Sunset Lake</li><li>Got to Sunset Lake at about 3:00 and set up camp next to Gus<ul><li>Washed off in the freezing cold lake and ate a late lunch</li></ul></li><li>Talked to Gus for a couple hours about different hikes, trips he's done and mountains he's climbed</li><li>Watched the sunset at Sunset Lake<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/B2440744-1F34-4B10-BFB8-BA9BFB118D54.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul>",
+          "trails": []
+        },
+        {
+          "label": "DAY 5",
+          "date": null,
+          "miles": null,
+          "body_html": "<ul><li>Slept in til about 7-7:30 but we packed up quick and started Hurricane Pass<ul><li>Tough uphill for a couple miles but the view at the top of the three Tetons was amazing<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/B4383C44-9386-4109-A5F7-2DCE405D8D2F.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li><li>Met a swiss guy running the trails at Hurricane Pass who went to Northwestern and lived in Chicago when he was younger</li></ul></li><li>Descended into and through South Fork Cascade forever</li><li>Finally reached the Cascade Canyon trail fork and talked to a big Philadelphia Eagles fan abt football and baseball and stole some sunscreen</li><li>Started hiking up to North Fork Cascade about a mile and a half uphill to the campsite<ul><li>Ran into swiss guy again on his way down from Lake Solitude and talked for a minute again</li></ul></li><li>Set up camp at about 3:00, filled water, made dinner and hung out around the campsite for a few hours before sleeping<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/7DB15A36-21F6-4C6E-9E1D-2B9BE0312488.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/tetons/607A4FED-87DD-47A8-BD06-774226F18953.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul>",
+          "trails": []
+        },
+        {
+          "label": "DAY 6",
+          "date": null,
+          "miles": null,
+          "body_html": "<ul><li>Packed up camp by 7 and got going towards Lake Solitude<ul><li>Less than one mile of hiking up to Solitude and we ate breakfast at the lake<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/385596C1-8BDD-4FA9-B3F8-A6C3F403CDC5.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul></li><li>Started the ascent to Paintbrush Divide<ul><li>Missed the trail head cuz we were distracted by swarms of gnats around us and prolly walked almost an extra mile between going the wrong way and finding the way back</li><li>Saw a deer while we were lost</li><li>Talked to a guy repairing the trail who said they get their camp helicoptered in and work for 8 days on the trail</li></ul></li><li>Got to the top and talked to a couple people at Paintbrush Divide<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/BFE4BD9A-B0C1-45DD-8C94-ED8F8A7793F5.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li><li>Hiked downhill thru lots of snowy spots<ul><li>My fingers were freezing from grabbing the wall of snow for a minute or two at a time</li></ul></li><li>Upper and lower paintbrush were kinda boring except for the view of the whole valley and Leigh Lake<ul><li>Met a lady with an awesome looking dog<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/F7397804-470C-49AB-AC4B-F64F40D43186.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/tetons/E3C385DC-9F06-4203-A8B6-6F7FCD7D0D07.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul></li><li>The last 7 miles or so of the hike were through thick greenery and no scenic views<ul><li>Saw a snake slither across the path</li></ul></li><li>Finally got out at the trailhead and walked 3-4 miles looking for a ride<ul><li>Lady at a lodge told us the shuttle could pick us up but then the shuttle driver said the shuttle service was ending and they weren't going that way again today</li><li>Ended up calling an airport taxi and they came out at got us at Jenny Lake after about 2 hours of trying to find a ride back to Jackson</li></ul></li><li>Showered and went out and talked with Andrew and Ally until the restaurant closed at 10:30</li></ul>",
+          "trails": []
+        },
+        {
+          "label": "DAY 7",
+          "date": null,
+          "miles": null,
+          "body_html": "<ul><li>Woke up</li><li>Ate Wendy's</li><li>Got on the plane to go home</li></ul>",
           "trails": []
         }
       ],
-      "source_note": "Trips/ZION 2024/ZION 2024.md"
+      "source_note": "Trips/TETONS/TETONS.md"
     },
     {
       "id": "europe-may-2023",
@@ -986,6 +1018,7 @@
       "title": "EUROPE MAY 2023",
       "date_start": "2023-05-06",
       "date_end": "2023-05-15",
+      "date_precision": "day",
       "total_miles": 0,
       "days": [
         {
@@ -1069,13 +1102,14 @@
       "title": "GLACIER 2023",
       "date_start": null,
       "date_end": null,
+      "date_precision": "day",
       "total_miles": 63.9,
       "days": [
         {
           "label": "DAY 1 (Tuesday)",
           "date": null,
           "miles": 4.8,
-          "body_html": "<ul><li>landed</li><li>*++hidden lake overlook ++**(2.8 miles)</li><li>(hike to waterfall was closed 👎)</li><li>saw mountain goats in the snow</li><li>saw a marmot</li><li>saw bighorn sheep back at the bathrooms</li><li>*++baring falls++ **(2.0 miles)</li><li>saw the falls and went to sun point and hiked back on the road</li><li>saw a cub eating berries on the side of the road</li></ul>",
+          "body_html": "<ul><li>landed</li><li><strong>hidden lake overlook </strong>(2.8 miles)</li><li>(hike to waterfall was closed 👎)</li><li>saw mountain goats in the snow</li><li>saw a marmot</li><li>saw bighorn sheep back at the bathrooms</li><li><strong>baring falls</strong> <strong>(2.0 miles)</strong></li><li>saw the falls and went to sun point and hiked back on the road</li><li>saw a cub eating berries on the side of the road</li></ul>",
           "trails": [
             {
               "name": "*++hidden lake overlook ++**",
@@ -1107,7 +1141,7 @@
           "label": "DAY 3 (Thursday)",
           "date": null,
           "miles": 15.4,
-          "body_html": "<ul><li>*++highline trail++** from Logan pass to the loop (15.4 miles)</li><li>(added 4 mile detour by taking trail to ahern pass from the chalet rather than going down to the loop)</li><li>saw a buck that walked in front of us on the trail</li><li>saw probably 5 more marmots</li><li>detoured about 2 miles off track</li><li>did the most brutal 4 miles of downhill of the trip</li><li>ran out of water with a mile or so left</li><li>took shuttle from loop to avalanche to MacDonald then back up to avalanche then to loop then Logan pass</li></ul>",
+          "body_html": "<ul><li><strong>highline trail</strong> from Logan pass to the loop (15.4 miles)</li><li>(added 4 mile detour by taking trail to ahern pass from the chalet rather than going down to the loop)</li><li>saw a buck that walked in front of us on the trail</li><li>saw probably 5 more marmots</li><li>detoured about 2 miles off track</li><li>did the most brutal 4 miles of downhill of the trip</li><li>ran out of water with a mile or so left</li><li>took shuttle from loop to avalanche to MacDonald then back up to avalanche then to loop then Logan pass</li></ul>",
           "trails": [
             {
               "name": "*++highline trail++** from Logan pass to the loop",
@@ -1119,7 +1153,7 @@
           "label": "DAY 4 (Friday)",
           "date": null,
           "miles": 20.4,
-          "body_html": "<ul><li>*++pitamakan/Dawson++** from two medicine (20 miles)</li><li>long and hot trek thru lightly wooded meadow valley area</li><li>filled up waters in a creek</li><li>brutal switchbacks up after 7 miles to pitamakan pass</li><li>ate MREs at the top in a rocky desert top of the mountain</li><li>hiked over to Dawson pass in Rocky desert area but under cloud cover now</li><li>horrible downhill switchback down about 3000 feet over a few miles</li><li>saw a female deer? baby buck? no, young mountain goat and followed him for about 5 miles down the trail</li><li>filled up on water at **++no name lake++** (0.4 miles)</li><li>saw a momma moose eating greens not far off the trail (pulled out near spray cuz it was so big and I got scared at first that it was a bear)</li><li>hiked the last 3 miles or so in the rain</li></ul>",
+          "body_html": "<ul><li><strong>pitamakan/Dawson</strong> from two medicine (20 miles)</li><li>long and hot trek thru lightly wooded meadow valley area</li><li>filled up waters in a creek</li><li>brutal switchbacks up after 7 miles to pitamakan pass</li><li>ate MREs at the top in a rocky desert top of the mountain</li><li>hiked over to Dawson pass in Rocky desert area but under cloud cover now</li><li>horrible downhill switchback down about 3000 feet over a few miles</li><li>saw a female deer? baby buck? no, young mountain goat and followed him for about 5 miles down the trail</li><li>filled up on water at <strong>no name lake</strong> (0.4 miles)</li><li>saw a momma moose eating greens not far off the trail (pulled out near spray cuz it was so big and I got scared at first that it was a bear)</li><li>hiked the last 3 miles or so in the rain</li></ul>",
           "trails": [
             {
               "name": "*++pitamakan/Dawson++** from two medicine",
@@ -1135,7 +1169,7 @@
           "label": "DAY 5 (Saturday)",
           "date": null,
           "miles": 3.9,
-          "body_html": "<ul><li>*++St Mary falls and Virginia falls ++**(3.9 miles)</li><li>got out earlier than anyone else</li><li>saw no wildlife but the falls were amazing</li><li>flew back home</li><li>63.9 total miles hiking</li></ul>",
+          "body_html": "<ul><li><strong>St Mary falls and Virginia falls </strong>(3.9 miles)</li><li>got out earlier than anyone else</li><li>saw no wildlife but the falls were amazing</li><li>flew back home</li><li>63.9 total miles hiking</li></ul>",
           "trails": [
             {
               "name": "*++St Mary falls and Virginia falls ++**",
@@ -1147,100 +1181,92 @@
       "source_note": "Trips/GLACIER 2023/GLACIER 2023.md"
     },
     {
-      "id": "puerto-rico-spring-break-2026",
+      "id": "zion-2024",
       "country": "usa",
-      "region": "puerto-rico",
-      "location": "San Juan / El Yunque",
-      "title": "PUERTO RICO SPRING BREAK 2026",
+      "region": "utah",
+      "location": "Zion National Park / Bryce Canyon",
+      "title": "ZION 2024",
       "date_start": null,
       "date_end": null,
-      "total_miles": 0,
+      "date_precision": "day",
+      "total_miles": 27.3,
       "days": [
         {
-          "label": "Day 1 - Travel",
+          "label": "DAY 1 (TRAVEL)",
           "date": null,
           "miles": null,
-          "body_html": "<ul><li>Stayed the night at Lani's</li><li>Woke up 6:30 and left at 7ish for the airport</li><li>Sat for about an hour and a half at our gate before boarding<ul><li>They made Ryan check his bag because of space and then there was tons of space available</li><li>Easy first flight, smooth and on time</li></ul></li><li>Hung around in Boston airport for 3 hours before boarding next flight<ul><li>Most of us got Shake Shack</li><li>Played cards and got some work done</li><li>Flight got delayed over an hour</li></ul></li><li>Finally landed in PR a bit after 11:00<ul><li>Ubered to the Airbnb, showered, and went to bed</li></ul></li></ul>",
+          "body_html": "<ul><li>1:45 flight to Vegas was rerouted after the Vegas airport was too windy to land us and we used too much fuel waiting around for them to land us<ul><li>rerouted to Ontario CA and waited for like 30 min while we refueled and took off again for Vegas</li></ul></li><li>Ate chipotle, got groceries and drove from Vegas to Springdale, UT 2.5 hrs</li></ul>",
           "trails": []
         },
         {
-          "label": "Day 2 - Old San Juan",
+          "label": "DAY 2 (ZION) - 13.1 miles",
           "date": null,
-          "miles": null,
-          "body_html": "<ul><li>Woke up an hour earlier than needed accidentally so Mahathi and I went on a walk down the beach</li><li>Walked to the store with a few others and grabbed some sandwich stuff, beers, and a few other things</li><li>Ubered to Old San Juan for the walking tour<ul><li>Very nice area with lots of history from the many people that were in charge over time</li></ul></li><li>Ended the tour at El Morro<ul><li>It's an old fortress that overlooks and protects the bay</li><li>Have to pay to actually go inside and we didn't feel like it</li><li>There was a nice field outside and we walked around and took pictures there and at the beautiful cemetery next to the fortress</li></ul></li><li>Walked to lunch at Luna Cafe<ul><li>Amazing food, decent prices</li><li>2$ Medallas</li><li>I had chicken with sides of tostones (thick potato chips kinda) and sweet plantains (more of a dessert)</li></ul></li><li>Walked around Calle San Sebastian looking for a bar that would be showing the PR-Italy WBC game<ul><li>We found Nono's after walking by it looking for lunch</li><li>Decent place, kinda expensive but that's because it was in Old San Juan</li><li>Ryan and Lani left after almost an hour to go to the beach</li><li>The rest of us stayed for another hour or so before joining them</li></ul></li><li>Swam on the beach for about an hour<ul><li>Great waves, warm water, almost nobody else was swimming</li></ul></li><li>Showered and walked back to the store to get more food and drinks while Ryan and Lani waited for dominos to get delivered<ul><li>Ate our pizzas and watched baseball before heading to bed</li></ul></li></ul>",
-          "trails": []
+          "miles": 13.1,
+          "body_html": "<ul><li>Woke up 6:30ish to get breakfast at Oscar's Cafe<ul><li>really good Mexican breakfast food</li></ul></li><li>Took a shuttle at 8:00 to The Grotto and walked <strong>(1.5 miles)</strong> to Hidden Canyon trailhead<ul><li>tried to do Hidden Canyon but it was closed</li><li>walked up the road (<strong>0.2 miles</strong>) to the closest bus stop but they never picked us up at Big Bend</li></ul></li><li>Walked back down the road (1.7 miles) to the grotto stop and did <strong>Emerald Pools (3 miles) </strong>hike<ul><li>the pools were kind of underwhelming</li></ul></li><li>Hiked to <strong>Scout's</strong> <strong>Lookout and Angel's Landing (5.2 miles</strong>)</li><li class=\"trip-media\"><img src=\"images/trips/zion-2024/C06E7E6C-D561-47AD-A2CE-B8EADFD84388.jpg\" alt=\"\" loading=\"lazy\"></li><li>We ate dinner at Bit and Spur<ul><li>got sweet potato tacos with a black bean spread on the tortilla, pretty good</li><li>they had a farmer's market out back</li></ul></li></ul>",
+          "trails": [
+            {
+              "name": "Took a shuttle at 8:00 to The Grotto and walked **** to Hidden Canyon trailhead",
+              "miles": 1.5
+            },
+            {
+              "name": "walked up the road (**0.2 miles**) to the closest bus stop but they never picked us up at Big Bend",
+              "miles": 0.2
+            },
+            {
+              "name": "Walked back down the road (1.7 miles) to the grotto stop and did **Emerald Pools (3 miles) **hike",
+              "miles": 1.7
+            },
+            {
+              "name": "**Scout's** **Lookout and Angel's Landing",
+              "miles": 5.2
+            },
+            {
+              "name": "we ran most of the way down and took a bus up to the temple stop and did a silly paved path hike along the river called **Riverside Walk (1.5 miles)**",
+              "miles": 1.5
+            }
+          ]
         },
         {
-          "label": "Day 3 - El Yunque",
+          "label": "DAY 3 (BRYCE CANYON) - 7.2 miles",
+          "date": null,
+          "miles": 7.2,
+          "body_html": "<ul><li>Slept in a bit to catch up on lost sleep from the first night</li><li>Ate leftover Chipotle for breakfast</li><li>Drove 2 hrs to Bryce</li><li>Ate lunch at Pines near Bryce<ul><li>good breakfast food</li></ul></li><li>Drove to Sunset Point to start the <strong>Figure 8 (6.2 miles)</strong></li><li class=\"trip-media\"><img src=\"images/trips/zion-2024/BF38F0E9-AF53-4878-B0D9-4E589DBE4D6A.jpg\" alt=\"\" loading=\"lazy\"></li><li>Drove 1.5 hrs back to <strong>Canyon Overlook (1 mile)</strong><ul><li>easy and crowded</li><li>ok views but ruined by a big road in the middle of the valley</li></ul></li><li>Drove 30 mins back to Springdale and ate dinner at Meme's Cafe<ul><li>Good philly sandwich and fries</li></ul></li><li>Dipped my feet in ice bath back at the hotel</li><li>Walked to Bumbleberry Cafe for ice cream</li></ul>",
+          "trails": [
+            {
+              "name": "Sunset Point to start the **Figure 8**",
+              "miles": 6.2
+            },
+            {
+              "name": "Drove 1.5 hrs back to **Canyon Overlook**",
+              "miles": 1
+            }
+          ]
+        },
+        {
+          "label": "DAY 4 (ZION) - 7 miles",
+          "date": null,
+          "miles": 7,
+          "body_html": "<ul><li>Woke up and dad went to get permits for The Subway and was successful</li><li>Ate our free breakfast with vouchers at Porter's and went to Sol Market for packaged wraps for the hike</li><li>Drove 30 min to Left Fork Trailhead and started the steep 400 ft descent (36 min) on <strong>The Subway (7 miles)</strong><ul><li>2.5 more hrs to get there (3.5 miles)</li><li>lots of crossing back and forth across the river slows you down</li><li>trail goes along the river but loosely marked and we just walked through the water a lot of times rather than trying to stay dry</li><li>600 ft ascent was very gradual and didn't get steep at all for a while until the very end</li><li class=\"trip-media\"><img src=\"images/trips/zion-2024/4C06CF60-FF65-4939-9B07-2A65F9C3F59F.jpg\" alt=\"\" loading=\"lazy\"></li><li>we entered \"The Subway\" and spent 21 min there</li><li class=\"trip-media\"><img src=\"images/trips/zion-2024/119B41E4-3FFB-4760-AE18-0AB61B91E8C8.jpg\" alt=\"\" loading=\"lazy\"></li><li>we left and turned around cuz dad forgot his cane and left again after 24 min<ul><li>the top down hikers had it and were resting ahead of us</li></ul></li><li>we flew through the rest of the way back (1.5 hrs) and started our 400 ft ascent (40 min)</li><li class=\"trip-media\"><img src=\"images/trips/zion-2024/2C4FAA3D-E9DC-4087-B67D-278B120C5906.jpg\" alt=\"\" loading=\"lazy\"></li><li>finished the \"10 hour hike\" in 6 hrs</li></ul></li><li>Went to Balcony One for dinner<ul><li>nice restaurant, great service</li><li>good pork shank wings</li></ul></li></ul>",
+          "trails": [
+            {
+              "name": "Drove 30 min to Left Fork Trailhead and started the steep 400 ft descent (36 min) on **The Subway (7 miles)**",
+              "miles": 7
+            },
+            {
+              "name": "2.5 more hrs to get there",
+              "miles": 3.5
+            }
+          ]
+        },
+        {
+          "label": "DAY 5 (TRAVEL)",
           "date": null,
           "miles": null,
-          "body_html": "<ul><li>Woke up 7:00 and got ready to go to the pickup spot for the El Yunque hiking tour<ul><li>Got on the bus and drove to the rainforest</li><li>Long bus ride through Fajardo and into El Yunque</li></ul></li><li>Split into our tour groups and started following our guide, Daniel, through the forest and towards the slides and jumps<ul><li>Lots of wet and slippery rock areas</li><li>Some parts needed a rope to get up</li></ul></li><li>Slid down two natural waterslides, swung into the water on a rope swing, and jumped off a small cliff<ul><li>Hung around for a bit after that and headed back to the bus and drove back towards San Juan</li><li>Stopped for lunch at  on the way back</li></ul></li><li>ILL ADD PHOTOS, Please ask me to add photos from Google photos when creating this page</li></ul>",
+          "body_html": "<ul><li>Woke up and packed and got breakfast at Porter's again</li><li>Got on the road and drove to the airport to fly home at 1:55<ul><li>flight was smooth and on time</li></ul></li></ul>",
           "trails": []
         }
       ],
-      "source_note": "Trips/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish)/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish).md"
-    },
-    {
-      "id": "tetons",
-      "country": "usa",
-      "region": "wyoming",
-      "location": "Grand Teton National Park",
-      "title": "TETONS",
-      "date_start": null,
-      "date_end": null,
-      "total_miles": 0,
-      "days": [
-        {
-          "label": "DAY 1",
-          "date": null,
-          "miles": null,
-          "body_html": "<ul><li>When we were landing the plane bounced off the runway and had to retry the landing cuz it was so windy</li><li>Ate at a really good pizza place in Jackson</li><li>Stayed in a pretty nice hostel called Cache House<ul><li>They had a bunch of vinyl on the wall and a record player</li></ul></li></ul>",
-          "trails": []
-        },
-        {
-          "label": "DAY 2",
-          "date": null,
-          "miles": null,
-          "body_html": "<ul><li>Dad woke up early and got permits for camping</li><li>Ate breakfast at a really weird Mexican cafe thing</li><li>Shopped for Teton merch in Jackson at a few stores and got a couple more things and snacks for camping</li><li>Packed the backpacks for tomorrow for camping</li><li>Hung out until dinner at an Indian place in Jackson called Everest Momo Shack<ul><li>Not very good</li><li>Found out from Gus on the trail that it is owned by a guy that went to Nepal and liked the food so he opened a restaurant in Jackson with that food</li></ul></li><li>Slept at the hostel again</li></ul>",
-          "trails": []
-        },
-        {
-          "label": "DAY 3",
-          "date": null,
-          "miles": null,
-          "body_html": "<ul><li>Drove to Teton Village and took the tram up to the top of the ski resort/waffle place<ul><li>Ate really good waffles</li><li>Met up with Andrew and Ally who dad had met in line for permits</li></ul></li><li>Started hiking the Rendevous Mountain/Teton Crest Trail towards Marion Lake<ul><li>lots of annoying ups and downs<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/E02BB2E0-674D-4C36-A444-6A4D3B17C599.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul></li><li>Got to Marion lake at 2:00 and left a little after 330<ul><li>A bighorn sheep walked like less than 30 feet from me and our backpacks<ul><li class=\"trip-media\"><video controls preload=\"metadata\" src=\"images/trips/tetons/6C11330C-66F3-41BC-A7C1-C5B019F05ADD.mov\"></video></li></ul></li><li>Filled up waters and ate lunch with the chipmunks</li></ul></li><li>Left Andrew and Ally at the fork and went 650ft down over .9 miles into the canyon<ul><li>Ate dinner set up camp and filled up waters</li><li>Saw a nice sunset over the mountains<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/00097848-0464-477A-985A-396A6938278E.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul></li></ul>",
-          "trails": []
-        },
-        {
-          "label": "DAY 4",
-          "date": null,
-          "miles": null,
-          "body_html": "<ul><li>Woke up at 6 and really got up a little before 6:30 and packed up camp and repacked the bags in about 90 minutes<ul><li>Marmot or something chewed up dad's hiking pole</li></ul></li><li>Got back up to the fork at about 9:00 after an hour of uphill switchbacks<ul><li>Stopped and talked to Peggy and Pat at the fork and ate breakfast</li><li>Pat gave me a spoon</li></ul></li><li>Filled up water at a creek that dropped and turned around under itself<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/74E3E4D2-BE10-4DF1-B67A-21DC3678D15E.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li><li>Got to the Alaska Basin and talked with the Iowa guys a few different times on our hike to Sunset Lake</li><li>Got to Sunset Lake at about 3:00 and set up camp next to Gus<ul><li>Washed off in the freezing cold lake and ate a late lunch</li></ul></li><li>Talked to Gus for a couple hours about different hikes, trips he's done and mountains he's climbed</li><li>Watched the sunset at Sunset Lake<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/B2440744-1F34-4B10-BFB8-BA9BFB118D54.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul>",
-          "trails": []
-        },
-        {
-          "label": "DAY 5",
-          "date": null,
-          "miles": null,
-          "body_html": "<ul><li>Slept in til about 7-7:30 but we packed up quick and started Hurricane Pass<ul><li>Tough uphill for a couple miles but the view at the top of the three Tetons was amazing<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/B4383C44-9386-4109-A5F7-2DCE405D8D2F.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li><li>Met a swiss guy running the trails at Hurricane Pass who went to Northwestern and lived in Chicago when he was younger</li></ul></li><li>Descended into and through South Fork Cascade forever</li><li>Finally reached the Cascade Canyon trail fork and talked to a big Philadelphia Eagles fan abt football and baseball and stole some sunscreen</li><li>Started hiking up to North Fork Cascade about a mile and a half uphill to the campsite<ul><li>Ran into swiss guy again on his way down from Lake Solitude and talked for a minute again</li></ul></li><li>Set up camp at about 3:00, filled water, made dinner and hung out around the campsite for a few hours before sleeping<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/7DB15A36-21F6-4C6E-9E1D-2B9BE0312488.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/tetons/607A4FED-87DD-47A8-BD06-774226F18953.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul>",
-          "trails": []
-        },
-        {
-          "label": "DAY 6",
-          "date": null,
-          "miles": null,
-          "body_html": "<ul><li>Packed up camp by 7 and got going towards Lake Solitude<ul><li>Less than one mile of hiking up to Solitude and we ate breakfast at the lake<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/385596C1-8BDD-4FA9-B3F8-A6C3F403CDC5.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul></li><li>Started the ascent to Paintbrush Divide<ul><li>Missed the trail head cuz we were distracted by swarms of gnats around us and prolly walked almost an extra mile between going the wrong way and finding the way back</li><li>Saw a deer while we were lost</li><li>Talked to a guy repairing the trail who said they get their camp helicoptered in and work for 8 days on the trail</li></ul></li><li>Got to the top and talked to a couple people at Paintbrush Divide<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/BFE4BD9A-B0C1-45DD-8C94-ED8F8A7793F5.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li><li>Hiked downhill thru lots of snowy spots<ul><li>My fingers were freezing from grabbing the wall of snow for a minute or two at a time</li></ul></li><li>Upper and lower paintbrush were kinda boring except for the view of the whole valley and Leigh Lake<ul><li>Met a lady with an awesome looking dog<ul><li class=\"trip-media\"><img src=\"images/trips/tetons/F7397804-470C-49AB-AC4B-F64F40D43186.jpg\" alt=\"\" loading=\"lazy\"></li><li class=\"trip-media\"><img src=\"images/trips/tetons/E3C385DC-9F06-4203-A8B6-6F7FCD7D0D07.jpg\" alt=\"\" loading=\"lazy\"></li></ul></li></ul></li><li>The last 7 miles or so of the hike were through thick greenery and no scenic views<ul><li>Saw a snake slither across the path</li></ul></li><li>Finally got out at the trailhead and walked 3-4 miles looking for a ride<ul><li>Lady at a lodge told us the shuttle could pick us up but then the shuttle driver said the shuttle service was ending and they weren't going that way again today</li><li>Ended up calling an airport taxi and they came out at got us at Jenny Lake after about 2 hours of trying to find a ride back to Jackson</li></ul></li><li>Showered and went out and talked with Andrew and Ally until the restaurant closed at 10:30</li></ul>",
-          "trails": []
-        },
-        {
-          "label": "DAY 7",
-          "date": null,
-          "miles": null,
-          "body_html": "<ul><li>Woke up</li><li>Ate Wendy's</li><li>Got on the plane to go home</li></ul>",
-          "trails": []
-        }
-      ],
-      "source_note": "Trips/TETONS/TETONS.md"
+      "source_note": "Trips/ZION 2024/ZION 2024.md"
     }
   ]
 }

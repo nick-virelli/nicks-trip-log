@@ -1,4 +1,4 @@
-/* Nick's Trip Log — adapted from The Fast Traveler's palette/layout, minimal, light/dark */
+/* Nick's Trip Log - adapted from The Fast Traveler's palette/layout, minimal, light/dark */
 :root {
   --bg: #fafafa;
   --surface: #ffffff;
@@ -141,33 +141,50 @@ main {
 }
 
 .special-sidebar {
-  flex: 0 0 280px;
+  flex: 0 0 220px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.75rem;
   position: sticky;
   top: calc(81px + 1rem);
   max-height: calc(100vh - 81px - 2rem);
   overflow-y: auto;
-  font-size: 0.8rem; /* cancel the site-wide 125% bump back to its original size */
+  font-size: 0.72rem; /* cancel the site-wide 125% bump, then a bit smaller still */
 }
 
 .special-title {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.6rem;
   font-size: 1.05em;
   font-weight: 600;
 }
 
+.trip-search {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 1em;
+}
+
+.trip-search:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
 .special-list {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .special-item {
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 0.75rem 0.85rem;
+  padding: 0.55rem 0.65rem;
   background: var(--bg);
 }
 

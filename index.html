@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nick's Trip Log</title>
   <meta name="description" content="A log of hiking and travel trips.">
+  <meta property="og:title" content="Nick's Trip Log">
+  <meta property="og:description" content="A log of hiking and travel trips.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nick-virelli.github.io/nicks-trip-log/">
+  <meta property="og:image" content="https://nick-virelli.github.io/nicks-trip-log/images/trips/mt-rainier-2026/8E69F307-B2FC-495A-A8B1-EAD2134651B3.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -51,6 +58,7 @@
 
       <aside class="special-sidebar" aria-label="Recent trips">
         <h2 class="special-title">Recent Trips</h2>
+        <input type="search" id="trip-search" class="trip-search" placeholder="Search by name, place, or year">
         <div id="recent-posts-list" class="special-list">
           <p class="post-meta">Loading…</p>
         </div>

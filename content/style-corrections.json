@@ -26,10 +26,10 @@
     { "original": "dads hiking pole", "correction": "dad's hiking pole", "scope": "global" },
     { "original": "Nelsen", "correction": "Nansen", "scope": "global" },
     { "original": "Arc de Triomf", "correction": "Arc de Triomphe", "scope": "instance", "context": "Study Abroad, Paris (Barcelona's Arc de Triomf is spelled correctly and must NOT be changed)" },
-    { "original": "AMATO BLAH BLAH BLAH SAGRADA", "correction": "Amanto – Comida Sagrada", "scope": "instance", "context": "Machu Picchu 2026, Ollantaytambo Day 3 dinner spot" },
+    { "original": "AMATO BLAH BLAH BLAH SAGRADA", "correction": "Amanto - Comida Sagrada", "scope": "instance", "context": "Machu Picchu 2026, Ollantaytambo Day 3 dinner spot" },
     { "original": "tronellino", "correction": "tonnarelli", "scope": "instance", "context": "Study Abroad, Rome pasta dish" }
   ],
   "declined": [
-    { "original": "Kurtains", "note": "Confirmed correct as written — band/act name, spelled with a K." }
+    { "original": "Kurtains", "note": "Confirmed correct as written - band/act name, spelled with a K." }
   ]
 }

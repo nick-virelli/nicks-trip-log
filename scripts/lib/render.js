@@ -5,6 +5,20 @@ function escapeHtml(s) {
     .replace(/>/g, '&gt;');
 }
 
+// Converts the source's own emphasis markup (**bold**, ++bold++, and combinations
+// like **++bold++** or ***++bold++***) into real <strong> tags. Runs after
+// escapeHtml, so it's safe to inject raw tags here - asterisks/pluses are untouched
+// by HTML escaping. Any run of 2+ * and/or + characters is treated as one delimiter,
+// and delimiter runs alternate open/close.
+function applyEmphasis(escaped) {
+  const parts = escaped.split(/[*+]{2,}/);
+  let result = parts[0] || '';
+  for (let i = 1; i < parts.length; i++) {
+    result += i % 2 === 1 ? `<strong>${parts[i]}</strong>` : parts[i];
+  }
+  return result;
+}
+
 // mediaMap: Map of "Attachments/ORIGINALNAME.ext" -> "images/trips/slug/newname.ext"
 function renderNode(node, mediaMap) {
   if (node.media) {
@@ -16,7 +30,7 @@ function renderNode(node, mediaMap) {
     return `<li class="trip-media">${inner}</li>`;
   }
   const childHtml = node.children.length ? `<ul>${node.children.map((c) => renderNode(c, mediaMap)).join('')}</ul>` : '';
-  return `<li>${escapeHtml(node.text || '')}${childHtml}</li>`;
+  return `<li>${applyEmphasis(escapeHtml(node.text || ''))}${childHtml}</li>`;
 }
 
 function renderDayHtml(day, mediaMap) {
