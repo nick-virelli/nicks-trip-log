@@ -137,9 +137,12 @@
     }
   }
 
+  function postsForCity(countryKey, cityName) {
+    return app.posts.filter((p) => p.country === countryKey && p.city === cityName);
+  }
+
   function showCity(countryKey, regionKey, cityName) {
-    const matches = app.posts.filter((p) => p.country === countryKey && p.city === cityName);
-    renderPosts(matches);
+    renderPosts(postsForCity(countryKey, cityName));
     document.getElementById("post-display").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -189,7 +192,7 @@
         <span class="hero-post-date">${esc(fmtDateRange(latest))}</span>`;
       latestEl.querySelector("a").addEventListener("click", (e) => {
         e.preventDefault();
-        renderPosts([latest]);
+        renderPosts(postsForCity(latest.country, latest.city));
         document.getElementById("post-display").scrollIntoView({ behavior: "smooth" });
       });
     }
@@ -215,7 +218,7 @@
         e.preventDefault();
         const post = posts.find((p) => p.id === a.dataset.trip);
         if (post) {
-          renderPosts([post]);
+          renderPosts(postsForCity(post.country, post.city));
           document.getElementById("post-display").scrollIntoView({ behavior: "smooth" });
         }
       });

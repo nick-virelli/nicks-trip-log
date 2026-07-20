@@ -58,6 +58,10 @@ a:hover {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 700;
+  background: var(--bg);
 }
 
 .site-title {
@@ -139,8 +143,8 @@ main {
   border-radius: 12px;
   padding: 1rem;
   position: sticky;
-  top: 1rem;
-  max-height: calc(100vh - 2rem);
+  top: calc(65px + 1rem);
+  max-height: calc(100vh - 65px - 2rem);
   overflow-y: auto;
 }
 
