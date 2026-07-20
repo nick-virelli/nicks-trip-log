@@ -1,6 +1,7 @@
 node_modules/
-Trips/
+/Trips/
 .claude/
+.build/
 .DS_Store
 Thumbs.db
 npm-debug.log*

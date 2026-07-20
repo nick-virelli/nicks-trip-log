@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick's Trip Log</title>
+  <meta name="description" content="A log of hiking and travel trips.">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-title"><a href="index.html">Nick's Trip Log</a></h1>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <button type="button" class="theme-toggle" aria-label="Toggle theme">Dark mode</button>
+    </nav>
+  </header>
+
+  <div class="hero-strip">
+    <div class="hero-strip-inner">
+      <div class="hero-stat">
+        <span class="hero-count">0</span>
+        <span class="hero-stat-label">Loading…</span>
+      </div>
+      <div class="hero-latest" id="hero-latest">
+        <span class="hero-latest-label">Latest trip</span>
+        <span class="hero-post-loading">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="home-layout">
+      <div class="home-main">
+        <section class="map-section">
+          <h2>Explore by place</h2>
+          <p class="map-instruction">Click a pin to zoom in, then click a city to read the trip.</p>
+          <div class="map-controls" id="map-controls" style="display:none;">
+            <button type="button" class="map-back" id="back-to-world">&larr; Back to world</button>
+          </div>
+          <div class="map-container" id="map-container">
+            <p>Loading map…</p>
+          </div>
+        </section>
+
+        <article class="post-display" id="post-display" aria-live="polite"></article>
+      </div>
+
+      <aside class="special-sidebar" aria-label="Recent trips">
+        <h2 class="special-title">Recent Trips</h2>
+        <div id="recent-posts-list" class="special-list">
+          <p class="post-meta">Loading…</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <p>Contact: <a href="contact.html">Get in touch</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="data/posts.js"></script>
+  <script src="data/map-data.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>

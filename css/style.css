@@ -1,0 +1,535 @@
+/* Nick's Trip Log — adapted from The Fast Traveler's palette/layout, minimal, light/dark */
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --border: #e5e5e5;
+  --accent: #2d5a4a;
+  --accent-hover: #1e3d32;
+  --map-bg: #f0f0f0;
+  --map-hover: #e0e0e0;
+  --map-active: #2d5a4a;
+  --map-active-bg: rgba(45, 90, 74, 0.12);
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --text: #f0f0f0;
+  --text-muted: #b8b8b8;
+  --border: #3a3a3a;
+  --accent: #5a9a82;
+  --accent-hover: #7ab8a0;
+  --map-bg: #1a1a1a;
+  --map-hover: #2a2a2a;
+  --map-active: #5a9a82;
+  --map-active-bg: rgba(90, 154, 130, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.site-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.site-title a {
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-title a:hover {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  grid-column: 3;
+  justify-self: end;
+}
+
+.site-nav a {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.theme-toggle:hover {
+  background: var(--map-hover);
+}
+
+/* Main */
+main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  width: 100%;
+}
+
+/* Home layout: map + sidebar */
+.home-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.home-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.special-sidebar {
+  flex: 0 0 280px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.special-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.special-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.special-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  background: var(--bg);
+}
+
+.special-item a {
+  display: block;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.special-item a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.special-item .meta {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .home-layout {
+    flex-direction: column;
+  }
+  .special-sidebar {
+    width: 100%;
+    flex-basis: auto;
+  }
+}
+
+/* Map section */
+.map-section {
+  margin-bottom: 2rem;
+}
+
+.map-section h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+
+.map-controls {
+  margin-bottom: 0.75rem;
+}
+
+.map-container {
+  background: var(--map-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 480px;
+  position: relative;
+}
+
+.leaflet-map {
+  width: 100%;
+  height: 480px;
+  min-height: 480px;
+  border-radius: 12px;
+}
+
+.leaflet-container {
+  font-family: inherit;
+  background: var(--map-bg);
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.map-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.map-item:hover {
+  background: var(--map-hover);
+  border-color: var(--accent);
+}
+
+.map-back {
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+}
+
+.map-back:hover {
+  color: var(--accent);
+  background: var(--map-hover);
+}
+
+.map-instruction {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: -0.5rem 0 0.85rem;
+}
+
+/* Leaflet marker/popup theming */
+.trip-pin-label {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+}
+
+.leaflet-popup-tip {
+  background: var(--surface);
+}
+
+.map-popup a {
+  font-weight: 600;
+}
+
+/* Post display (below map) */
+.post-display {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.post-display:empty {
+  display: none;
+}
+
+.post-display h2 {
+  font-size: 1.6rem;
+  margin: 0 0 0.35rem;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-meta .post-miles {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Trip day blocks */
+.trip-day {
+  margin-bottom: 2rem;
+}
+
+.trip-day h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.trip-day ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.trip-day ul ul {
+  margin-top: 0.35rem;
+  padding-left: 1.1rem;
+}
+
+.trip-day li {
+  margin-bottom: 0.45rem;
+}
+
+.trip-day li.trip-media {
+  list-style: none;
+  margin-left: -1.25rem;
+}
+
+.trip-day img,
+.trip-day video {
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 0.4rem 0;
+  display: block;
+}
+
+.trip-day video {
+  background: #000;
+}
+
+/* Trip list (browse all trips) */
+.trip-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.trip-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  background: var(--surface);
+}
+
+.trip-card a {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.trip-card a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.trip-card .meta {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 1.5rem;
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.site-footer nav {
+  margin-bottom: 0.75rem;
+}
+
+.site-footer nav a {
+  margin: 0 0.75rem;
+  color: var(--text-muted);
+}
+
+.site-footer nav a:hover {
+  color: var(--text);
+}
+
+.site-footer .travel-advice {
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* About / Contact */
+.page-content h1 {
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+}
+
+.page-content p {
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+
+/* Hero strip */
+.hero-strip {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-strip-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hero-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.hero-count {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-latest {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+  text-align: right;
+}
+
+.hero-latest-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-post-title {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.hero-post-title:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.hero-post-date {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.hero-post-loading {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.rail-section-title {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .hero-strip-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .hero-latest {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .trip-list-grid {
+    grid-template-columns: 1fr;
+  }
+}

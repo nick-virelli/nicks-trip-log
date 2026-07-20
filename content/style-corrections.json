@@ -1,0 +1,35 @@
+{
+  "_notes": "Keyed corrections applied to source trip text before rendering. 'scope':'global' replaces every occurrence of 'original' anywhere; 'scope':'instance' only replaces the exact phrase (used for common words like 'thought'/'he's' that are usually correct elsewhere). Declined corrections are kept here so future runs don't re-flag them. Apple Notes x-apple-data-detectors smart-link unwrapping (e.g. '[3:45](x-apple-data-detectors://...)' -> '3:45') is applied globally as a mechanical export-artifact cleanup, not tracked per-word here.",
+  "corrections": [
+    { "original": "thriugh", "correction": "through", "scope": "global" },
+    { "original": "3.5 he's", "correction": "3.5 hrs", "scope": "instance", "context": "Machu Picchu 2026, Day 1" },
+    { "original": "dissapointing", "correction": "disappointing", "scope": "global" },
+    { "original": "Shepards Pie", "correction": "Shepherd's Pie", "scope": "global" },
+    { "original": "Horsehoe Bend trailhead", "correction": "Horseshoe Bend trailhead", "scope": "global" },
+    { "original": "succesful", "correction": "successful", "scope": "global" },
+    { "original": "Emeral Pools", "correction": "Emerald Pools", "scope": "global" },
+    { "original": "meusem", "correction": "museum", "scope": "global" },
+    { "original": "crossaint", "correction": "croissant", "scope": "global" },
+    { "original": "reccomended", "correction": "recommended", "scope": "global" },
+    { "original": "cappacola", "correction": "capicola", "scope": "global" },
+    { "original": "carnaval", "correction": "carnival", "scope": "global" },
+    { "original": "mozarella", "correction": "mozzarella", "scope": "global" },
+    { "original": "Miraduoro", "correction": "Miradouro", "scope": "global" },
+    { "original": "strueselbrötchen", "correction": "Streuselbrötchen", "scope": "global" },
+    { "original": "Napolean", "correction": "Napoleon", "scope": "global" },
+    { "original": "Aribnb", "correction": "Airbnb", "scope": "global" },
+    { "original": "fort the conversion", "correction": "for the conversion", "scope": "instance", "context": "Study Abroad, Morocco" },
+    { "original": "carmelized", "correction": "caramelized", "scope": "global" },
+    { "original": "Battló", "correction": "Batlló", "scope": "global" },
+    { "original": "even thought we were still early", "correction": "even though we were still early", "scope": "instance", "context": "Study Abroad, Malaga" },
+    { "original": "even thought we couldn't really get near it", "correction": "even though we couldn't really get near it", "scope": "instance", "context": "Study Abroad, Monaco" },
+    { "original": "dads hiking pole", "correction": "dad's hiking pole", "scope": "global" },
+    { "original": "Nelsen", "correction": "Nansen", "scope": "global" },
+    { "original": "Arc de Triomf", "correction": "Arc de Triomphe", "scope": "instance", "context": "Study Abroad, Paris (Barcelona's Arc de Triomf is spelled correctly and must NOT be changed)" },
+    { "original": "AMATO BLAH BLAH BLAH SAGRADA", "correction": "Amanto – Comida Sagrada", "scope": "instance", "context": "Machu Picchu 2026, Ollantaytambo Day 3 dinner spot" },
+    { "original": "tronellino", "correction": "tonnarelli", "scope": "instance", "context": "Study Abroad, Rome pasta dish" }
+  ],
+  "declined": [
+    { "original": "Kurtains", "note": "Confirmed correct as written — band/act name, spelled with a K." }
+  ]
+}
