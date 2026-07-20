@@ -150,11 +150,12 @@ main {
   top: calc(81px + 1rem);
   max-height: calc(100vh - 81px - 2rem);
   overflow-y: auto;
+  font-size: 0.8rem; /* cancel the site-wide 125% bump back to its original size */
 }
 
 .special-title {
   margin: 0 0 0.75rem;
-  font-size: 1.05rem;
+  font-size: 1.05em;
   font-weight: 600;
 }
 
@@ -184,7 +185,7 @@ main {
 
 .special-item .meta {
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.85em;
 }
 
 @media (max-width: 900px) {
