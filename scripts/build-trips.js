@@ -240,10 +240,21 @@ function main() {
     if (!mapCountries[t.country].regions[t.region]) {
       mapCountries[t.country].regions[t.region] = { label: REGIONS[t.region].label, cities: [] };
     }
+    // One pin per trip (not deduped by city) so trips sharing a city — e.g. the two
+    // London trips — are each individually clickable instead of silently merged.
+    // Exact-coordinate collisions get a small golden-angle offset so the pins don't
+    // sit exactly on top of each other and are still separately clickable.
     const cities = mapCountries[t.country].regions[t.region].cities;
-    if (!cities.find((c) => c.name === t.city)) {
-      cities.push({ name: t.city, lat: t.lat, lon: t.lon });
+    const collisionCount = cities.filter((c) => c.lat === t.lat && c.lon === t.lon).length;
+    let lat = t.lat;
+    let lon = t.lon;
+    if (collisionCount > 0) {
+      const angle = (collisionCount * 137.5 * Math.PI) / 180;
+      const radius = 0.06;
+      lat = t.lat + radius * Math.sin(angle);
+      lon = t.lon + radius * Math.cos(angle);
     }
+    cities.push({ name: t.city, lat, lon, tripId: t.slug, tripTitle: t.title });
   }
 
   // sort posts by date (unknown dates last), most recent first for "latest trip" stat

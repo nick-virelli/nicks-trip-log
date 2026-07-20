@@ -19,7 +19,9 @@
             {
               "name": "Mount Rainier",
               "lat": 46.8523,
-              "lon": -121.7603
+              "lon": -121.7603,
+              "tripId": "mt-rainier-2026",
+              "tripTitle": "MT RAINIER 2026"
             }
           ]
         },
@@ -29,7 +31,9 @@
             {
               "name": "Glacier National Park",
               "lat": 48.7596,
-              "lon": -113.787
+              "lon": -113.787,
+              "tripId": "glacier-2023",
+              "tripTitle": "GLACIER 2023"
             }
           ]
         },
@@ -39,7 +43,9 @@
             {
               "name": "San Juan",
               "lat": 18.4655,
-              "lon": -66.1057
+              "lon": -66.1057,
+              "tripId": "puerto-rico-spring-break-2026",
+              "tripTitle": "PUERTO RICO SPRING BREAK 2026"
             }
           ]
         },
@@ -49,7 +55,9 @@
             {
               "name": "Moab",
               "lat": 38.5733,
-              "lon": -109.5498
+              "lon": -109.5498,
+              "tripId": "southwest-road-trip-2025",
+              "tripTitle": "SOUTHWEST ROAD TRIP 2025"
             }
           ]
         },
@@ -59,7 +67,9 @@
             {
               "name": "Grand Teton National Park",
               "lat": 43.7904,
-              "lon": -110.6818
+              "lon": -110.6818,
+              "tripId": "tetons",
+              "tripTitle": "TETONS"
             }
           ]
         },
@@ -69,7 +79,9 @@
             {
               "name": "Zion National Park",
               "lat": 37.2982,
-              "lon": -113.0263
+              "lon": -113.0263,
+              "tripId": "zion-2024",
+              "tripTitle": "ZION 2024"
             }
           ]
         }
@@ -94,7 +106,9 @@
             {
               "name": "Machu Picchu",
               "lat": -13.1631,
-              "lon": -72.545
+              "lon": -72.545,
+              "tripId": "machu-picchu-2026",
+              "tripTitle": "MACHU PICCHU 2026"
             }
           ]
         }
@@ -119,7 +133,16 @@
             {
               "name": "London",
               "lat": 51.5074,
-              "lon": -0.1278
+              "lon": -0.1278,
+              "tripId": "europe-may-2023",
+              "tripTitle": "EUROPE MAY 2023"
+            },
+            {
+              "name": "London",
+              "lat": 51.54793541245694,
+              "lon": -0.17203664020860743,
+              "tripId": "london-2025",
+              "tripTitle": "LONDON"
             }
           ]
         }
@@ -144,7 +167,9 @@
             {
               "name": "Leipzig",
               "lat": 51.3397,
-              "lon": 12.3731
+              "lon": 12.3731,
+              "tripId": "leipzig-2025",
+              "tripTitle": "LEIPZIG"
             }
           ]
         },
@@ -154,7 +179,9 @@
             {
               "name": "Dortmund",
               "lat": 51.5136,
-              "lon": 7.4653
+              "lon": 7.4653,
+              "tripId": "western-germany-2025",
+              "tripTitle": "WESTERN GERMANY"
             }
           ]
         },
@@ -164,7 +191,9 @@
             {
               "name": "Potsdam",
               "lat": 52.3906,
-              "lon": 13.0645
+              "lon": 13.0645,
+              "tripId": "potsdam-2025",
+              "tripTitle": "POTSDAM"
             }
           ]
         }
@@ -189,7 +218,9 @@
             {
               "name": "Prague",
               "lat": 50.0755,
-              "lon": 14.4378
+              "lon": 14.4378,
+              "tripId": "prague-budapest-2025",
+              "tripTitle": "PRAGUE-BUDAPEST"
             }
           ]
         }
@@ -214,7 +245,9 @@
             {
               "name": "Interlaken",
               "lat": 46.6863,
-              "lon": 7.8632
+              "lon": 7.8632,
+              "tripId": "switzerland-2025",
+              "tripTitle": "SWITZERLAND"
             }
           ]
         }
@@ -239,7 +272,9 @@
             {
               "name": "Milan",
               "lat": 45.4642,
-              "lon": 9.19
+              "lon": 9.19,
+              "tripId": "italy-2025",
+              "tripTitle": "ITALY"
             }
           ]
         }
@@ -264,7 +299,9 @@
             {
               "name": "Stockholm",
               "lat": 59.3293,
-              "lon": 18.0686
+              "lon": 18.0686,
+              "tripId": "stockholm-copenhagen-2025",
+              "tripTitle": "STOCKHOLM-COPENHAGEN"
             }
           ]
         }
@@ -289,7 +326,9 @@
             {
               "name": "Tromsø",
               "lat": 69.6492,
-              "lon": 18.9553
+              "lon": 18.9553,
+              "tripId": "norway-2025",
+              "tripTitle": "NORWAY"
             }
           ]
         }
@@ -314,7 +353,9 @@
             {
               "name": "Lisbon",
               "lat": 38.7223,
-              "lon": -9.1393
+              "lon": -9.1393,
+              "tripId": "portugal-manchester-2025",
+              "tripTitle": "PORTUGAL-MANCHESTER"
             }
           ]
         }
@@ -339,7 +380,9 @@
             {
               "name": "Vienna",
               "lat": 48.2082,
-              "lon": 16.3738
+              "lon": 16.3738,
+              "tripId": "vienna-athens-2025",
+              "tripTitle": "VIENNA-ATHENS"
             }
           ]
         },
@@ -349,7 +392,9 @@
             {
               "name": "Salzburg",
               "lat": 47.8095,
-              "lon": 13.055
+              "lon": 13.055,
+              "tripId": "salzburg-munich-2025",
+              "tripTitle": "SALZBURG-MUNICH"
             }
           ]
         }
@@ -374,7 +419,9 @@
             {
               "name": "Marrakesh",
               "lat": 31.6295,
-              "lon": -7.9811
+              "lon": -7.9811,
+              "tripId": "morocco-malaga-2025",
+              "tripTitle": "MOROCCO-MALAGA"
             }
           ]
         }
@@ -399,7 +446,9 @@
             {
               "name": "Barcelona",
               "lat": 41.3874,
-              "lon": 2.1686
+              "lon": 2.1686,
+              "tripId": "barcelona-2025",
+              "tripTitle": "BARCELONA"
             }
           ]
         },
@@ -409,7 +458,9 @@
             {
               "name": "Palma de Mallorca",
               "lat": 39.5696,
-              "lon": 2.6502
+              "lon": 2.6502,
+              "tripId": "palma-2025",
+              "tripTitle": "PALMA"
             }
           ]
         }
@@ -434,7 +485,9 @@
             {
               "name": "Amsterdam",
               "lat": 52.3676,
-              "lon": 4.9041
+              "lon": 4.9041,
+              "tripId": "netherlands-2025",
+              "tripTitle": "NETHERLANDS"
             }
           ]
         }
@@ -459,7 +512,9 @@
             {
               "name": "Split",
               "lat": 43.5081,
-              "lon": 16.4402
+              "lon": 16.4402,
+              "tripId": "croatia-2025",
+              "tripTitle": "CROATIA"
             }
           ]
         }
@@ -484,7 +539,9 @@
             {
               "name": "Paris",
               "lat": 48.8566,
-              "lon": 2.3522
+              "lon": 2.3522,
+              "tripId": "france-monaco-2025",
+              "tripTitle": "FRANCE-MONACO"
             }
           ]
         }

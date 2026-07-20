@@ -113,11 +113,13 @@
     clearMarkers();
     document.getElementById("map-controls").style.display = "block";
 
+    // One pin per trip (map-data.json no longer dedupes by city), so trips sharing
+    // a city — e.g. the two London trips — each get their own clickable pin instead
+    // of being silently merged into one.
     const bounds = [];
     for (const regionKey in country.regions) {
       const region = country.regions[regionKey];
       for (const city of region.cities) {
-        const postCount = app.posts.filter((p) => p.country === countryKey && p.city === city.name).length;
         const marker = L.circleMarker([city.lat, city.lon], {
           radius: 8,
           color: getComputedColor(),
@@ -125,8 +127,8 @@
           fillOpacity: 0.85,
           weight: 2,
         }).addTo(app.markerLayer);
-        marker.bindTooltip(`${esc(city.name)} — ${esc(region.label)}`, { direction: "top", className: "trip-pin-label" });
-        marker.on("click", () => showCity(countryKey, regionKey, city.name));
+        marker.bindTooltip(`${esc(city.tripTitle)} — ${esc(city.name)}`, { direction: "top", className: "trip-pin-label" });
+        marker.on("click", () => showTrip(city.tripId));
         bounds.push([city.lat, city.lon]);
       }
     }
@@ -137,12 +139,9 @@
     }
   }
 
-  function postsForCity(countryKey, cityName) {
-    return app.posts.filter((p) => p.country === countryKey && p.city === cityName);
-  }
-
-  function showCity(countryKey, regionKey, cityName) {
-    renderPosts(postsForCity(countryKey, cityName));
+  function showTrip(tripId) {
+    const post = app.posts.find((p) => p.id === tripId);
+    renderPosts(post ? [post] : []);
     document.getElementById("post-display").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -192,7 +191,7 @@
         <span class="hero-post-date">${esc(fmtDateRange(latest))}</span>`;
       latestEl.querySelector("a").addEventListener("click", (e) => {
         e.preventDefault();
-        renderPosts(postsForCity(latest.country, latest.city));
+        renderPosts([latest]);
         document.getElementById("post-display").scrollIntoView({ behavior: "smooth" });
       });
     }
@@ -218,7 +217,7 @@
         e.preventDefault();
         const post = posts.find((p) => p.id === a.dataset.trip);
         if (post) {
-          renderPosts(postsForCity(post.country, post.city));
+          renderPosts([post]);
           document.getElementById("post-display").scrollIntoView({ behavior: "smooth" });
         }
       });
