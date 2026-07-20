@@ -44,6 +44,23 @@
     </div>
   </main>
 
+  <div id="lightbox" class="lightbox" style="display:none;" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&#8249;</button>
+    <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next photo">&#8250;</button>
+    <div class="lightbox-body">
+      <img id="lightbox-img" src="" alt="">
+      <div class="lightbox-meta">
+        <span id="lightbox-caption"></span>
+        <div class="lightbox-actions">
+          <button type="button" id="lightbox-share">Share</button>
+          <a id="lightbox-download" download>Download</a>
+          <button type="button" id="lightbox-print">Print</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <nav>
       <a href="index.html">Home</a>
