@@ -113,9 +113,9 @@
     clearMarkers();
     document.getElementById("map-controls").style.display = "block";
 
-    // One pin per trip (map-data.json no longer dedupes by city), so trips sharing
-    // a city — e.g. the two London trips — each get their own clickable pin instead
-    // of being silently merged into one.
+    // Every place a trip touched gets its own pin (no single "main" pin). When two
+    // different trips touch the exact same place, that one pin lists both — click
+    // opens a small chooser instead of guessing or dumping every article at once.
     const bounds = [];
     for (const regionKey in country.regions) {
       const region = country.regions[regionKey];
@@ -127,8 +127,16 @@
           fillOpacity: 0.85,
           weight: 2,
         }).addTo(app.markerLayer);
-        marker.bindTooltip(`${esc(city.tripTitle)} — ${esc(city.name)}`, { direction: "top", className: "trip-pin-label" });
-        marker.on("click", () => showTrip(city.tripId));
+
+        if (city.tripIds.length === 1) {
+          const post = app.posts.find((p) => p.id === city.tripIds[0]);
+          marker.bindTooltip(`${esc(city.name)}${post ? " — " + esc(post.title) : ""}`, { direction: "top", className: "trip-pin-label" });
+          marker.on("click", () => showTrip(city.tripIds[0]));
+        } else {
+          marker.bindTooltip(`${esc(city.name)} (${city.tripIds.length} trips)`, { direction: "top", className: "trip-pin-label" });
+          marker.bindPopup(chooserPopupHtml(city));
+          marker.on("popupopen", (e) => wireChooserPopup(e.popup, city));
+        }
         bounds.push([city.lat, city.lon]);
       }
     }
@@ -137,6 +145,29 @@
     } else if (bounds.length) {
       app.map.fitBounds(bounds, { padding: [40, 40] });
     }
+  }
+
+  function chooserPopupHtml(city) {
+    const items = city.tripIds
+      .map((id) => {
+        const post = app.posts.find((p) => p.id === id);
+        if (!post) return "";
+        return `<a href="#" data-trip="${esc(id)}" style="display:block;padding:0.3rem 0;">${esc(post.title)}<br><span style="font-size:0.85em;color:var(--text-muted);">${esc(fmtDateRange(post))}</span></a>`;
+      })
+      .join('<hr style="margin:0.3rem 0;border:none;border-top:1px solid var(--border);">');
+    return `<div class="map-popup"><strong>${esc(city.name)}</strong><hr style="margin:0.4rem 0;border:none;border-top:1px solid var(--border);">${items}</div>`;
+  }
+
+  function wireChooserPopup(popup, city) {
+    const el = popup.getElement();
+    if (!el) return;
+    el.querySelectorAll("a[data-trip]").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        showTrip(a.dataset.trip);
+        popup.close();
+      });
+    });
   }
 
   function showTrip(tripId) {
