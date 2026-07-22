@@ -109,14 +109,31 @@ a:hover {
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text);
-  padding: 0.35rem 0.6rem;
-  border-radius: 6px;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0;
+  border-radius: 999px;
   cursor: pointer;
-  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .theme-toggle:hover {
   background: var(--map-hover);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+  display: block;
 }
 
 /* Main */
@@ -541,11 +558,35 @@ main {
 }
 
 @media (max-width: 640px) {
+  html {
+    font-size: 100%; /* the 125% desktop bump is too much on small screens */
+  }
+
   .site-header {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0.6rem 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .site-title {
+    font-size: 1rem;
+  }
+
+  .site-nav {
+    gap: 0.85rem;
+  }
+
+  .site-nav a {
+    font-size: 0.85rem;
+  }
+
+  .theme-toggle {
+    width: 1.9rem;
+    height: 1.9rem;
+    flex-shrink: 0;
   }
 
   .hero-strip-inner {

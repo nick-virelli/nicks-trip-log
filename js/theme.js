@@ -17,7 +17,7 @@
       localStorage.setItem(KEY, theme);
     } catch (_) {}
     const btn = document.querySelector(".theme-toggle");
-    if (btn) btn.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+    if (btn) btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
   }
 
   function init() {
