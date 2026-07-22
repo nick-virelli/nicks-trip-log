@@ -81,7 +81,7 @@
       .map(
         (img, i) => `
       <button type="button" class="gallery-item" data-index="${i}">
-        <img src="${esc(img.src)}" alt="" loading="lazy">
+        <img src="${esc(img.src)}" alt="${esc(img.tripTitle)}${img.locations.length ? ", " + esc(img.locations.join(", ")) : ""}" loading="lazy">
         <span class="caption">${esc(img.tripTitle)}${fmtDate(img.date_start, img.date_precision) ? " - " + esc(fmtDate(img.date_start, img.date_precision)) : ""}</span>
       </button>`
       )
@@ -313,11 +313,23 @@
     });
   }
 
+  function showLoadError() {
+    const grid = document.getElementById("gallery-grid");
+    grid.innerHTML = '<div class="load-error"><p>Failed to load the page.</p><a href="index.html">Back to home</a></div>';
+    document.getElementById("gallery-count").textContent = "";
+  }
+
   async function init() {
-    const [galleryData, mapData] = await Promise.all([
-      loadData("data/gallery.json", "__GALLERY__"),
-      loadData("data/map-data.json", "__MAP_DATA__"),
-    ]);
+    let galleryData, mapData;
+    try {
+      [galleryData, mapData] = await Promise.all([
+        loadData("data/gallery.json", "__GALLERY__"),
+        loadData("data/map-data.json", "__MAP_DATA__"),
+      ]);
+    } catch (err) {
+      showLoadError();
+      return;
+    }
     app.images = galleryData.images;
     app.countries = mapData.countries;
 

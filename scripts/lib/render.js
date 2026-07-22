@@ -20,21 +20,22 @@ function applyEmphasis(escaped) {
 }
 
 // mediaMap: Map of "Attachments/ORIGINALNAME.ext" -> "images/trips/slug/newname.ext"
-function renderNode(node, mediaMap) {
+// altText: fallback description for images (e.g. "MT RAINIER 2026, Mount Rainier / Seattle")
+function renderNode(node, mediaMap, altText) {
   if (node.media) {
     const newPath = mediaMap.get(node.media.file) || node.media.file;
     const inner =
       node.media.type === 'video'
         ? `<video controls preload="metadata" src="${escapeHtml(newPath)}"></video>`
-        : `<img src="${escapeHtml(newPath)}" alt="" loading="lazy">`;
+        : `<img src="${escapeHtml(newPath)}" alt="${escapeHtml(altText || '')}" loading="lazy">`;
     return `<li class="trip-media">${inner}</li>`;
   }
-  const childHtml = node.children.length ? `<ul>${node.children.map((c) => renderNode(c, mediaMap)).join('')}</ul>` : '';
+  const childHtml = node.children.length ? `<ul>${node.children.map((c) => renderNode(c, mediaMap, altText)).join('')}</ul>` : '';
   return `<li>${applyEmphasis(escapeHtml(node.text || ''))}${childHtml}</li>`;
 }
 
-function renderDayHtml(day, mediaMap) {
-  return `<ul>${day.children.map((c) => renderNode(c, mediaMap)).join('')}</ul>`;
+function renderDayHtml(day, mediaMap, altText) {
+  return `<ul>${day.children.map((c) => renderNode(c, mediaMap, altText)).join('')}</ul>`;
 }
 
 function sumDescendantMiles(children) {

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nick-virelli.github.io/nicks-trip-log/sitemap.xml

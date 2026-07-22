@@ -418,11 +418,12 @@ function main() {
       mediaManifest.push({ src, dest, kind: isVideo ? 'video' : isHeic ? 'heic' : isJpegOrPng ? 'raster' : 'other' });
     }
 
+    const altText = `${t.title} - ${t.location}`;
     const dayObjs = days.map((d) => ({
       label: d.label,
       date: null,
       miles: dayMiles(d),
-      body_html: renderDayHtml(d, mediaMap),
+      body_html: renderDayHtml(d, mediaMap, altText),
       trails: extractTrails(d),
     }));
 

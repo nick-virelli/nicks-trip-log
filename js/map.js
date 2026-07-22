@@ -188,7 +188,9 @@
       )
       .join("");
     return `
-      <h2>${esc(p.title)}</h2>
+      <h2 id="trip-heading-${esc(p.id)}" data-trip-id="${esc(p.id)}" data-trip-title="${esc(p.title)}" data-trip-meta="${esc(p.location)}${
+      fmtDateRange(p) ? " - " + fmtDateRange(p) : ""
+    }">${esc(p.title)}</h2>
       <p class="post-meta">${esc(p.location)}${fmtDateRange(p) ? " &middot; " + fmtDateRange(p) : ""}${
       p.total_miles ? ` &middot; <span class="post-miles">${p.total_miles} miles</span>` : ""
     }</p>
@@ -272,11 +274,84 @@
     input.addEventListener("input", () => renderRecentList(app.posts, input.value));
   }
 
+  // Shows the trip you're currently reading in the header (desktop only - hidden
+  // on mobile via CSS) once you've scrolled past its own heading, so you don't
+  // have to scroll back up to remember which trip/date/place you're looking at.
+  function initActiveTripIndicator() {
+    const btn = document.getElementById("active-trip-indicator");
+    if (!btn) return;
+    const titleEl = document.getElementById("active-trip-title");
+    const metaEl = document.getElementById("active-trip-meta");
+    let current = null;
+
+    function headerHeight() {
+      return document.querySelector(".site-header")?.getBoundingClientRect().height || 65;
+    }
+
+    function update() {
+      const headings = [...document.querySelectorAll("#post-display h2[data-trip-id]")];
+      const offset = headerHeight();
+      let active = null;
+      for (const h of headings) {
+        if (h.getBoundingClientRect().top <= offset) active = h;
+      }
+      if (!active) {
+        btn.classList.remove("visible");
+        current = null;
+        return;
+      }
+      if (active !== current) {
+        current = active;
+        titleEl.textContent = active.dataset.tripTitle;
+        metaEl.textContent = active.dataset.tripMeta;
+      }
+      btn.classList.add("visible");
+    }
+
+    // Plain throttle (not requestAnimationFrame, which is paused entirely on
+    // hidden/backgrounded tabs) - cheap enough per-call that this is fine.
+    let lastRun = 0;
+    window.addEventListener(
+      "scroll",
+      () => {
+        const now = Date.now();
+        if (now - lastRun < 100) return;
+        lastRun = now;
+        update();
+      },
+      { passive: true }
+    );
+    update();
+
+    btn.addEventListener("click", () => {
+      if (!current) return;
+      const y = current.getBoundingClientRect().top + window.scrollY - headerHeight() - 12;
+      window.scrollTo(0, Math.max(0, y));
+    });
+  }
+
+  function showLoadError() {
+    const container = document.getElementById("map-container");
+    if (container) {
+      container.innerHTML = '<div class="load-error"><p>Failed to load the page.</p><button type="button" onclick="location.reload()">Reload</button></div>';
+    }
+    const sidebar = document.getElementById("recent-posts-list");
+    if (sidebar) sidebar.innerHTML = "";
+    const heroLabel = document.querySelector(".hero-stat-label");
+    if (heroLabel) heroLabel.textContent = "";
+  }
+
   async function init() {
-    const [postsData, mapData] = await Promise.all([
-      loadData("data/posts.json", "__POSTS__"),
-      loadData("data/map-data.json", "__MAP_DATA__"),
-    ]);
+    let postsData, mapData;
+    try {
+      [postsData, mapData] = await Promise.all([
+        loadData("data/posts.json", "__POSTS__"),
+        loadData("data/map-data.json", "__MAP_DATA__"),
+      ]);
+    } catch (err) {
+      showLoadError();
+      return;
+    }
     app.posts = postsData.posts;
     app.countries = mapData.countries;
 
@@ -300,6 +375,8 @@
         else showCountry(app.activeCountry);
       }, 0);
     });
+
+    initActiveTripIndicator();
   }
 
   if (document.getElementById("map-container")) {
