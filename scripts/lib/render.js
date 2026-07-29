@@ -21,25 +21,33 @@ function applyEmphasis(escaped) {
 
 // mediaMap: Map of "Attachments/ORIGINALNAME.ext" -> "images/trips/slug/newname.ext"
 // altText: fallback description for images (e.g. "MT RAINIER 2026, Mount Rainier / Seattle")
-function renderNode(node, mediaMap, altText) {
+// groupPrefix/counter: give every image (solo or in a carousel) a unique, stable
+// data-group so the frontend can wire click-to-expand and know which images
+// belong together for prev/next (a carousel's images share one group; a solo
+// image is a group of one).
+function renderNode(node, mediaMap, altText, groupPrefix, counter) {
   if (node.media) {
-    return `<li class="trip-media">${renderSingleMedia(node, mediaMap, altText)}</li>`;
+    const groupId = `${groupPrefix}-g${counter.n++}`;
+    return `<li class="trip-media">${renderSingleMedia(node, mediaMap, altText, groupId, 0)}</li>`;
   }
-  const childHtml = node.children.length ? `<ul>${renderChildrenList(node.children, mediaMap, altText)}</ul>` : '';
+  const childHtml = node.children.length ? `<ul>${renderChildrenList(node.children, mediaMap, altText, groupPrefix, counter)}</ul>` : '';
   return `<li>${applyEmphasis(escapeHtml(node.text || ''))}${childHtml}</li>`;
 }
 
-function renderSingleMedia(node, mediaMap, altText) {
+function renderSingleMedia(node, mediaMap, altText, groupId, index) {
   const newPath = mediaMap.get(node.media.file) || node.media.file;
-  return node.media.type === 'video'
-    ? `<video controls preload="metadata" src="${escapeHtml(newPath)}"></video>`
-    : `<img src="${escapeHtml(newPath)}" alt="${escapeHtml(altText || '')}" loading="lazy">`;
+  if (node.media.type === 'video') {
+    return `<video controls preload="metadata" src="${escapeHtml(newPath)}"></video>`;
+  }
+  return `<img class="lightbox-trigger" data-group="${escapeHtml(groupId)}" data-index="${index}" src="${escapeHtml(newPath)}" alt="${escapeHtml(
+    altText || ''
+  )}" loading="lazy">`;
 }
 
 // Runs of 2+ consecutive images (no text or video breaking them up) render as a
 // swipeable/arrow-navigable carousel instead of stacking full-size, one per row.
 // A video in the middle of a run ends it rather than riding along in the strip.
-function renderChildrenList(children, mediaMap, altText) {
+function renderChildrenList(children, mediaMap, altText, groupPrefix, counter) {
   const parts = [];
   let i = 0;
   while (i < children.length) {
@@ -51,18 +59,23 @@ function renderChildrenList(children, mediaMap, altText) {
         run.push(children[j]);
         j++;
       }
-      parts.push(run.length >= 2 ? renderCarousel(run, mediaMap, altText) : `<li class="trip-media">${renderSingleMedia(run[0], mediaMap, altText)}</li>`);
+      const groupId = `${groupPrefix}-g${counter.n++}`;
+      parts.push(
+        run.length >= 2
+          ? renderCarousel(run, mediaMap, altText, groupId)
+          : `<li class="trip-media">${renderSingleMedia(run[0], mediaMap, altText, groupId, 0)}</li>`
+      );
       i = j;
     } else {
-      parts.push(renderNode(node, mediaMap, altText));
+      parts.push(renderNode(node, mediaMap, altText, groupPrefix, counter));
       i++;
     }
   }
   return parts.join('');
 }
 
-function renderCarousel(run, mediaMap, altText) {
-  const slides = run.map((n) => `<div class="carousel-slide">${renderSingleMedia(n, mediaMap, altText)}</div>`).join('');
+function renderCarousel(run, mediaMap, altText, groupId) {
+  const slides = run.map((n, idx) => `<div class="carousel-slide">${renderSingleMedia(n, mediaMap, altText, groupId, idx)}</div>`).join('');
   return `<li class="trip-media">
     <div class="carousel" data-count="${run.length}">
       <div class="carousel-track">${slides}</div>
@@ -73,8 +86,9 @@ function renderCarousel(run, mediaMap, altText) {
   </li>`;
 }
 
-function renderDayHtml(day, mediaMap, altText) {
-  return `<ul>${renderChildrenList(day.children, mediaMap, altText)}</ul>`;
+function renderDayHtml(day, mediaMap, altText, groupPrefix) {
+  const counter = { n: 0 };
+  return `<ul>${renderChildrenList(day.children, mediaMap, altText, groupPrefix || 'd', counter)}</ul>`;
 }
 
 function sumDescendantMiles(children) {

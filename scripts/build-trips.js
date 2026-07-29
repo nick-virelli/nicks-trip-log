@@ -419,11 +419,11 @@ function main() {
     }
 
     const altText = `${t.title} - ${t.location}`;
-    const dayObjs = days.map((d) => ({
+    const dayObjs = days.map((d, dayIdx) => ({
       label: d.label,
       date: null,
       miles: dayMiles(d),
-      body_html: renderDayHtml(d, mediaMap, altText),
+      body_html: renderDayHtml(d, mediaMap, altText, `${t.slug}-d${dayIdx}`),
       trails: extractTrails(d),
     }));
 

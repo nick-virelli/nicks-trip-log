@@ -206,6 +206,30 @@
     }
     el.innerHTML = posts.map(renderTripHtml).join('<hr style="margin:2.5rem 0;border:none;border-top:1px solid var(--border);">');
     initCarousels(el);
+    initImageLightboxTriggers(el);
+  }
+
+  // Groups every trip photo (solo or within a carousel) by its data-group, so
+  // clicking one opens the shared lightbox with just that group's photos as the
+  // prev/next set - a carousel's siblings for a carousel image, or just itself
+  // for a standalone photo.
+  function initImageLightboxTriggers(root) {
+    const groups = new Map();
+    root.querySelectorAll(".lightbox-trigger").forEach((img) => {
+      const key = img.dataset.group;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key)[parseInt(img.dataset.index, 10)] = img;
+    });
+    for (const imgs of groups.values()) {
+      imgs.forEach((img, i) => {
+        img.addEventListener("click", () => {
+          window.TripLightbox.open(
+            imgs.map((el) => ({ src: el.getAttribute("src"), caption: el.getAttribute("alt") })),
+            i
+          );
+        });
+      });
+    }
   }
 
   // Manual setTimeout-stepped scroll (not native smooth-scroll or

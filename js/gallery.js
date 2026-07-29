@@ -88,105 +88,19 @@
       .join("");
 
     gridEl.querySelectorAll(".gallery-item").forEach((el) => {
-      el.addEventListener("click", () => openLightbox(parseInt(el.dataset.index, 10)));
+      el.addEventListener("click", () => {
+        const i = parseInt(el.dataset.index, 10);
+        window.TripLightbox.open(
+          list.map((img) => ({ src: img.src, caption: captionFor(img) })),
+          i
+        );
+      });
     });
   }
-
-  // --- Lightbox: enlarge in place, arrow through the current filtered set ---
 
   function captionFor(img) {
     const date = fmtDate(img.date_start, img.date_precision);
     return `${img.tripTitle}${img.locations.length ? " - " + img.locations.join(", ") : ""}${date ? " - " + date : ""}`;
-  }
-
-  function absoluteUrl(relativeSrc) {
-    return new URL(relativeSrc, window.location.href).href;
-  }
-
-  function updateLightbox() {
-    const img = app.currentList[app.lightboxIndex];
-    if (!img) return;
-    const imgEl = document.getElementById("lightbox-img");
-    imgEl.src = img.src;
-    imgEl.alt = captionFor(img);
-    document.getElementById("lightbox-caption").textContent = captionFor(img);
-    const filename = img.src.split("/").pop();
-    const dl = document.getElementById("lightbox-download");
-    dl.href = img.src;
-    dl.download = filename;
-  }
-
-  function openLightbox(index) {
-    app.lightboxIndex = index;
-    updateLightbox();
-    document.getElementById("lightbox").style.display = "flex";
-  }
-
-  function closeLightbox() {
-    document.getElementById("lightbox").style.display = "none";
-  }
-
-  function stepLightbox(delta) {
-    const n = app.currentList.length;
-    app.lightboxIndex = (app.lightboxIndex + delta + n) % n;
-    updateLightbox();
-  }
-
-  async function shareLightbox() {
-    const img = app.currentList[app.lightboxIndex];
-    const url = absoluteUrl(img.src);
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: captionFor(img), url });
-        return;
-      } catch (_) {
-        return;
-      }
-    }
-    try {
-      await navigator.clipboard.writeText(url);
-      const btn = document.getElementById("lightbox-share");
-      const original = btn.textContent;
-      btn.textContent = "Link copied";
-      setTimeout(() => (btn.textContent = original), 1500);
-    } catch (_) {
-      window.prompt("Copy this link:", url);
-    }
-  }
-
-  function printLightbox() {
-    const img = app.currentList[app.lightboxIndex];
-    const win = window.open("", "_blank");
-    if (!win) return;
-    win.document.write(
-      `<!doctype html><html><head><title>${esc(captionFor(img))}</title><style>body{margin:0;display:flex;align-items:center;justify-content:center;min-height:100vh;}img{max-width:100%;max-height:100vh;}</style></head><body><img src="${esc(
-        absoluteUrl(img.src)
-      )}"></body></html>`
-    );
-    win.document.close();
-    win.onload = () => {
-      win.focus();
-      win.print();
-    };
-    const printImg = win.document.querySelector("img");
-    if (printImg) printImg.onload = () => win.print();
-  }
-
-  function initLightbox() {
-    document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
-    document.getElementById("lightbox-prev").addEventListener("click", () => stepLightbox(-1));
-    document.getElementById("lightbox-next").addEventListener("click", () => stepLightbox(1));
-    document.getElementById("lightbox-share").addEventListener("click", shareLightbox);
-    document.getElementById("lightbox-print").addEventListener("click", printLightbox);
-    document.getElementById("lightbox").addEventListener("click", (e) => {
-      if (e.target.id === "lightbox") closeLightbox();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (document.getElementById("lightbox").style.display === "none") return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") stepLightbox(-1);
-      if (e.key === "ArrowRight") stepLightbox(1);
-    });
   }
 
   function initSearch() {
@@ -336,7 +250,6 @@
     renderGrid();
     initSearch();
     initMapToggle();
-    initLightbox();
   }
 
   if (document.getElementById("gallery-grid")) {
