@@ -23,19 +23,58 @@ function applyEmphasis(escaped) {
 // altText: fallback description for images (e.g. "MT RAINIER 2026, Mount Rainier / Seattle")
 function renderNode(node, mediaMap, altText) {
   if (node.media) {
-    const newPath = mediaMap.get(node.media.file) || node.media.file;
-    const inner =
-      node.media.type === 'video'
-        ? `<video controls preload="metadata" src="${escapeHtml(newPath)}"></video>`
-        : `<img src="${escapeHtml(newPath)}" alt="${escapeHtml(altText || '')}" loading="lazy">`;
-    return `<li class="trip-media">${inner}</li>`;
+    return `<li class="trip-media">${renderSingleMedia(node, mediaMap, altText)}</li>`;
   }
-  const childHtml = node.children.length ? `<ul>${node.children.map((c) => renderNode(c, mediaMap, altText)).join('')}</ul>` : '';
+  const childHtml = node.children.length ? `<ul>${renderChildrenList(node.children, mediaMap, altText)}</ul>` : '';
   return `<li>${applyEmphasis(escapeHtml(node.text || ''))}${childHtml}</li>`;
 }
 
+function renderSingleMedia(node, mediaMap, altText) {
+  const newPath = mediaMap.get(node.media.file) || node.media.file;
+  return node.media.type === 'video'
+    ? `<video controls preload="metadata" src="${escapeHtml(newPath)}"></video>`
+    : `<img src="${escapeHtml(newPath)}" alt="${escapeHtml(altText || '')}" loading="lazy">`;
+}
+
+// Runs of 2+ consecutive images (no text or video breaking them up) render as a
+// swipeable/arrow-navigable carousel instead of stacking full-size, one per row.
+// A video in the middle of a run ends it rather than riding along in the strip.
+function renderChildrenList(children, mediaMap, altText) {
+  const parts = [];
+  let i = 0;
+  while (i < children.length) {
+    const node = children[i];
+    if (node.media && node.media.type === 'image') {
+      const run = [node];
+      let j = i + 1;
+      while (j < children.length && children[j].media && children[j].media.type === 'image') {
+        run.push(children[j]);
+        j++;
+      }
+      parts.push(run.length >= 2 ? renderCarousel(run, mediaMap, altText) : `<li class="trip-media">${renderSingleMedia(run[0], mediaMap, altText)}</li>`);
+      i = j;
+    } else {
+      parts.push(renderNode(node, mediaMap, altText));
+      i++;
+    }
+  }
+  return parts.join('');
+}
+
+function renderCarousel(run, mediaMap, altText) {
+  const slides = run.map((n) => `<div class="carousel-slide">${renderSingleMedia(n, mediaMap, altText)}</div>`).join('');
+  return `<li class="trip-media">
+    <div class="carousel" data-count="${run.length}">
+      <div class="carousel-track">${slides}</div>
+      <button type="button" class="carousel-arrow carousel-prev" aria-label="Previous photo">&#8249;</button>
+      <button type="button" class="carousel-arrow carousel-next" aria-label="Next photo">&#8250;</button>
+      <span class="carousel-counter">1 / ${run.length}</span>
+    </div>
+  </li>`;
+}
+
 function renderDayHtml(day, mediaMap, altText) {
-  return `<ul>${day.children.map((c) => renderNode(c, mediaMap, altText)).join('')}</ul>`;
+  return `<ul>${renderChildrenList(day.children, mediaMap, altText)}</ul>`;
 }
 
 function sumDescendantMiles(children) {

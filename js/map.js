@@ -205,6 +205,51 @@
       return;
     }
     el.innerHTML = posts.map(renderTripHtml).join('<hr style="margin:2.5rem 0;border:none;border-top:1px solid var(--border);">');
+    initCarousels(el);
+  }
+
+  // Manual setTimeout-stepped scroll (not native smooth-scroll or
+  // requestAnimationFrame - see back-to-top button for why) for the carousel track.
+  function smoothScrollTrack(track, targetLeft) {
+    const startLeft = track.scrollLeft;
+    const distance = targetLeft - startLeft;
+    if (distance === 0) return;
+    const duration = 300;
+    const stepMs = 16;
+    const steps = Math.max(1, Math.round(duration / stepMs));
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+    let i = 0;
+    (function tick() {
+      i++;
+      const t = Math.min(1, i / steps);
+      track.scrollLeft = startLeft + distance * easeOutCubic(t);
+      if (t < 1) setTimeout(tick, stepMs);
+    })();
+  }
+
+  function initCarousels(root) {
+    root.querySelectorAll(".carousel").forEach((carousel) => {
+      const track = carousel.querySelector(".carousel-track");
+      const counter = carousel.querySelector(".carousel-counter");
+      const count = parseInt(carousel.dataset.count, 10);
+      const prevBtn = carousel.querySelector(".carousel-prev");
+      const nextBtn = carousel.querySelector(".carousel-next");
+
+      function currentIndex() {
+        return track.clientWidth ? Math.round(track.scrollLeft / track.clientWidth) : 0;
+      }
+      function updateCounter() {
+        counter.textContent = `${Math.min(count, currentIndex() + 1)} / ${count}`;
+      }
+      function goTo(index) {
+        const clamped = Math.max(0, Math.min(count - 1, index));
+        smoothScrollTrack(track, clamped * track.clientWidth);
+      }
+
+      prevBtn.addEventListener("click", () => goTo(currentIndex() - 1));
+      nextBtn.addEventListener("click", () => goTo(currentIndex() + 1));
+      track.addEventListener("scroll", updateCounter, { passive: true });
+    });
   }
 
   function renderHero(posts) {
