@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node scripts/build-trips.js",
+    "media": "node scripts/process-media.js",
+    "thumbs": "node scripts/make-thumbs.js",
+    "serve": "node scripts/serve.js",
+    "verify": "node scripts/verify-data.js"
   },
   "repository": {
     "type": "git",
