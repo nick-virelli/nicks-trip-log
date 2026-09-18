@@ -59,7 +59,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/MT RAINIER 2026/MT RAINIER 2026.md"
+      "source_note": "Trips/MT RAINIER 2026/MT RAINIER 2026.md",
+      "collectionId": null
     },
     {
       "id": "machu-picchu-2026",
@@ -130,7 +131,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/MACHU PICCHU 2026/MACHU PICCHU 2026.md"
+      "source_note": "Trips/MACHU PICCHU 2026/MACHU PICCHU 2026.md",
+      "collectionId": null
     },
     {
       "id": "puerto-rico-spring-break-2026",
@@ -166,7 +168,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish)/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish).md"
+      "source_note": "Trips/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish)/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish).md",
+      "collectionId": null
     },
     {
       "id": "southwest-road-trip-2025",
@@ -263,7 +266,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/SOUTHWEST ROAD TRIP 2025/SOUTHWEST ROAD TRIP 2025.md"
+      "source_note": "Trips/SOUTHWEST ROAD TRIP 2025/SOUTHWEST ROAD TRIP 2025.md",
+      "collectionId": null
     },
     {
       "id": "france-monaco-2025",
@@ -306,7 +310,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#France-Monaco 5/1-5/4"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#France-Monaco 5/1-5/4",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "croatia-2025",
@@ -342,7 +347,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Croatia 4/29-5/1"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Croatia 4/29-5/1",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "salzburg-munich-2025",
@@ -385,7 +391,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Salzburg-Munich 4/24-4/27"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Salzburg-Munich 4/24-4/27",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "palma-2025",
@@ -428,7 +435,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Palma 4/18-4/21"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Palma 4/18-4/21",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "netherlands-2025",
@@ -464,7 +472,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Netherlands 4/11-4/13"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Netherlands 4/11-4/13",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "barcelona-2025",
@@ -500,7 +509,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Barcelona 4/8-4/10"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Barcelona 4/8-4/10",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "morocco-malaga-2025",
@@ -543,7 +553,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Morocco-Malaga 4/4-4/7"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Morocco-Malaga 4/4-4/7",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "potsdam-2025",
@@ -565,7 +576,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Potsdam 4/4"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Potsdam 4/4",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "vienna-athens-2025",
@@ -622,7 +634,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Vienna-Athens 3/28-4/2"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Vienna-Athens 3/28-4/2",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "western-germany-2025",
@@ -658,7 +671,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Western Germany 3/21-3/23"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Western Germany 3/21-3/23",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "portugal-manchester-2025",
@@ -694,7 +708,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Portugal-Manchester 3/14-3/16"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Portugal-Manchester 3/14-3/16",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "norway-2025",
@@ -730,7 +745,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Norway 3/7-3/9"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Norway 3/7-3/9",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "stockholm-copenhagen-2025",
@@ -773,7 +789,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Stockholm-Copenhagen 2/28-3/2"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Stockholm-Copenhagen 2/28-3/2",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "italy-2025",
@@ -830,7 +847,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Italy 2/13-2/18"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Italy 2/13-2/18",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "switzerland-2025",
@@ -873,7 +891,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Switzerland 1/30-2/1"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Switzerland 1/30-2/1",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "prague-budapest-2025",
@@ -916,7 +935,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Prague-Budapest 1/24-1/26"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Prague-Budapest 1/24-1/26",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "london-2025",
@@ -945,7 +965,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#London 1/18-1/19"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#London 1/18-1/19",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "leipzig-2025",
@@ -967,7 +988,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Leipzig 1/10"
+      "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Leipzig 1/10",
+      "collectionId": "study-abroad-2025"
     },
     {
       "id": "tetons",
@@ -1031,7 +1053,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/TETONS/TETONS.md"
+      "source_note": "Trips/TETONS/TETONS.md",
+      "collectionId": null
     },
     {
       "id": "europe-may-2023",
@@ -1116,7 +1139,8 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/EUROPE MAY 2023/EUROPE MAY 2023.md"
+      "source_note": "Trips/EUROPE MAY 2023/EUROPE MAY 2023.md",
+      "collectionId": null
     },
     {
       "id": "glacier-2023",
@@ -1203,7 +1227,8 @@ window.__POSTS__ = {
           ]
         }
       ],
-      "source_note": "Trips/GLACIER 2023/GLACIER 2023.md"
+      "source_note": "Trips/GLACIER 2023/GLACIER 2023.md",
+      "collectionId": null
     },
     {
       "id": "zion-2024",
@@ -1292,7 +1317,36 @@ window.__POSTS__ = {
           "trails": []
         }
       ],
-      "source_note": "Trips/ZION 2024/ZION 2024.md"
+      "source_note": "Trips/ZION 2024/ZION 2024.md",
+      "collectionId": null
+    }
+  ],
+  "collections": [
+    {
+      "id": "study-abroad-2025",
+      "title": "Study Abroad, Spring 2025",
+      "date_start": "2025-01-10",
+      "date_end": "2025-05-04",
+      "tripIds": [
+        "leipzig-2025",
+        "london-2025",
+        "prague-budapest-2025",
+        "switzerland-2025",
+        "italy-2025",
+        "stockholm-copenhagen-2025",
+        "norway-2025",
+        "portugal-manchester-2025",
+        "western-germany-2025",
+        "vienna-athens-2025",
+        "potsdam-2025",
+        "morocco-malaga-2025",
+        "barcelona-2025",
+        "netherlands-2025",
+        "palma-2025",
+        "salzburg-munich-2025",
+        "croatia-2025",
+        "france-monaco-2025"
+      ]
     }
   ]
 };

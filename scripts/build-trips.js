@@ -84,6 +84,12 @@ const REGIONS = {
   monaco: { label: 'Monaco', country: 'monaco' },
 };
 
+// Collections group trips that come from one source note. Membership is derived
+// from each post's source_note prefix, never listed by hand.
+const COLLECTIONS = [
+  { id: 'study-abroad-2025', title: 'Study Abroad, Spring 2025', sourcePrefix: 'Trips/STUDY ABROAD SPRING 2025/' },
+];
+
 // Every trip carries a `locations[]` list of every real place it touched - there is
 // no single "main pin" anymore. Each location becomes its own map pin; when two
 // different trips touch the exact same place (matched by country+name), that pin
@@ -502,14 +508,35 @@ async function main() {
     }
   }
 
+  // Collections: tag members by source_note prefix, derive the date range from them.
+  for (const p of posts) {
+    const c = COLLECTIONS.find((col) => p.source_note.startsWith(col.sourcePrefix));
+    p.collectionId = c ? c.id : null;
+  }
+  const collections = COLLECTIONS.map((col) => {
+    const members = posts.filter((p) => p.collectionId === col.id && p.date_start);
+    if (!members.length) throw new Error(`collection ${col.id} has no members`);
+    members.sort((a, b) => (a.date_start < b.date_start ? -1 : 1));
+    const c = {
+      id: col.id,
+      title: col.title,
+      date_start: members[0].date_start,
+      date_end: members.map((m) => m.date_end).sort().pop(),
+      tripIds: members.map((m) => m.id),
+    };
+    console.log(`collection ${c.id}: ${c.tripIds.length} trips, ${c.date_start}..${c.date_end}`);
+    return c;
+  });
+
   // sort posts by date (unknown dates last), most recent first for "latest trip" stat
   const withDate = posts.filter((p) => p.date_start);
   const withoutDate = posts.filter((p) => !p.date_start);
   withDate.sort((a, b) => (a.date_start < b.date_start ? 1 : -1));
   const sortedPosts = [...withDate, ...withoutDate];
 
-  fs.writeFileSync(path.join(OUT_DATA, 'posts.json'), JSON.stringify({ posts: sortedPosts }, null, 2));
-  fs.writeFileSync(path.join(OUT_DATA, 'posts.js'), `window.__POSTS__ = ${JSON.stringify({ posts: sortedPosts }, null, 2)};\n`);
+  const postsData = { posts: sortedPosts, collections };
+  fs.writeFileSync(path.join(OUT_DATA, 'posts.json'), JSON.stringify(postsData, null, 2));
+  fs.writeFileSync(path.join(OUT_DATA, 'posts.js'), `window.__POSTS__ = ${JSON.stringify(postsData, null, 2)};\n`);
 
   const mapCountries = {};
   for (const pin of pinIndex.values()) {
