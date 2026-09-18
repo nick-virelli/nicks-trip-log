@@ -8,7 +8,7 @@ function htmlToText(html) {
   return html
     .replace(/<button\b[^>]*>[\s\S]*?<\/button>/g, '')
     .replace(/<span class="carousel-counter">[\s\S]*?<\/span>/g, '')
-    .replace(/<\/li>/g, '\n')
+    .replace(/<\/?(li|ul)\b[^>]*>/g, '\n')
     .replace(/<[^>]+>/g, '')
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
