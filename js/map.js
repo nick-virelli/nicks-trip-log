@@ -184,13 +184,8 @@
     if (latestEl && latest) {
       latestEl.innerHTML = `
         <span class="hero-latest-label">Latest trip</span>
-        <a class="hero-post-title" href="#" data-trip="${esc(latest.id)}">${esc(latest.title)}</a>
+        <a class="hero-post-title" href="trip/${esc(latest.id)}.html">${esc(latest.title)}</a>
         <span class="hero-post-date">${esc(fmtDateRange(latest))}</span>`;
-      latestEl.querySelector("a").addEventListener("click", (e) => {
-        e.preventDefault();
-        renderPosts([latest]);
-        document.getElementById("post-display").scrollIntoView({ behavior: "smooth" });
-      });
     }
   }
 
@@ -214,21 +209,11 @@
       .map(
         (p) => `
       <div class="special-item">
-        <a href="#" data-trip="${esc(p.id)}">${esc(p.title)}</a>
+        <a href="trip/${esc(p.id)}.html">${esc(p.title)}</a>
         <div class="meta">${esc(p.location)}${fmtDateRange(p) ? " &middot; " + fmtDateRange(p) : ""}</div>
       </div>`
       )
       .join("");
-    listEl.querySelectorAll("a[data-trip]").forEach((a) => {
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        const post = posts.find((p) => p.id === a.dataset.trip);
-        if (post) {
-          renderPosts([post]);
-          document.getElementById("post-display").scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    });
   }
 
   function initTripSearch() {

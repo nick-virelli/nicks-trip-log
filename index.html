@@ -11,6 +11,13 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // Trips have their own pages now. Send old #trip=<id> links there.
+    (function () {
+      var m = /^#trip=([A-Za-z0-9-]+)$/.exec(location.hash);
+      if (m) location.replace("trip/" + m[1] + ".html");
+    })();
+  </script>
   <title>Nick's Trip Log</title>
   <meta name="description" content="A log of hiking and travel trips.">
   <meta property="og:title" content="Nick's Trip Log">
