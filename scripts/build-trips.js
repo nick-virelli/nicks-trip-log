@@ -5,6 +5,7 @@ const { extractSection } = require('./lib/extract-section');
 const { mergeMediaIntoDays } = require('./lib/merge-media');
 const { renderDayHtml, dayMiles, extractTrails, collectMediaFiles } = require('./lib/render');
 const { scanTripPhotos, resolveTripDates } = require('./lib/exif-dates');
+const { buildSearchIndex } = require('./lib/search-index');
 
 const ROOT = path.join(__dirname, '..');
 const TRIPS_DIR = path.join(ROOT, 'Trips');
@@ -617,6 +618,11 @@ async function main() {
   const galleryData = { images: sortedGallery };
   fs.writeFileSync(path.join(OUT_DATA, 'gallery.json'), JSON.stringify(galleryData, null, 2));
   fs.writeFileSync(path.join(OUT_DATA, 'gallery.js'), `window.__GALLERY__ = ${JSON.stringify(galleryData, null, 2)};\n`);
+
+  const searchIndex = buildSearchIndex(sortedPosts, pinIndex);
+  fs.writeFileSync(path.join(OUT_DATA, 'search-index.json'), JSON.stringify(searchIndex, null, 2));
+  fs.writeFileSync(path.join(OUT_DATA, 'search-index.js'), `window.__SEARCH_INDEX__ = ${JSON.stringify(searchIndex, null, 2)};
+`);
 
   const multiTripPins = [...pinIndex.values()].filter((p) => p.tripIds.length > 1);
   console.log(`\nWrote ${sortedPosts.length} trips, ${sortedGallery.length} gallery photos, ${pinIndex.size} map pins (${multiTripPins.length} shared by multiple trips), ${mediaManifest.length} media files to convert.`);
