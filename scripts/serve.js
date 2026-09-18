@@ -29,6 +29,13 @@ const server = http.createServer((req, res) => {
   }
   fs.readFile(filePath, (err, data) => {
     if (err) {
+      // Mirror GitHub Pages, which serves 404.html for unknown paths.
+      const notFound = path.join(ROOT, '404.html');
+      if (fs.existsSync(notFound)) {
+        res.writeHead(404, { 'Content-Type': MIME['.html'] });
+        res.end(fs.readFileSync(notFound));
+        return;
+      }
       res.writeHead(404);
       res.end('Not found');
       return;

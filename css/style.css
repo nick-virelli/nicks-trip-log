@@ -1022,3 +1022,16 @@ main {
 .load-error button:hover {
   background: var(--accent-hover);
 }
+
+/* Static trip and collection pages (Phase 2) */
+.breadcrumb {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.page-content > .post-display {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}

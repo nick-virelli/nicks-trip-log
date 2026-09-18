@@ -122,6 +122,40 @@ if (fs.existsSync(path.join(DATA, 'search-index.json'))) {
   }
 }
 
+// Generated pages (present from Phase 2 on): one per trip and collection, every
+// relative link and asset resolving on disk, breadcrumbs only on collection members.
+if (fs.existsSync(path.join(ROOT, 'trip'))) {
+  const pageFor = (rel) => fs.existsSync(path.join(ROOT, rel));
+  const resolves = (fromRel, href) => fs.existsSync(path.resolve(path.dirname(path.join(ROOT, fromRel)), href.split('#')[0]));
+  let breadcrumbs = 0;
+  for (const p of posts) {
+    const rel = `trip/${p.id}.html`;
+    if (!pageFor(rel)) { fail(`missing page ${rel}`); continue; }
+    const html = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+    if ((html.match(/data-trip-id=/g) || []).length !== 1) fail(`${rel} should contain exactly one trip heading`);
+    if (html.includes('class="breadcrumb"')) breadcrumbs++;
+    if (Boolean(p.collectionId) !== html.includes('class="breadcrumb"')) fail(`${rel} breadcrumb does not match collectionId`);
+    for (const m of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
+      const url = m[1];
+      if (/^(https?:|mailto:|#|data:)/.test(url) || url === '') continue;
+      if (!resolves(rel, url)) fail(`${rel} links to missing file ${url}`);
+    }
+  }
+  if (breadcrumbs !== posts.filter((p) => p.collectionId).length) fail(`expected ${posts.filter((p) => p.collectionId).length} breadcrumbs, found ${breadcrumbs}`);
+  for (const c of collections || []) {
+    const rel = `collections/${c.id}.html`;
+    if (!pageFor(rel)) { fail(`missing page ${rel}`); continue; }
+    const html = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+    for (const id of c.tripIds) if (!html.includes(`../trip/${id}.html`)) fail(`${rel} does not link to ${id}`);
+  }
+  for (const f of ['404.html', '.nojekyll', 'sitemap.xml']) if (!pageFor(f)) fail(`missing ${f}`);
+  const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
+  const locs = (sitemap.match(/<loc>/g) || []).length;
+  const expected = 3 + posts.length + (collections || []).length;
+  if (locs !== expected) fail(`sitemap has ${locs} URLs, expected ${expected}`);
+  for (const p of posts) if (!sitemap.includes(`/trip/${p.id}.html<`)) fail(`sitemap missing trip/${p.id}.html`);
+}
+
 const countries = Object.keys(mapData.countries).length;
 const continents = mapData.continents ? Object.keys(mapData.continents).length : 0;
 console.log(`posts=${posts.length} collections=${collections ? collections.length : 0} countries=${countries} continents=${continents} pins=${pinCount} images=${images.length}`);

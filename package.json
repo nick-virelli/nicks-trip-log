@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node scripts/build-trips.js",
+    "build": "node scripts/build-trips.js && node scripts/build-pages.js",
     "media": "node scripts/process-media.js",
     "thumbs": "node scripts/make-thumbs.js",
     "serve": "node scripts/serve.js",
-    "verify": "node scripts/verify-data.js"
+    "verify": "node scripts/verify-data.js",
+    "pages": "node scripts/build-pages.js"
   },
   "repository": {
     "type": "git",
