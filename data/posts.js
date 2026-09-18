@@ -60,7 +60,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/MT RAINIER 2026/MT RAINIER 2026.md",
-      "collectionId": null
+      "collectionId": null,
+      "cover": "images/trips/mt-rainier-2026/8E69F307-B2FC-495A-A8B1-EAD2134651B3.jpg",
+      "coverOverride": null
     },
     {
       "id": "machu-picchu-2026",
@@ -132,7 +134,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/MACHU PICCHU 2026/MACHU PICCHU 2026.md",
-      "collectionId": null
+      "collectionId": null,
+      "cover": "images/trips/machu-picchu-2026/C2804B0F-B079-447B-BF83-02C8214C5ADB.jpg",
+      "coverOverride": null
     },
     {
       "id": "puerto-rico-spring-break-2026",
@@ -169,7 +173,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish)/PUERTO RICO SPRING BREAK 2026 (incomplete, won't finish).md",
-      "collectionId": null
+      "collectionId": null,
+      "cover": "images/trips/puerto-rico-spring-break-2026/IMG_0394.jpg",
+      "coverOverride": null
     },
     {
       "id": "southwest-road-trip-2025",
@@ -267,7 +273,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/SOUTHWEST ROAD TRIP 2025/SOUTHWEST ROAD TRIP 2025.md",
-      "collectionId": null
+      "collectionId": null,
+      "cover": "images/trips/southwest-road-trip-2025/BE7CC39A-E255-4743-AD5B-BCD9606B0617.jpg",
+      "coverOverride": null
     },
     {
       "id": "france-monaco-2025",
@@ -311,7 +319,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#France-Monaco 5/1-5/4",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/france-monaco-2025/2BA7E582-1161-4F1D-8122-FE947FB7CEA2.jpg",
+      "coverOverride": null
     },
     {
       "id": "croatia-2025",
@@ -348,7 +358,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Croatia 4/29-5/1",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/croatia-2025/28A52A28-2117-4BF2-940F-7A1B9D34AEE3.jpg",
+      "coverOverride": null
     },
     {
       "id": "salzburg-munich-2025",
@@ -392,7 +404,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Salzburg-Munich 4/24-4/27",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/salzburg-munich-2025/F78F8833-2332-462B-A800-BD4528AD75BD.jpg",
+      "coverOverride": null
     },
     {
       "id": "palma-2025",
@@ -436,7 +450,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Palma 4/18-4/21",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/palma-2025/6EB8DE9E-6501-44E4-99DD-F6308E116491.jpg",
+      "coverOverride": null
     },
     {
       "id": "netherlands-2025",
@@ -473,7 +489,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Netherlands 4/11-4/13",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/netherlands-2025/8080E53E-0955-4020-A54B-A674A49E73BC.jpg",
+      "coverOverride": null
     },
     {
       "id": "barcelona-2025",
@@ -510,7 +528,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Barcelona 4/8-4/10",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/barcelona-2025/68C4DD82-6504-4C1E-A311-4274717FD7EA.jpg",
+      "coverOverride": null
     },
     {
       "id": "morocco-malaga-2025",
@@ -554,7 +574,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Morocco-Malaga 4/4-4/7",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/morocco-malaga-2025/B635390C-FBD6-4117-8DDD-7536FB19E445.jpg",
+      "coverOverride": null
     },
     {
       "id": "potsdam-2025",
@@ -577,7 +599,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Potsdam 4/4",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/potsdam-2025/F64751C4-C2EE-4E9C-A5C7-14B16098F8CD.jpg",
+      "coverOverride": null
     },
     {
       "id": "vienna-athens-2025",
@@ -635,7 +659,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Vienna-Athens 3/28-4/2",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/vienna-athens-2025/D681B194-968E-4F77-BB08-9C654099BA93.jpg",
+      "coverOverride": null
     },
     {
       "id": "western-germany-2025",
@@ -672,7 +698,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Western Germany 3/21-3/23",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/western-germany-2025/AC50DD88-6908-4B68-B96C-93F924DEDED9.jpg",
+      "coverOverride": null
     },
     {
       "id": "portugal-manchester-2025",
@@ -709,7 +737,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Portugal-Manchester 3/14-3/16",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/portugal-manchester-2025/AB0D7A04-9AE3-4A9D-AA8E-2B9FC3211F63.jpg",
+      "coverOverride": null
     },
     {
       "id": "norway-2025",
@@ -746,7 +776,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Norway 3/7-3/9",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/norway-2025/30964EA0-CA99-4D1E-8BC8-C66F32583CE3.jpg",
+      "coverOverride": null
     },
     {
       "id": "stockholm-copenhagen-2025",
@@ -790,7 +822,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Stockholm-Copenhagen 2/28-3/2",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/stockholm-copenhagen-2025/B50301BA-EE53-4BDE-904A-B48AE6246872.jpg",
+      "coverOverride": null
     },
     {
       "id": "italy-2025",
@@ -848,7 +882,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Italy 2/13-2/18",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/italy-2025/C5B6CC1D-CD01-4DF8-9586-A92E6FD68380.jpg",
+      "coverOverride": null
     },
     {
       "id": "switzerland-2025",
@@ -892,7 +928,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Switzerland 1/30-2/1",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/switzerland-2025/5E76043C-7499-46CC-AA1B-E0F3890963BF.jpg",
+      "coverOverride": null
     },
     {
       "id": "prague-budapest-2025",
@@ -936,7 +974,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Prague-Budapest 1/24-1/26",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/prague-budapest-2025/B0CD4845-679B-44EE-951A-FF944B9C73C5.jpg",
+      "coverOverride": null
     },
     {
       "id": "london-2025",
@@ -966,7 +1006,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#London 1/18-1/19",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/london-2025/7B8F1009-1778-4FD6-B286-299A96D64A85.jpg",
+      "coverOverride": null
     },
     {
       "id": "leipzig-2025",
@@ -989,7 +1031,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Leipzig 1/10",
-      "collectionId": "study-abroad-2025"
+      "collectionId": "study-abroad-2025",
+      "cover": "images/trips/leipzig-2025/84C9DA87-4D5A-4F5E-B8EC-C0B69C9499F3.jpg",
+      "coverOverride": null
     },
     {
       "id": "tetons",
@@ -1054,7 +1098,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/TETONS/TETONS.md",
-      "collectionId": null
+      "collectionId": null,
+      "cover": "images/trips/tetons/E02BB2E0-674D-4C36-A444-6A4D3B17C599.jpg",
+      "coverOverride": null
     },
     {
       "id": "europe-may-2023",
@@ -1140,7 +1186,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/EUROPE MAY 2023/EUROPE MAY 2023.md",
-      "collectionId": null
+      "collectionId": null,
+      "cover": null,
+      "coverOverride": null
     },
     {
       "id": "glacier-2023",
@@ -1228,7 +1276,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/GLACIER 2023/GLACIER 2023.md",
-      "collectionId": null
+      "collectionId": null,
+      "cover": null,
+      "coverOverride": null
     },
     {
       "id": "zion-2024",
@@ -1318,7 +1368,9 @@ window.__POSTS__ = {
         }
       ],
       "source_note": "Trips/ZION 2024/ZION 2024.md",
-      "collectionId": null
+      "collectionId": null,
+      "cover": "images/trips/zion-2024/C06E7E6C-D561-47AD-A2CE-B8EADFD84388.jpg",
+      "coverOverride": null
     }
   ],
   "collections": [

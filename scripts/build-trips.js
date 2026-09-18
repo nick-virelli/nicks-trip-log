@@ -10,6 +10,9 @@ const ROOT = path.join(__dirname, '..');
 const TRIPS_DIR = path.join(ROOT, 'Trips');
 const OUT_DATA = path.join(ROOT, 'data');
 const OUT_BUILD = path.join(ROOT, '.build');
+// Optional per-trip cover choice: { "<trip-id>": "images/trips/<trip-id>/<file>.jpg" }.
+// Edit this file to change a cover; the build validates it and never needs a code change.
+const COVER_OVERRIDES_FILE = path.join(ROOT, 'content', 'cover-overrides.json');
 
 const STUDY_ABROAD_FILE = 'STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md';
 const STUDY_ABROAD_ATT = 'STUDY ABROAD SPRING 2025/Attachments';
@@ -401,6 +404,7 @@ async function main() {
   const posts = [];
   const mediaManifest = []; // { src: abs path, dest: relative "images/trips/slug/name" }
   const galleryImages = [];
+  const tripGallerySrcs = new Map(); // slug -> gallery srcs in document order, for covers
   // Grouped by "country|name" so two trips touching the exact same real place (e.g.
   // Barcelona, or the Zion stop inside the Southwest road trip) share one pin.
   const pinIndex = new Map();
@@ -507,7 +511,9 @@ async function main() {
       pinIndex.get(key).tripIds.push(t.slug);
     }
 
+    tripGallerySrcs.set(t.slug, []);
     for (const img of [...collectGalleryImages(days, t.locations, mediaMap), ...extraGallery]) {
+      tripGallerySrcs.get(t.slug).push(img.src);
       galleryImages.push({
         src: img.src,
         tripId: t.slug,
@@ -540,6 +546,19 @@ async function main() {
     console.log(`collection ${c.id}: ${c.tripIds.length} trips, ${c.date_start}..${c.date_end}`);
     return c;
   });
+
+  // Covers: the first photo in the note unless content/cover-overrides.json says otherwise.
+  const overrides = fs.existsSync(COVER_OVERRIDES_FILE) ? JSON.parse(fs.readFileSync(COVER_OVERRIDES_FILE, 'utf8')) : {};
+  for (const [slug, src] of Object.entries(overrides)) {
+    if (!tripGallerySrcs.has(slug)) throw new Error(`cover-overrides.json: unknown trip id "${slug}"`);
+    if (!tripGallerySrcs.get(slug).includes(src)) throw new Error(`cover-overrides.json: ${slug} has no gallery image ${src}`);
+  }
+  for (const p of posts) {
+    const srcs = tripGallerySrcs.get(p.id) || [];
+    p.cover = overrides[p.id] || srcs[0] || null;
+    p.coverOverride = overrides[p.id] || null;
+    if (!p.cover) console.log(`  no cover for ${p.id} (no photos)`);
+  }
 
   // sort posts by date (unknown dates last), most recent first for "latest trip" stat
   const withDate = posts.filter((p) => p.date_start);
