@@ -9,6 +9,7 @@
       "date_start": "2026-07-15",
       "date_end": "2026-07-18",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 48.4,
       "days": [
         {
@@ -69,6 +70,7 @@
       "date_start": "2026-05-12",
       "date_end": "2026-05-19",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 28,
       "days": [
         {
@@ -136,9 +138,10 @@
       "region": "puerto-rico",
       "location": "San Juan / El Yunque",
       "title": "PUERTO RICO SPRING BREAK 2026",
-      "date_start": "2026-03-01",
-      "date_end": "2026-03-01",
-      "date_precision": "month",
+      "date_start": "2026-03-14",
+      "date_end": "2026-03-16",
+      "date_precision": "day",
+      "date_source": "exif-tightened",
       "total_miles": 0,
       "days": [
         {
@@ -174,6 +177,7 @@
       "date_start": "2025-05-19",
       "date_end": "2025-05-24",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 29.1,
       "days": [
         {
@@ -270,6 +274,7 @@
       "date_start": "2025-05-01",
       "date_end": "2025-05-04",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -312,6 +317,7 @@
       "date_start": "2025-04-29",
       "date_end": "2025-05-01",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -347,6 +353,7 @@
       "date_start": "2025-04-24",
       "date_end": "2025-04-27",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -389,6 +396,7 @@
       "date_start": "2025-04-18",
       "date_end": "2025-04-21",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -431,6 +439,7 @@
       "date_start": "2025-04-11",
       "date_end": "2025-04-13",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -466,6 +475,7 @@
       "date_start": "2025-04-08",
       "date_end": "2025-04-10",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -501,6 +511,7 @@
       "date_start": "2025-04-04",
       "date_end": "2025-04-07",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -543,6 +554,7 @@
       "date_start": "2025-04-04",
       "date_end": "2025-04-04",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -564,6 +576,7 @@
       "date_start": "2025-03-28",
       "date_end": "2025-04-02",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -620,6 +633,7 @@
       "date_start": "2025-03-21",
       "date_end": "2025-03-23",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -655,6 +669,7 @@
       "date_start": "2025-03-14",
       "date_end": "2025-03-16",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -690,6 +705,7 @@
       "date_start": "2025-03-07",
       "date_end": "2025-03-09",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -725,6 +741,7 @@
       "date_start": "2025-02-28",
       "date_end": "2025-03-02",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -767,6 +784,7 @@
       "date_start": "2025-02-13",
       "date_end": "2025-02-18",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -823,6 +841,7 @@
       "date_start": "2025-01-30",
       "date_end": "2025-02-01",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -865,6 +884,7 @@
       "date_start": "2025-01-24",
       "date_end": "2025-01-26",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -907,6 +927,7 @@
       "date_start": "2025-01-18",
       "date_end": "2025-01-19",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -935,6 +956,7 @@
       "date_start": "2025-01-10",
       "date_end": "2025-01-10",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -953,9 +975,10 @@
       "region": "wyoming",
       "location": "Grand Teton National Park",
       "title": "TETONS",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month",
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day",
+      "date_source": "exif-tightened",
       "total_miles": 0,
       "days": [
         {
@@ -1019,6 +1042,7 @@
       "date_start": "2023-05-06",
       "date_end": "2023-05-15",
       "date_precision": "day",
+      "date_source": "manual",
       "total_miles": 0,
       "days": [
         {
@@ -1103,6 +1127,7 @@
       "date_start": null,
       "date_end": null,
       "date_precision": "day",
+      "date_source": null,
       "total_miles": 63.9,
       "days": [
         {
@@ -1189,6 +1214,7 @@
       "date_start": null,
       "date_end": null,
       "date_precision": "day",
+      "date_source": null,
       "total_miles": 27.3,
       "days": [
         {

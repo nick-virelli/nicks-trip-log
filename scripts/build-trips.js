@@ -4,6 +4,7 @@ const { parseTripDays } = require('./lib/parse');
 const { extractSection } = require('./lib/extract-section');
 const { mergeMediaIntoDays } = require('./lib/merge-media');
 const { renderDayHtml, dayMiles, extractTrails, collectMediaFiles } = require('./lib/render');
+const { scanTripPhotos, resolveTripDates } = require('./lib/exif-dates');
 
 const ROOT = path.join(__dirname, '..');
 const TRIPS_DIR = path.join(ROOT, 'Trips');
@@ -374,7 +375,7 @@ function collectGalleryImages(days, locations, mediaMap) {
   return entries;
 }
 
-function main() {
+async function main() {
   fs.mkdirSync(OUT_DATA, { recursive: true });
   fs.mkdirSync(OUT_BUILD, { recursive: true });
 
@@ -395,6 +396,7 @@ function main() {
     // the merged trips' image nodes).
     const mediaFiles = collectMediaFiles(days);
     const mediaMap = new Map();
+    const tripPhotos = []; // this trip's manifest items, for the EXIF scan
     for (const relRef of mediaFiles) {
       const filename = relRef.split('/').pop();
       const isJpegOrPng = /\.(jpe?g|png)$/i.test(filename);
@@ -415,7 +417,40 @@ function main() {
         continue;
       }
       mediaMap.set(relRef, dest);
-      mediaManifest.push({ src, dest, kind: isVideo ? 'video' : isHeic ? 'heic' : isJpegOrPng ? 'raster' : 'other' });
+      const item = { src, dest, kind: isVideo ? 'video' : isHeic ? 'heic' : isJpegOrPng ? 'raster' : 'other' };
+      mediaManifest.push(item);
+      tripPhotos.push(item);
+    }
+
+    // A note that references no images at all (Puerto Rico) can still have photos
+    // sitting in its Attachments folder. Those go to the gallery and cover only;
+    // the note text is never touched. Videos are left alone.
+    const extraGallery = [];
+    const hasImageRefs = mediaFiles.some((f) => /\.(jpe?g|png|heic|heif)$/i.test(f));
+    if (!hasImageRefs && attachmentsDir && fs.existsSync(path.join(TRIPS_DIR, attachmentsDir))) {
+      const loose = fs.readdirSync(path.join(TRIPS_DIR, attachmentsDir))
+        .filter((f) => /\.(jpe?g|png|heic|heif)$/i.test(f))
+        .sort();
+      for (const filename of loose) {
+        const isHeic = /\.(heic|heif)$/i.test(filename);
+        const newName = slugFile(filename.replace(/\.[^.]+$/, '')) + '.jpg';
+        const dest = `images/trips/${t.slug}/${newName}`;
+        const item = { src: path.join(TRIPS_DIR, attachmentsDir, filename), dest, kind: isHeic ? 'heic' : 'raster' };
+        mediaManifest.push(item);
+        tripPhotos.push(item);
+        extraGallery.push({ src: dest, locations: [t.locations[0]] });
+      }
+      if (loose.length) console.log(`  gallery only: ${loose.length} unreferenced photos from ${attachmentsDir}`);
+    }
+
+    // Dates: EXIF from the originals can fill a null range or tighten a month
+    // placeholder, never override a typed day-precision range.
+    const scan = await scanTripPhotos(tripPhotos.filter((m) => m.kind !== 'video').map((m) => m.src));
+    const dates = resolveTripDates({ dateStart: t.dateStart, dateEnd: t.dateEnd, datePrecision: t.datePrecision }, scan);
+    console.log(`  dates: ${dates.date_start || 'null'}..${dates.date_end || 'null'} (${dates.date_precision}, ${dates.date_source}) from ${scan.found}/${scan.total} dated photos`);
+    for (const n of dates.notes) console.log(`    ${n}`);
+    if (dates.date_source !== 'manual' || dates.notes.some((n) => n.startsWith('WARNING'))) {
+      for (const p of scan.photos) console.log(`    ${p.date || 'no EXIF date'}  ${p.file}`);
     }
 
     const altText = `${t.title} - ${t.location}`;
@@ -436,9 +471,10 @@ function main() {
       region: primary.region,
       location: t.location,
       title: t.title,
-      date_start: t.dateStart,
-      date_end: t.dateEnd,
-      date_precision: t.datePrecision || 'day',
+      date_start: dates.date_start,
+      date_end: dates.date_end,
+      date_precision: dates.date_precision,
+      date_source: dates.date_source,
       total_miles: Math.round(totalMiles * 100) / 100,
       days: dayObjs,
       source_note: t.megaSection ? `Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#${t.megaSection}` : `Trips/${t.sourceFile}`,
@@ -452,16 +488,16 @@ function main() {
       pinIndex.get(key).tripIds.push(t.slug);
     }
 
-    for (const img of collectGalleryImages(days, t.locations, mediaMap)) {
+    for (const img of [...collectGalleryImages(days, t.locations, mediaMap), ...extraGallery]) {
       galleryImages.push({
         src: img.src,
         tripId: t.slug,
         tripTitle: t.title,
         locations: img.locations.map((l) => l.name),
         country: primary.country,
-        date_start: t.dateStart,
-        date_end: t.dateEnd,
-        date_precision: t.datePrecision || 'day',
+        date_start: dates.date_start,
+        date_end: dates.date_end,
+        date_precision: dates.date_precision,
       });
     }
   }
@@ -511,4 +547,7 @@ function main() {
   for (const p of multiTripPins) console.log(`  shared pin: ${p.name}, ${p.country} -> ${p.tripIds.join(', ')}`);
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

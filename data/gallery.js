@@ -661,6 +661,102 @@ window.__GALLERY__ = {
       "date_precision": "day"
     },
     {
+      "src": "images/trips/puerto-rico-spring-break-2026/IMG_7732.jpg",
+      "tripId": "puerto-rico-spring-break-2026",
+      "tripTitle": "PUERTO RICO SPRING BREAK 2026",
+      "locations": [
+        "San Juan"
+      ],
+      "country": "usa",
+      "date_start": "2026-03-14",
+      "date_end": "2026-03-16",
+      "date_precision": "day"
+    },
+    {
+      "src": "images/trips/puerto-rico-spring-break-2026/IMG_7726.jpg",
+      "tripId": "puerto-rico-spring-break-2026",
+      "tripTitle": "PUERTO RICO SPRING BREAK 2026",
+      "locations": [
+        "San Juan"
+      ],
+      "country": "usa",
+      "date_start": "2026-03-14",
+      "date_end": "2026-03-16",
+      "date_precision": "day"
+    },
+    {
+      "src": "images/trips/puerto-rico-spring-break-2026/IMG_7699.jpg",
+      "tripId": "puerto-rico-spring-break-2026",
+      "tripTitle": "PUERTO RICO SPRING BREAK 2026",
+      "locations": [
+        "San Juan"
+      ],
+      "country": "usa",
+      "date_start": "2026-03-14",
+      "date_end": "2026-03-16",
+      "date_precision": "day"
+    },
+    {
+      "src": "images/trips/puerto-rico-spring-break-2026/IMG_7688.jpg",
+      "tripId": "puerto-rico-spring-break-2026",
+      "tripTitle": "PUERTO RICO SPRING BREAK 2026",
+      "locations": [
+        "San Juan"
+      ],
+      "country": "usa",
+      "date_start": "2026-03-14",
+      "date_end": "2026-03-16",
+      "date_precision": "day"
+    },
+    {
+      "src": "images/trips/puerto-rico-spring-break-2026/IMG_7675.jpg",
+      "tripId": "puerto-rico-spring-break-2026",
+      "tripTitle": "PUERTO RICO SPRING BREAK 2026",
+      "locations": [
+        "San Juan"
+      ],
+      "country": "usa",
+      "date_start": "2026-03-14",
+      "date_end": "2026-03-16",
+      "date_precision": "day"
+    },
+    {
+      "src": "images/trips/puerto-rico-spring-break-2026/IMG_5441.jpg",
+      "tripId": "puerto-rico-spring-break-2026",
+      "tripTitle": "PUERTO RICO SPRING BREAK 2026",
+      "locations": [
+        "San Juan"
+      ],
+      "country": "usa",
+      "date_start": "2026-03-14",
+      "date_end": "2026-03-16",
+      "date_precision": "day"
+    },
+    {
+      "src": "images/trips/puerto-rico-spring-break-2026/IMG_1240.jpg",
+      "tripId": "puerto-rico-spring-break-2026",
+      "tripTitle": "PUERTO RICO SPRING BREAK 2026",
+      "locations": [
+        "San Juan"
+      ],
+      "country": "usa",
+      "date_start": "2026-03-14",
+      "date_end": "2026-03-16",
+      "date_precision": "day"
+    },
+    {
+      "src": "images/trips/puerto-rico-spring-break-2026/IMG_0394.jpg",
+      "tripId": "puerto-rico-spring-break-2026",
+      "tripTitle": "PUERTO RICO SPRING BREAK 2026",
+      "locations": [
+        "San Juan"
+      ],
+      "country": "usa",
+      "date_start": "2026-03-14",
+      "date_end": "2026-03-16",
+      "date_precision": "day"
+    },
+    {
       "src": "images/trips/southwest-road-trip-2025/7B41CFAD-7441-44CB-AD5F-BD799BD81E3A.jpg",
       "tripId": "southwest-road-trip-2025",
       "tripTitle": "SOUTHWEST ROAD TRIP 2025",
@@ -4685,9 +4781,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/tetons/F7397804-470C-49AB-AC4B-F64F40D43186.jpg",
@@ -4697,9 +4793,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/tetons/BFE4BD9A-B0C1-45DD-8C94-ED8F8A7793F5.jpg",
@@ -4709,9 +4805,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/tetons/385596C1-8BDD-4FA9-B3F8-A6C3F403CDC5.jpg",
@@ -4721,9 +4817,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/tetons/607A4FED-87DD-47A8-BD06-774226F18953.jpg",
@@ -4733,9 +4829,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/tetons/7DB15A36-21F6-4C6E-9E1D-2B9BE0312488.jpg",
@@ -4745,9 +4841,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/tetons/B4383C44-9386-4109-A5F7-2DCE405D8D2F.jpg",
@@ -4757,9 +4853,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/tetons/B2440744-1F34-4B10-BFB8-BA9BFB118D54.jpg",
@@ -4769,9 +4865,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/tetons/74E3E4D2-BE10-4DF1-B67A-21DC3678D15E.jpg",
@@ -4781,9 +4877,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/tetons/00097848-0464-477A-985A-396A6938278E.jpg",
@@ -4793,9 +4889,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/tetons/E02BB2E0-674D-4C36-A444-6A4D3B17C599.jpg",
@@ -4805,9 +4901,9 @@ window.__GALLERY__ = {
         "Grand Teton National Park"
       ],
       "country": "usa",
-      "date_start": "2023-07-01",
-      "date_end": "2023-07-01",
-      "date_precision": "month"
+      "date_start": "2023-07-17",
+      "date_end": "2023-07-20",
+      "date_precision": "day"
     },
     {
       "src": "images/trips/zion-2024/C06E7E6C-D561-47AD-A2CE-B8EADFD84388.jpg",

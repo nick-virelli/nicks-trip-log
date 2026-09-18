@@ -1,3 +1,6 @@
+# Converts HEIC originals to 1600px JPGs. Existing outputs are skipped unless -Force.
+param([switch]$Force)
+
 Add-Type -AssemblyName PresentationCore
 
 $root = Split-Path -Parent $PSScriptRoot
@@ -8,6 +11,7 @@ $items = $manifest | Where-Object { $_.kind -eq 'heic' }
 $maxWidth = 1600
 $ok = 0
 $fail = 0
+$skipped = 0
 $i = 0
 
 foreach ($item in $items) {
@@ -15,6 +19,8 @@ foreach ($item in $items) {
     $src = $item.src
     $dest = Join-Path $root $item.dest
     $destDir = Split-Path -Parent $dest
+
+    if (-not $Force -and (Test-Path $dest)) { $skipped++; continue }
 
     try {
         if (-not (Test-Path $destDir)) { New-Item -ItemType Directory -Force -Path $destDir | Out-Null }
@@ -68,4 +74,4 @@ foreach ($item in $items) {
     if ($i % 50 -eq 0) { Write-Output "...$i/$($items.Count)" }
 }
 
-Write-Output "Done. ok=$ok fail=$fail total=$($items.Count)"
+Write-Output "Done. ok=$ok skipped=$skipped fail=$fail total=$($items.Count)"
