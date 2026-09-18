@@ -1,5 +1,7 @@
-// Generates the static pages that depend on data/*: one page per trip under
-// trip/, one page per collection under collections/, 404.html, and sitemap.xml.
+// Generates every HTML page: the three site pages (from scripts/pages/), one
+// page per trip under trip/, one page per collection under collections/,
+// 404.html, and sitemap.xml. Edit page content in scripts/pages/*.js and the
+// shared chrome in scripts/lib/page-shell.js, never the .html files.
 // Runs after build-trips.js (npm run build chains them). Trip bodies come from
 // js/render-trip.js, the same code the home page uses, so the two match.
 //
@@ -12,6 +14,7 @@ const { esc, fmtDate, fmtDateRange, renderTripHtml } = require('../js/render-tri
 
 const ROOT = path.join(__dirname, '..');
 const TRIP_DIR = path.join(ROOT, 'trip');
+const SITE_PAGES = ['index', 'gallery', 'about'].map((name) => require(`./pages/${name}`));
 const COLLECTION_DIR = path.join(ROOT, 'collections');
 const SITE_TITLE = "Nick's Trip Log";
 
@@ -122,6 +125,8 @@ function main() {
   const photoCounts = {};
   for (const img of images) photoCounts[img.tripId] = (photoCounts[img.tripId] || 0) + 1;
 
+  for (const page of SITE_PAGES) write(page.file, renderPage(page));
+
   const tripFiles = new Set();
   for (const p of posts) {
     const collection = collections.find((c) => c.id === p.collectionId) || null;
@@ -144,7 +149,7 @@ function main() {
   const urls = ['', 'gallery.html', 'about.html', ...collections.map((c) => `collections/${c.id}.html`), ...posts.map((p) => `trip/${p.id}.html`)];
   write('sitemap.xml', sitemap(urls));
 
-  console.log(`Wrote ${posts.length} trip pages, ${collections.length} collection pages, 404.html, sitemap.xml (${urls.length} URLs).`);
+  console.log(`Wrote ${SITE_PAGES.length} site pages, ${posts.length} trip pages, ${collections.length} collection pages, 404.html, sitemap.xml (${urls.length} URLs).`);
 }
 
 main();

@@ -1,12 +1,19 @@
 // The page chrome (head, header, nav, lightbox, footer, scripts) that every
-// generated page shares. Copied from index.html so generated pages look exactly
-// like the hand-written ones. `depth` is how many folders below the site root
-// the page lives (trip/x.html is 1); asset paths are prefixed accordingly.
-// 404.html is served at any path by GitHub Pages, so it uses absolute asset URLs.
+// page shares. index.html, gallery.html, and about.html are generated from it
+// too (see scripts/pages/), so the header, footer, and theme toggle exist in
+// exactly one place. `depth` is how many folders below the site root the page
+// lives (trip/x.html is 1); asset paths are prefixed accordingly. 404.html is
+// served at any path by GitHub Pages, so it uses absolute asset URLs.
 
 const SITE_URL = 'https://nick-virelli.github.io/nicks-trip-log/';
 const DEFAULT_OG_IMAGE = `${SITE_URL}images/trips/mt-rainier-2026/8E69F307-B2FC-495A-A8B1-EAD2134651B3.jpg`;
 const GA_ID = 'G-Y1F7ZMFZVE';
+const LEAFLET_CSS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+const LEAFLET_JS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+
+// TEMPORARY (Phase 3): the palette switcher. Remove this entry in Phase 8 along
+// with js/palette-switcher.js.
+const PALETTE_SWITCHER = null;
 
 function escAttr(s) {
   return String(s == null ? '' : s)
@@ -54,17 +61,47 @@ function navLinks(prefix, activeNav) {
     .join('\n      ');
 }
 
+function renderHeader(prefix, o) {
+  return `  <header class="site-header">
+    <h1 class="site-title"><a href="${prefix}index.html">Nick's Trip Log</a></h1>
+    <nav class="site-nav">
+      ${navLinks(prefix, o.activeNav)}
+      ${THEME_TOGGLE}
+    </nav>${
+      o.activeTripIndicator
+        ? `
+    <button type="button" class="active-trip-indicator" id="active-trip-indicator">
+      <span class="title" id="active-trip-title"></span>
+      <span class="meta" id="active-trip-meta"></span>
+    </button>`
+        : ''
+    }
+  </header>`;
+}
+
+function renderFooter(prefix, o) {
+  return `  <footer class="site-footer">
+    <nav>
+      ${navLinks(prefix, o.activeNav)}
+    </nav>
+    <p>Contact: <a href="${prefix}about.html">Get in touch</a></p>
+  </footer>`;
+}
+
 /**
  * @param {object} o
  * @param {number} [o.depth] folders below the site root (default 0)
  * @param {boolean} [o.absoluteAssets] use SITE_URL instead of a relative prefix
  * @param {string} o.title full <title> text
  * @param {string} o.description meta description
- * @param {string} [o.canonicalPath] site-relative path, e.g. "trip/london-2025.html"
+ * @param {string} [o.canonicalPath] site-relative path ("" for the home page)
  * @param {string} [o.ogImage] absolute URL; defaults to the site's default image
  * @param {string} [o.ogType] "website" or "article"
  * @param {string} [o.activeNav] which nav item to mark active ("index.html" etc.)
+ * @param {string} [o.headExtra] raw HTML placed in <head> before the title
+ * @param {boolean} [o.leaflet] include Leaflet's stylesheet and script
  * @param {string} [o.bodyAttrs] extra attributes for <body>
+ * @param {string} [o.beforeMain] raw HTML between the header and <main>
  * @param {string} o.main inner HTML of <main>
  * @param {boolean} [o.lightbox] include the lightbox markup
  * @param {boolean} [o.activeTripIndicator] include the header trip indicator
@@ -73,11 +110,13 @@ function navLinks(prefix, activeNav) {
 function renderPage(o) {
   const depth = o.depth || 0;
   const prefix = o.absoluteAssets ? SITE_URL : '../'.repeat(depth);
-  const canonical = o.canonicalPath ? `${SITE_URL}${o.canonicalPath}` : null;
+  const canonical = o.canonicalPath != null ? `${SITE_URL}${o.canonicalPath}` : null;
   const ogImage = o.ogImage || DEFAULT_OG_IMAGE;
-  const scripts = ['js/theme.js', ...(o.scripts || [])]
-    .map((s) => `  <script src="${prefix}${s}"></script>`)
-    .join('\n');
+  const scriptTags = [];
+  if (o.leaflet) scriptTags.push(`  <script src="${LEAFLET_JS}" crossorigin=""></script>`);
+  for (const s of ['js/theme.js', ...(PALETTE_SWITCHER ? [PALETTE_SWITCHER] : []), ...(o.scripts || [])]) {
+    scriptTags.push(`  <script src="${prefix}${s}"></script>`);
+  }
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -92,7 +131,7 @@ function renderPage(o) {
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escAttr(o.title)}</title>
+${o.headExtra ? o.headExtra + '\n' : ''}  <title>${escAttr(o.title)}</title>
   <meta name="description" content="${escAttr(o.description)}">
   <meta property="og:title" content="${escAttr(o.title)}">
   <meta property="og:description" content="${escAttr(o.description)}">
@@ -100,39 +139,20 @@ function renderPage(o) {
 ${canonical ? `  <meta property="og:url" content="${escAttr(canonical)}">\n  <link rel="canonical" href="${escAttr(canonical)}">\n` : ''}  <meta property="og:image" content="${escAttr(ogImage)}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="${prefix}images/favicon.svg">
-  <link rel="stylesheet" href="${prefix}css/style.css">
+${o.leaflet ? `  <link rel="stylesheet" href="${LEAFLET_CSS}" crossorigin="">\n` : ''}  <link rel="stylesheet" href="${prefix}css/style.css">
 </head>
 <body${o.bodyAttrs ? ' ' + o.bodyAttrs : ''}>
-  <header class="site-header">
-    <h1 class="site-title"><a href="${prefix}index.html">Nick's Trip Log</a></h1>
-    <nav class="site-nav">
-      ${navLinks(prefix, o.activeNav)}
-      ${THEME_TOGGLE}
-    </nav>${
-      o.activeTripIndicator
-        ? `
-    <button type="button" class="active-trip-indicator" id="active-trip-indicator">
-      <span class="title" id="active-trip-title"></span>
-      <span class="meta" id="active-trip-meta"></span>
-    </button>`
-        : ''
-    }
-  </header>
+${renderHeader(prefix, o)}
 
-  <main>
+${o.beforeMain || ''}  <main>
 ${o.main}
   </main>
 ${o.lightbox ? LIGHTBOX : ''}
-  <footer class="site-footer">
-    <nav>
-      ${navLinks(prefix, o.activeNav)}
-    </nav>
-    <p>Contact: <a href="${prefix}about.html">Get in touch</a></p>
-  </footer>
+${renderFooter(prefix, o)}
 
   <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top">&uarr; Back to top</button>
 
-${scripts}
+${scriptTags.join('\n')}
 </body>
 </html>
 `;
