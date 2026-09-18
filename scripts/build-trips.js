@@ -516,6 +516,7 @@ async function main() {
       tripGallerySrcs.get(t.slug).push(img.src);
       galleryImages.push({
         src: img.src,
+        thumb: img.src.replace(/^images\/trips\//, 'images/thumbs/'),
         tripId: t.slug,
         tripTitle: t.title,
         locations: img.locations.map((l) => l.name),
