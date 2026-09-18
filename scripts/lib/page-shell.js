@@ -13,7 +13,7 @@ const LEAFLET_JS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 
 // TEMPORARY (Phase 3): the palette switcher. Remove this entry in Phase 8 along
 // with js/palette-switcher.js.
-const PALETTE_SWITCHER = null;
+const PALETTE_SWITCHER = 'js/palette-switcher.js';
 
 function escAttr(s) {
   return String(s == null ? '' : s)

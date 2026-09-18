@@ -215,13 +215,15 @@
         setTileLayer();
         showWorld();
         document.getElementById("gallery-back-to-world").addEventListener("click", showWorld);
-        document.querySelector(".theme-toggle")?.addEventListener("click", () => {
+        const redrawForTheme = () => {
           setTimeout(() => {
             setTileLayer();
             if (app.level === "world") showWorld();
             else showCountry(app.activeCountry);
           }, 0);
-        });
+        };
+        document.querySelector(".theme-toggle")?.addEventListener("click", redrawForTheme);
+        document.addEventListener("themechange", redrawForTheme);
       }
       setTimeout(() => app.map.invalidateSize(), 0);
     });

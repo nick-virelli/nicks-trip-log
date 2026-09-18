@@ -259,14 +259,17 @@
 
     document.getElementById("back-to-world").addEventListener("click", showWorld);
 
-    // keep tiles + marker colors in sync with theme toggle
-    document.querySelector(".theme-toggle")?.addEventListener("click", () => {
+    // keep tiles + marker colors in sync with the theme toggle, or with anything
+    // else that swaps the color tokens (it dispatches "themechange" on document)
+    const redrawForTheme = () => {
       setTimeout(() => {
         setTileLayer();
         if (app.level === "world") showWorld();
         else showCountry(app.activeCountry);
       }, 0);
-    });
+    };
+    document.querySelector(".theme-toggle")?.addEventListener("click", redrawForTheme);
+    document.addEventListener("themechange", redrawForTheme);
 
     initActiveTripIndicator();
   }
