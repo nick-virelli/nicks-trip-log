@@ -16,29 +16,41 @@ const STUDY_ABROAD_ATT = 'STUDY ABROAD SPRING 2025/Attachments';
 const PICS2_FILE = 'PICS PART 2 STUDY ABROAD 2025/PICS PART 2 STUDY ABROAD 2025.md';
 const PICS2_ATT = 'PICS PART 2 STUDY ABROAD 2025/Attachments';
 
-// country metadata used to build data/map-data.json
+// Continents give the map its top drill-down level. Bounds are [southWest, northEast]
+// in [lat, lon], sized to frame the countries visited rather than the whole landmass.
+const CONTINENTS = {
+  'north-america': { label: 'North America', bounds: [[7, -170], [72, -52]] },
+  'south-america': { label: 'South America', bounds: [[-56, -82], [13, -34]] },
+  europe: { label: 'Europe', bounds: [[35, -11], [71.5, 32]] },
+  africa: { label: 'Africa', bounds: [[-35, -18], [37.5, 52]] },
+};
+
+// country metadata used to build data/map-data.json. iso3 and isoNumeric are there
+// so a countries GeoJSON can be joined later without another build change. Note:
+// Natural Earth's ISO_A3 is "-99" for France and Norway in the 110m set; join on
+// ADM0_A3 / ISO_A3_EH or on the numeric id instead.
 const PLACES = {
-  usa: { label: 'United States', bounds: [[24, -125], [49, -66]] },
-  peru: { label: 'Peru', bounds: [[-18, -81], [0, -68]] },
-  uk: { label: 'United Kingdom', bounds: [[49, -11], [61, 2]] },
-  germany: { label: 'Germany', bounds: [[47, 5.5], [55, 15.5]] },
-  czechia: { label: 'Czechia', bounds: [[48.5, 12], [51, 19]] },
-  hungary: { label: 'Hungary', bounds: [[45.7, 16], [48.6, 22.9]] },
-  switzerland: { label: 'Switzerland', bounds: [[45.8, 5.9], [47.9, 10.5]] },
-  italy: { label: 'Italy', bounds: [[36, 6.5], [47.1, 18.5]] },
-  sweden: { label: 'Sweden', bounds: [[55, 10.5], [69.5, 24.5]] },
-  denmark: { label: 'Denmark', bounds: [[54.5, 8], [57.8, 15.5]] },
-  norway: { label: 'Norway', bounds: [[57.9, 4.5], [71.2, 31.5]] },
-  portugal: { label: 'Portugal', bounds: [[36.8, -9.6], [42.2, -6]] },
-  austria: { label: 'Austria', bounds: [[46.4, 9.5], [49.1, 17.2]] },
-  slovakia: { label: 'Slovakia', bounds: [[47.7, 16.8], [49.6, 22.6]] },
-  morocco: { label: 'Morocco', bounds: [[27.6, -13.2], [35.9, -1]] },
-  spain: { label: 'Spain', bounds: [[36, -9.5], [43.8, 4.3]] },
-  netherlands: { label: 'Netherlands', bounds: [[50.7, 3.3], [53.6, 7.3]] },
-  croatia: { label: 'Croatia', bounds: [[42.4, 13.5], [46.6, 19.5]] },
-  france: { label: 'France', bounds: [[41.3, -5.2], [51.1, 9.6]] },
-  monaco: { label: 'Monaco', bounds: [[43.72, 7.4], [43.75, 7.44]] },
-  greece: { label: 'Greece', bounds: [[34.8, 19.3], [41.8, 29.7]] },
+  usa: { label: 'United States', continent: 'north-america', iso3: 'USA', isoNumeric: '840', bounds: [[24, -125], [49, -66]] },
+  peru: { label: 'Peru', continent: 'south-america', iso3: 'PER', isoNumeric: '604', bounds: [[-18, -81], [0, -68]] },
+  uk: { label: 'United Kingdom', continent: 'europe', iso3: 'GBR', isoNumeric: '826', bounds: [[49, -11], [61, 2]] },
+  germany: { label: 'Germany', continent: 'europe', iso3: 'DEU', isoNumeric: '276', bounds: [[47, 5.5], [55, 15.5]] },
+  czechia: { label: 'Czechia', continent: 'europe', iso3: 'CZE', isoNumeric: '203', bounds: [[48.5, 12], [51, 19]] },
+  hungary: { label: 'Hungary', continent: 'europe', iso3: 'HUN', isoNumeric: '348', bounds: [[45.7, 16], [48.6, 22.9]] },
+  switzerland: { label: 'Switzerland', continent: 'europe', iso3: 'CHE', isoNumeric: '756', bounds: [[45.8, 5.9], [47.9, 10.5]] },
+  italy: { label: 'Italy', continent: 'europe', iso3: 'ITA', isoNumeric: '380', bounds: [[36, 6.5], [47.1, 18.5]] },
+  sweden: { label: 'Sweden', continent: 'europe', iso3: 'SWE', isoNumeric: '752', bounds: [[55, 10.5], [69.5, 24.5]] },
+  denmark: { label: 'Denmark', continent: 'europe', iso3: 'DNK', isoNumeric: '208', bounds: [[54.5, 8], [57.8, 15.5]] },
+  norway: { label: 'Norway', continent: 'europe', iso3: 'NOR', isoNumeric: '578', bounds: [[57.9, 4.5], [71.2, 31.5]] },
+  portugal: { label: 'Portugal', continent: 'europe', iso3: 'PRT', isoNumeric: '620', bounds: [[36.8, -9.6], [42.2, -6]] },
+  austria: { label: 'Austria', continent: 'europe', iso3: 'AUT', isoNumeric: '040', bounds: [[46.4, 9.5], [49.1, 17.2]] },
+  slovakia: { label: 'Slovakia', continent: 'europe', iso3: 'SVK', isoNumeric: '703', bounds: [[47.7, 16.8], [49.6, 22.6]] },
+  morocco: { label: 'Morocco', continent: 'africa', iso3: 'MAR', isoNumeric: '504', bounds: [[27.6, -13.2], [35.9, -1]] },
+  spain: { label: 'Spain', continent: 'europe', iso3: 'ESP', isoNumeric: '724', bounds: [[36, -9.5], [43.8, 4.3]] },
+  netherlands: { label: 'Netherlands', continent: 'europe', iso3: 'NLD', isoNumeric: '528', bounds: [[50.7, 3.3], [53.6, 7.3]] },
+  croatia: { label: 'Croatia', continent: 'europe', iso3: 'HRV', isoNumeric: '191', bounds: [[42.4, 13.5], [46.6, 19.5]] },
+  france: { label: 'France', continent: 'europe', iso3: 'FRA', isoNumeric: '250', bounds: [[41.3, -5.2], [51.1, 9.6]] },
+  monaco: { label: 'Monaco', continent: 'europe', iso3: 'MCO', isoNumeric: '492', bounds: [[43.72, 7.4], [43.75, 7.44]] },
+  greece: { label: 'Greece', continent: 'europe', iso3: 'GRC', isoNumeric: '300', bounds: [[34.8, 19.3], [41.8, 29.7]] },
 };
 
 const REGIONS = {
@@ -73,6 +85,7 @@ const REGIONS = {
   brandenburg: { label: 'Brandenburg', country: 'germany' },
   'marrakesh-safi': { label: 'Marrakesh-Safi', country: 'morocco' },
   catalonia: { label: 'Catalonia', country: 'spain' },
+  'madrid-region': { label: 'Madrid', country: 'spain' },
   andalusia: { label: 'Andalusia', country: 'spain' },
   'north-holland': { label: 'North Holland', country: 'netherlands' },
   'north-brabant': { label: 'North Brabant', country: 'netherlands' },
@@ -163,7 +176,7 @@ const trips = [
     locations: [
       { name: 'London', country: 'uk', region: 'england', lat: 51.5074, lon: -0.1278 },
       { name: 'Barcelona', country: 'spain', region: 'catalonia', lat: 41.3874, lon: 2.1686 },
-      { name: 'Madrid', country: 'spain', region: 'catalonia', lat: 40.4168, lon: -3.7038 },
+      { name: 'Madrid', country: 'spain', region: 'madrid-region', lat: 40.4168, lon: -3.7038 },
     ],
   },
 
@@ -539,9 +552,23 @@ async function main() {
   fs.writeFileSync(path.join(OUT_DATA, 'posts.js'), `window.__POSTS__ = ${JSON.stringify(postsData, null, 2)};\n`);
 
   const mapCountries = {};
+  const usedContinents = {};
   for (const pin of pinIndex.values()) {
+    const place = PLACES[pin.country];
+    if (!place) throw new Error(`unknown country "${pin.country}" on pin ${pin.name}`);
+    if (!CONTINENTS[place.continent]) throw new Error(`country ${pin.country} has unknown continent "${place.continent}"`);
+    if (!REGIONS[pin.region]) throw new Error(`unknown region "${pin.region}" on pin ${pin.name}`);
+    if (REGIONS[pin.region].country !== pin.country) throw new Error(`region ${pin.region} belongs to ${REGIONS[pin.region].country}, not ${pin.country} (pin ${pin.name})`);
+    usedContinents[place.continent] = CONTINENTS[place.continent];
     if (!mapCountries[pin.country]) {
-      mapCountries[pin.country] = { label: PLACES[pin.country].label, bounds: PLACES[pin.country].bounds, regions: {} };
+      mapCountries[pin.country] = {
+        label: place.label,
+        continent: place.continent,
+        iso3: place.iso3,
+        isoNumeric: place.isoNumeric,
+        bounds: place.bounds,
+        regions: {},
+      };
     }
     if (!mapCountries[pin.country].regions[pin.region]) {
       mapCountries[pin.country].regions[pin.region] = { label: REGIONS[pin.region].label, cities: [] };
@@ -554,7 +581,9 @@ async function main() {
     });
   }
 
-  const mapData = { countries: mapCountries };
+  const continents = {};
+  for (const key of Object.keys(CONTINENTS)) if (usedContinents[key]) continents[key] = CONTINENTS[key];
+  const mapData = { continents, countries: mapCountries };
   fs.writeFileSync(path.join(OUT_DATA, 'map-data.json'), JSON.stringify(mapData, null, 2));
   fs.writeFileSync(path.join(OUT_DATA, 'map-data.js'), `window.__MAP_DATA__ = ${JSON.stringify(mapData, null, 2)};\n`);
 

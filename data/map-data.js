@@ -1,7 +1,64 @@
 window.__MAP_DATA__ = {
+  "continents": {
+    "north-america": {
+      "label": "North America",
+      "bounds": [
+        [
+          7,
+          -170
+        ],
+        [
+          72,
+          -52
+        ]
+      ]
+    },
+    "south-america": {
+      "label": "South America",
+      "bounds": [
+        [
+          -56,
+          -82
+        ],
+        [
+          13,
+          -34
+        ]
+      ]
+    },
+    "europe": {
+      "label": "Europe",
+      "bounds": [
+        [
+          35,
+          -11
+        ],
+        [
+          71.5,
+          32
+        ]
+      ]
+    },
+    "africa": {
+      "label": "Africa",
+      "bounds": [
+        [
+          -35,
+          -18
+        ],
+        [
+          37.5,
+          52
+        ]
+      ]
+    }
+  },
   "countries": {
     "usa": {
       "label": "United States",
+      "continent": "north-america",
+      "iso3": "USA",
+      "isoNumeric": "840",
       "bounds": [
         [
           24,
@@ -136,6 +193,9 @@ window.__MAP_DATA__ = {
     },
     "peru": {
       "label": "Peru",
+      "continent": "south-america",
+      "iso3": "PER",
+      "isoNumeric": "604",
       "bounds": [
         [
           -18,
@@ -180,6 +240,9 @@ window.__MAP_DATA__ = {
     },
     "uk": {
       "label": "United Kingdom",
+      "continent": "europe",
+      "iso3": "GBR",
+      "isoNumeric": "826",
       "bounds": [
         [
           49,
@@ -217,6 +280,9 @@ window.__MAP_DATA__ = {
     },
     "spain": {
       "label": "Spain",
+      "continent": "europe",
+      "iso3": "ESP",
+      "isoNumeric": "724",
       "bounds": [
         [
           36,
@@ -239,7 +305,12 @@ window.__MAP_DATA__ = {
                 "europe-may-2023",
                 "barcelona-2025"
               ]
-            },
+            }
+          ]
+        },
+        "madrid-region": {
+          "label": "Madrid",
+          "cities": [
             {
               "name": "Madrid",
               "lat": 40.4168,
@@ -280,6 +351,9 @@ window.__MAP_DATA__ = {
     },
     "germany": {
       "label": "Germany",
+      "continent": "europe",
+      "iso3": "DEU",
+      "isoNumeric": "276",
       "bounds": [
         [
           47,
@@ -371,6 +445,9 @@ window.__MAP_DATA__ = {
     },
     "czechia": {
       "label": "Czechia",
+      "continent": "europe",
+      "iso3": "CZE",
+      "isoNumeric": "203",
       "bounds": [
         [
           48.5,
@@ -399,6 +476,9 @@ window.__MAP_DATA__ = {
     },
     "hungary": {
       "label": "Hungary",
+      "continent": "europe",
+      "iso3": "HUN",
+      "isoNumeric": "348",
       "bounds": [
         [
           45.7,
@@ -427,6 +507,9 @@ window.__MAP_DATA__ = {
     },
     "switzerland": {
       "label": "Switzerland",
+      "continent": "europe",
+      "iso3": "CHE",
+      "isoNumeric": "756",
       "bounds": [
         [
           45.8,
@@ -463,6 +546,9 @@ window.__MAP_DATA__ = {
     },
     "italy": {
       "label": "Italy",
+      "continent": "europe",
+      "iso3": "ITA",
+      "isoNumeric": "380",
       "bounds": [
         [
           36,
@@ -551,6 +637,9 @@ window.__MAP_DATA__ = {
     },
     "sweden": {
       "label": "Sweden",
+      "continent": "europe",
+      "iso3": "SWE",
+      "isoNumeric": "752",
       "bounds": [
         [
           55,
@@ -579,6 +668,9 @@ window.__MAP_DATA__ = {
     },
     "denmark": {
       "label": "Denmark",
+      "continent": "europe",
+      "iso3": "DNK",
+      "isoNumeric": "208",
       "bounds": [
         [
           54.5,
@@ -607,6 +699,9 @@ window.__MAP_DATA__ = {
     },
     "norway": {
       "label": "Norway",
+      "continent": "europe",
+      "iso3": "NOR",
+      "isoNumeric": "578",
       "bounds": [
         [
           57.9,
@@ -635,6 +730,9 @@ window.__MAP_DATA__ = {
     },
     "portugal": {
       "label": "Portugal",
+      "continent": "europe",
+      "iso3": "PRT",
+      "isoNumeric": "620",
       "bounds": [
         [
           36.8,
@@ -676,6 +774,9 @@ window.__MAP_DATA__ = {
     },
     "austria": {
       "label": "Austria",
+      "continent": "europe",
+      "iso3": "AUT",
+      "isoNumeric": "040",
       "bounds": [
         [
           46.4,
@@ -717,6 +818,9 @@ window.__MAP_DATA__ = {
     },
     "slovakia": {
       "label": "Slovakia",
+      "continent": "europe",
+      "iso3": "SVK",
+      "isoNumeric": "703",
       "bounds": [
         [
           47.7,
@@ -745,6 +849,9 @@ window.__MAP_DATA__ = {
     },
     "greece": {
       "label": "Greece",
+      "continent": "europe",
+      "iso3": "GRC",
+      "isoNumeric": "300",
       "bounds": [
         [
           34.8,
@@ -773,6 +880,9 @@ window.__MAP_DATA__ = {
     },
     "morocco": {
       "label": "Morocco",
+      "continent": "africa",
+      "iso3": "MAR",
+      "isoNumeric": "504",
       "bounds": [
         [
           27.6,
@@ -801,6 +911,9 @@ window.__MAP_DATA__ = {
     },
     "netherlands": {
       "label": "Netherlands",
+      "continent": "europe",
+      "iso3": "NLD",
+      "isoNumeric": "528",
       "bounds": [
         [
           50.7,
@@ -855,6 +968,9 @@ window.__MAP_DATA__ = {
     },
     "croatia": {
       "label": "Croatia",
+      "continent": "europe",
+      "iso3": "HRV",
+      "isoNumeric": "191",
       "bounds": [
         [
           42.4,
@@ -899,6 +1015,9 @@ window.__MAP_DATA__ = {
     },
     "france": {
       "label": "France",
+      "continent": "europe",
+      "iso3": "FRA",
+      "isoNumeric": "250",
       "bounds": [
         [
           41.3,
@@ -948,6 +1067,9 @@ window.__MAP_DATA__ = {
     },
     "monaco": {
       "label": "Monaco",
+      "continent": "europe",
+      "iso3": "MCO",
+      "isoNumeric": "492",
       "bounds": [
         [
           43.72,
