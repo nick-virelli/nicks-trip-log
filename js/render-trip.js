@@ -53,5 +53,29 @@
     return prefix ? html.replace(/ src="images\//g, ` src="${prefix}images/`) : html;
   }
 
-  return { esc, fmtDate, fmtDateRange, renderTripHtml };
+  function thumbFor(src) {
+    return src ? src.replace(/^images\/trips\//, "images/thumbs/") : null;
+  }
+
+  // A cover-image card for a trip or a collapsed collection, used by the home
+  // page's "Recent trips" and by the trips index (js/trip-entries.js builds the
+  // entry objects this expects: {href, title, meta, date_start, date_end,
+  // date_precision, cover}).
+  function tripTileHtml(entry) {
+    const thumb = thumbFor(entry.cover);
+    const media = thumb
+      ? `<img src="${esc(thumb)}" alt="${esc(entry.title)}" loading="lazy">`
+      : `<span class="trip-tile-placeholder">${esc(entry.title)}</span>`;
+    const dates = fmtDateRange(entry);
+    return `
+      <a class="trip-tile${thumb ? "" : " trip-tile--no-cover"}" href="${esc(entry.href)}">
+        <span class="trip-tile-media">${media}</span>
+        <span class="trip-tile-body">
+          <span class="trip-tile-title">${esc(entry.title)}</span>
+          <span class="trip-tile-meta">${entry.meta}${dates ? " &middot; " + esc(dates) : ""}</span>
+        </span>
+      </a>`;
+  }
+
+  return { esc, fmtDate, fmtDateRange, renderTripHtml, thumbFor, tripTileHtml };
 });

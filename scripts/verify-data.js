@@ -149,10 +149,11 @@ if (fs.existsSync(path.join(ROOT, 'trip'))) {
     const html = fs.readFileSync(path.join(ROOT, rel), 'utf8');
     for (const id of c.tripIds) if (!html.includes(`../trip/${id}.html`)) fail(`${rel} does not link to ${id}`);
   }
-  for (const f of ['404.html', '.nojekyll', 'sitemap.xml']) if (!pageFor(f)) fail(`missing ${f}`);
+  for (const f of ['404.html', '.nojekyll', 'sitemap.xml', 'trips.html']) if (!pageFor(f)) fail(`missing ${f}`);
   const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
   const locs = (sitemap.match(/<loc>/g) || []).length;
-  const expected = 3 + posts.length + (collections || []).length;
+  const SITE_PAGE_COUNT = 4; // index, trips, gallery, about
+  const expected = SITE_PAGE_COUNT + posts.length + (collections || []).length;
   if (locs !== expected) fail(`sitemap has ${locs} URLs, expected ${expected}`);
   for (const p of posts) if (!sitemap.includes(`/trip/${p.id}.html<`)) fail(`sitemap missing trip/${p.id}.html`);
 }

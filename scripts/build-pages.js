@@ -14,7 +14,7 @@ const { esc, fmtDate, fmtDateRange, renderTripHtml } = require('../js/render-tri
 
 const ROOT = path.join(__dirname, '..');
 const TRIP_DIR = path.join(ROOT, 'trip');
-const SITE_PAGES = ['index', 'gallery', 'about'].map((name) => require(`./pages/${name}`));
+const SITE_PAGES = ['index', 'trips', 'gallery', 'about'].map((name) => require(`./pages/${name}`));
 const COLLECTION_DIR = path.join(ROOT, 'collections');
 const SITE_TITLE = "Nick's Trip Log";
 
@@ -146,7 +146,7 @@ function main() {
 
   write('404.html', notFoundPage());
 
-  const urls = ['', 'gallery.html', 'about.html', ...collections.map((c) => `collections/${c.id}.html`), ...posts.map((p) => `trip/${p.id}.html`)];
+  const urls = [...SITE_PAGES.map((p) => p.canonicalPath), ...collections.map((c) => `collections/${c.id}.html`), ...posts.map((p) => `trip/${p.id}.html`)];
   write('sitemap.xml', sitemap(urls));
 
   console.log(`Wrote ${SITE_PAGES.length} site pages, ${posts.length} trip pages, ${collections.length} collection pages, 404.html, sitemap.xml (${urls.length} URLs).`);

@@ -53,6 +53,7 @@ const LIGHTBOX = `
 function navLinks(prefix, activeNav) {
   const items = [
     ['index.html', 'Home'],
+    ['trips.html', 'Trips'],
     ['gallery.html', 'Gallery'],
     ['about.html', 'About'],
   ];

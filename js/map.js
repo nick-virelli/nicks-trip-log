@@ -1,7 +1,8 @@
 (function () {
   const isFile = window.location.protocol === "file:";
-  // Shared with the static trip pages (js/render-trip.js) and the map (js/geo-map.js).
-  const { esc, fmtDateRange } = window.TripRender;
+  // Shared with the static trip pages (js/render-trip.js), the trips index
+  // (js/trip-entries.js), and the map (js/geo-map.js).
+  const { esc, fmtDateRange, tripTileHtml } = window.TripRender;
 
   async function loadData(jsonPath, globalVar) {
     if (isFile) {
@@ -45,75 +46,81 @@
     return `${esc(city.name)} (${city.tripIds.length} trips)`;
   }
 
-  function renderHero(posts) {
-    const totalMiles = posts.reduce((s, p) => s + (p.total_miles || 0), 0);
-    const count = posts.length;
-    const heroCount = document.querySelector(".hero-count");
-    const heroLabel = document.querySelector(".hero-stat-label");
-    if (heroCount) heroCount.textContent = Math.round(totalMiles).toLocaleString() + "+";
-    if (heroLabel) heroLabel.textContent = `miles hiked (that we tracked) · ${count} trips`;
-
-    const withDates = posts.filter((p) => p.date_start).sort((a, b) => (a.date_start < b.date_start ? 1 : -1));
-    const latest = withDates[0] || posts[0];
-    const latestEl = document.getElementById("hero-latest");
-    if (latestEl && latest) {
-      latestEl.innerHTML = `
-        <span class="hero-latest-label">Latest trip</span>
-        <a class="hero-post-title" href="trip/${esc(latest.id)}.html">${esc(latest.title)}</a>
-        <span class="hero-post-date">${esc(fmtDateRange(latest))}</span>`;
-    }
+  // Miles are only logged on a handful of trips, so the stat says how many
+  // rather than implying it covers the whole log.
+  function renderStats(posts, mapData, photoCount) {
+    const withMiles = posts.filter((p) => p.total_miles > 0);
+    const totalMiles = withMiles.reduce((s, p) => s + p.total_miles, 0);
+    const set = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
+    set("stat-trips", posts.length);
+    set("stat-countries", Object.keys(mapData.countries).length);
+    set("stat-continents", Object.keys(mapData.continents).length);
+    set("stat-photos", photoCount.toLocaleString());
+    set("stat-miles", Math.round(totalMiles).toLocaleString() + "+");
+    const milesLabel = document.getElementById("stat-miles-label");
+    if (milesLabel) milesLabel.textContent = `Miles, ${withMiles.length} trip${withMiles.length === 1 ? "" : "s"} tracked`;
   }
 
-  function renderRecentList(posts, query) {
-    const listEl = document.getElementById("recent-posts-list");
-    if (!listEl) return;
-    const q = (query || "").trim().toLowerCase();
-    const filtered = q
-      ? posts.filter((p) => `${p.title} ${p.location} ${fmtDateRange(p)}`.toLowerCase().includes(q))
-      : posts;
-    const withDates = filtered.filter((p) => p.date_start).sort((a, b) => (a.date_start < b.date_start ? 1 : -1));
-    const withoutDates = filtered.filter((p) => !p.date_start);
-    const ordered = [...withDates, ...withoutDates];
-
-    if (!ordered.length) {
-      listEl.innerHTML = `<p class="post-meta">No trips match "${esc(query)}".</p>`;
-      return;
-    }
-
-    listEl.innerHTML = ordered
-      .map(
-        (p) => `
-      <div class="special-item">
-        <a href="trip/${esc(p.id)}.html">${esc(p.title)}</a>
-        <div class="meta">${esc(p.location)}${fmtDateRange(p) ? " &middot; " + fmtDateRange(p) : ""}</div>
-      </div>`
-      )
-      .join("");
+  function renderRecentTrips(posts, collections, mapData) {
+    const grid = document.getElementById("recent-trips-grid");
+    if (!grid) return;
+    const entries = window.TripEntries.sort(window.TripEntries.build(posts, collections, mapData), "date-desc");
+    grid.innerHTML = entries.slice(0, 6).map(tripTileHtml).join("");
   }
 
-  function initTripSearch() {
-    const input = document.getElementById("trip-search");
-    if (!input) return;
-    input.addEventListener("input", () => renderRecentList(app.posts, input.value));
+  function initMapToggle(mapData, world) {
+    const toggleBtn = document.getElementById("toggle-home-map");
+    const container = document.getElementById("map-container");
+    const instruction = document.getElementById("map-instruction");
+    let geoMap = null;
+
+    toggleBtn.addEventListener("click", () => {
+      const showing = !container.hidden;
+      if (showing) {
+        container.hidden = true;
+        instruction.hidden = true;
+        toggleBtn.textContent = "Show map";
+        return;
+      }
+      container.hidden = false;
+      instruction.hidden = false;
+      toggleBtn.textContent = "Hide map";
+      if (!geoMap) {
+        container.innerHTML = '<div id="leaflet-map" class="leaflet-map"></div>';
+        geoMap = window.GeoMap.create({
+          containerId: "leaflet-map",
+          countries: mapData.countries,
+          continents: mapData.continents,
+          world,
+          onSelectCity,
+          cityTooltip,
+          onLevelChange(state) {
+            document.getElementById("map-controls").style.display = state.level === "continent" ? "none" : "block";
+          },
+        });
+        document.getElementById("back-to-world").addEventListener("click", geoMap.showWorld);
+        document.querySelector(".theme-toggle")?.addEventListener("click", geoMap.redrawForTheme);
+        document.addEventListener("themechange", geoMap.redrawForTheme);
+      }
+      setTimeout(() => geoMap.map.invalidateSize(), 0);
+    });
   }
 
   function showLoadError() {
-    const container = document.getElementById("map-container");
-    if (container) {
-      container.innerHTML = '<div class="load-error"><p>Failed to load the page.</p><button type="button" onclick="location.reload()">Reload</button></div>';
-    }
-    const sidebar = document.getElementById("recent-posts-list");
-    if (sidebar) sidebar.innerHTML = "";
-    const heroLabel = document.querySelector(".hero-stat-label");
-    if (heroLabel) heroLabel.textContent = "";
+    const grid = document.getElementById("recent-trips-grid");
+    if (grid) grid.innerHTML = '<div class="load-error"><p>Failed to load the page.</p><button type="button" onclick="location.reload()">Reload</button></div>';
   }
 
   async function init() {
-    let postsData, mapData, world;
+    let postsData, mapData, galleryData, world;
     try {
-      [postsData, mapData, world] = await Promise.all([
+      [postsData, mapData, galleryData, world] = await Promise.all([
         loadData("data/posts.json", "__POSTS__"),
         loadData("data/map-data.json", "__MAP_DATA__"),
+        loadData("data/gallery.json", "__GALLERY__"),
         loadData("data/world.json", "__WORLD__"),
       ]);
     } catch (err) {
@@ -122,32 +129,9 @@
     }
     app.posts = postsData.posts;
 
-    renderHero(app.posts);
-    renderRecentList(app.posts);
-    initTripSearch();
-
-    const container = document.getElementById("map-container");
-    container.innerHTML = '<div id="leaflet-map" class="leaflet-map"></div>';
-
-    const geoMap = window.GeoMap.create({
-      containerId: "leaflet-map",
-      countries: mapData.countries,
-      continents: mapData.continents,
-      world,
-      onSelectCity,
-      cityTooltip,
-      onLevelChange(state) {
-        document.getElementById("map-controls").style.display = state.level === "continent" ? "none" : "block";
-      },
-    });
-
-    document.getElementById("back-to-world").addEventListener("click", geoMap.showWorld);
-
-    // recolor the map when the theme toggle or the palette switcher changes tokens
-    document.querySelector(".theme-toggle")?.addEventListener("click", geoMap.redrawForTheme);
-    document.addEventListener("themechange", geoMap.redrawForTheme);
-
-    window.TripUI.initActiveTripIndicator();
+    renderStats(postsData.posts, mapData, galleryData.images.length);
+    renderRecentTrips(postsData.posts, postsData.collections, mapData);
+    initMapToggle(mapData, world);
   }
 
   if (document.getElementById("map-container")) {

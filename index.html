@@ -36,6 +36,7 @@
     <h1 class="site-title"><a href="index.html">Nick's Trip Log</a></h1>
     <nav class="site-nav">
       <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="trips.html">Trips</a>
       <a href="gallery.html">Gallery</a>
       <a href="about.html">About</a>
       <button type="button" class="theme-toggle" aria-label="Toggle theme">
@@ -43,71 +44,46 @@
         <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 12.5A8.5 8.5 0 1 1 11.5 4a7 7 0 0 0 8.5 8.5z"/></svg>
       </button>
     </nav>
-    <button type="button" class="active-trip-indicator" id="active-trip-indicator">
-      <span class="title" id="active-trip-title"></span>
-      <span class="meta" id="active-trip-meta"></span>
-    </button>
   </header>
 
-  <div class="hero-strip">
-    <div class="hero-strip-inner">
-      <div class="hero-stat">
-        <span class="hero-count">0</span>
-        <span class="hero-stat-label">Loading…</span>
-      </div>
-      <div class="hero-latest" id="hero-latest">
-        <span class="hero-latest-label">Latest trip</span>
-        <span class="hero-post-loading">Loading...</span>
-      </div>
-    </div>
-  </div>
   <main>
-    <div class="home-layout">
-      <div class="home-main">
-        <section class="map-section">
-          <h2>Explore by place</h2>
-          <p class="map-instruction">Click a country to zoom in, then click a city to read the trip.</p>
-          <div class="map-controls" id="map-controls" style="display:none;">
-            <button type="button" class="map-back" id="back-to-world">&larr; Back to world</button>
-          </div>
-          <div class="map-container" id="map-container">
-            <p>Loading map…</p>
-          </div>
-        </section>
+    <section class="stats-bar" aria-label="Trip stats">
+      <div class="stat-tile"><span class="stat-value" id="stat-trips">–</span><span class="stat-label">Trips</span></div>
+      <div class="stat-tile"><span class="stat-value" id="stat-countries">–</span><span class="stat-label">Countries</span></div>
+      <div class="stat-tile"><span class="stat-value" id="stat-continents">–</span><span class="stat-label">Continents</span></div>
+      <div class="stat-tile"><span class="stat-value" id="stat-photos">–</span><span class="stat-label">Photos</span></div>
+      <div class="stat-tile"><span class="stat-value" id="stat-miles">–</span><span class="stat-label" id="stat-miles-label">Miles</span></div>
+    </section>
 
-        <article class="post-display" id="post-display" aria-live="polite"></article>
+    <section class="map-section">
+      <div class="section-head">
+        <h2>Explore by place</h2>
+        <button type="button" class="map-back" id="toggle-home-map">Show map</button>
       </div>
+      <p class="map-instruction" id="map-instruction" hidden>Click a country to zoom in, then click a city to read the trip.</p>
+      <div class="map-controls" id="map-controls" style="display:none;">
+        <button type="button" class="map-back" id="back-to-world">&larr; Back to world</button>
+      </div>
+      <div class="map-container" id="map-container" hidden>
+        <p>Loading map…</p>
+      </div>
+    </section>
 
-      <aside class="special-sidebar" aria-label="Recent trips">
-        <h2 class="special-title">Recent Trips</h2>
-        <input type="search" id="trip-search" class="trip-search" placeholder="Search by name, place, or year">
-        <div id="recent-posts-list" class="special-list">
-          <p class="post-meta">Loading…</p>
-        </div>
-      </aside>
-    </div>
+    <section class="recent-section">
+      <div class="section-head">
+        <h2>Recent trips</h2>
+        <a href="trips.html">View all trips &rarr;</a>
+      </div>
+      <div id="recent-trips-grid" class="trip-grid">
+        <p class="post-meta">Loading…</p>
+      </div>
+    </section>
   </main>
-
-  <div id="lightbox" class="lightbox" style="display:none;" role="dialog" aria-modal="true" aria-label="Photo viewer">
-    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
-    <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&#8249;</button>
-    <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next photo">&#8250;</button>
-    <div class="lightbox-body">
-      <img id="lightbox-img" src="" alt="">
-      <div class="lightbox-meta">
-        <span id="lightbox-caption"></span>
-        <div class="lightbox-actions">
-          <button type="button" id="lightbox-share">Share</button>
-          <a id="lightbox-download" download>Download</a>
-          <button type="button" id="lightbox-print">Print</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <footer class="site-footer">
     <nav>
       <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="trips.html">Trips</a>
       <a href="gallery.html">Gallery</a>
       <a href="about.html">About</a>
     </nav>
@@ -123,10 +99,10 @@
   <script src="js/palette-switcher.js"></script>
   <script src="data/posts.js"></script>
   <script src="data/map-data.js"></script>
+  <script src="data/gallery.js"></script>
   <script src="data/world.js"></script>
-  <script src="js/lightbox.js"></script>
   <script src="js/render-trip.js"></script>
-  <script src="js/trip-ui.js"></script>
+  <script src="js/trip-entries.js"></script>
   <script src="js/map.js"></script>
 </body>
 </html>
