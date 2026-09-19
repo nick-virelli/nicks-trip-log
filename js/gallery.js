@@ -1,5 +1,6 @@
 (function () {
   const isFile = window.location.protocol === "file:";
+  const { esc, fmtDate } = window.TripRender;
 
   async function loadData(jsonPath, globalVar) {
     if (isFile) {
@@ -8,21 +9,6 @@
     }
     const res = await fetch(jsonPath);
     return res.json();
-  }
-
-  function esc(s) {
-    return String(s == null ? "" : s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-  }
-
-  function fmtDate(d, precision) {
-    if (!d) return "";
-    const parts = d.split("-").map(Number);
-    const dt = new Date(parts[0], (parts[1] || 1) - 1, parts[2] || 1);
-    if (precision === "month") return dt.toLocaleDateString(undefined, { year: "numeric", month: "long" });
-    return dt.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
   }
 
   const app = {
@@ -66,11 +52,12 @@
     const gridEl = document.getElementById("gallery-grid");
     countEl.textContent = `${list.length} photo${list.length === 1 ? "" : "s"}`;
 
+    // The grid shows thumbnails; the lightbox opens the full-size photo.
     gridEl.innerHTML = list
       .map(
         (img, i) => `
       <button type="button" class="gallery-item" data-index="${i}">
-        <img src="${esc(img.src)}" alt="${esc(img.tripTitle)}${img.locations.length ? ", " + esc(img.locations.join(", ")) : ""}" loading="lazy">
+        <img src="${esc(img.thumb || img.src)}" alt="${esc(altTextFor(img))}" loading="lazy">
         <span class="caption">${esc(img.tripTitle)}${fmtDate(img.date_start, img.date_precision) ? " - " + esc(fmtDate(img.date_start, img.date_precision)) : ""}</span>
       </button>`
       )
@@ -85,6 +72,14 @@
         );
       });
     });
+  }
+
+  // A screen reader gets the trip, the specific place, and the date, not just
+  // the trip title repeated on every one of its photos.
+  function altTextFor(img) {
+    const date = fmtDate(img.date_start, img.date_precision);
+    const where = img.locations.length ? img.locations.join(", ") : img.tripTitle;
+    return `${img.tripTitle}, ${where}${date ? ", " + date : ""}`;
   }
 
   function captionFor(img) {
