@@ -25,22 +25,11 @@
     return dt.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
   }
 
-  function getComputedColor() {
-    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#2d5a4a";
-  }
-
   const app = {
     images: [],
-    countries: {},
     query: "",
     locationFilter: null,
-    map: null,
-    markerLayer: null,
-    tileLayer: null,
-    level: "world",
-    activeCountry: null,
     currentList: [],
-    lightboxIndex: 0,
   };
 
   function matchesQuery(img, q) {
@@ -113,92 +102,17 @@
 
   // --- Map (browse-by-place), lazy-initialized on first reveal ---
 
-  function countryCentroid(country) {
-    const cities = [];
-    for (const regionKey in country.regions) {
-      for (const c of country.regions[regionKey].cities) cities.push(c);
-    }
-    const lat = cities.reduce((s, c) => s + c.lat, 0) / cities.length;
-    const lon = cities.reduce((s, c) => s + c.lon, 0) / cities.length;
-    return [lat, lon];
+  function onSelectCity(city) {
+    app.locationFilter = city.name;
+    renderChip();
+    renderGrid();
+    document.getElementById("gallery-grid").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  function tileUrlFor(theme) {
-    return theme === "dark"
-      ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-      : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
-  }
-
-  function setTileLayer() {
-    const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-    if (app.tileLayer) app.map.removeLayer(app.tileLayer);
-    app.tileLayer = L.tileLayer(tileUrlFor(theme), {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: "abcd",
-      maxZoom: 19,
-    }).addTo(app.map);
-  }
-
-  function clearMarkers() {
-    if (app.markerLayer) app.map.removeLayer(app.markerLayer);
-    app.markerLayer = L.layerGroup().addTo(app.map);
-  }
-
-  function showWorld() {
-    app.level = "world";
-    app.activeCountry = null;
-    clearMarkers();
-    document.getElementById("gallery-map-controls").style.display = "none";
-    const bounds = [];
-    for (const key in app.countries) {
-      const country = app.countries[key];
-      const [lat, lon] = countryCentroid(country);
-      const marker = L.circleMarker([lat, lon], { radius: 9, color: getComputedColor(), fillColor: getComputedColor(), fillOpacity: 0.9, weight: 2 }).addTo(
-        app.markerLayer
-      );
-      marker.bindTooltip(esc(country.label), { direction: "top", className: "trip-pin-label" });
-      marker.on("click", () => showCountry(key));
-      bounds.push([lat, lon]);
-      if (country.bounds) bounds.push(country.bounds[0], country.bounds[1]);
-    }
-    if (bounds.length) app.map.fitBounds(bounds, { padding: [30, 30] });
-  }
-
-  function showCountry(countryKey) {
-    const country = app.countries[countryKey];
-    if (!country) return;
-    app.level = "country";
-    app.activeCountry = countryKey;
-    clearMarkers();
-    document.getElementById("gallery-map-controls").style.display = "block";
-    const bounds = [];
-    for (const regionKey in country.regions) {
-      for (const city of country.regions[regionKey].cities) {
-        const marker = L.circleMarker([city.lat, city.lon], {
-          radius: 8,
-          color: getComputedColor(),
-          fillColor: getComputedColor(),
-          fillOpacity: 0.85,
-          weight: 2,
-        }).addTo(app.markerLayer);
-        marker.bindTooltip(esc(city.name), { direction: "top", className: "trip-pin-label" });
-        marker.on("click", () => {
-          app.locationFilter = city.name;
-          renderChip();
-          renderGrid();
-          document.getElementById("gallery-grid").scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-        bounds.push([city.lat, city.lon]);
-      }
-    }
-    if (country.bounds) app.map.fitBounds(country.bounds, { padding: [20, 20] });
-    else if (bounds.length) app.map.fitBounds(bounds, { padding: [40, 40] });
-  }
-
-  function initMapToggle() {
+  function initMapToggle(mapData, world) {
     const toggleBtn = document.getElementById("toggle-gallery-map");
     const section = document.getElementById("gallery-map-section");
-    let initialized = false;
+    let geoMap = null;
 
     toggleBtn.addEventListener("click", () => {
       const showing = section.style.display !== "none";
@@ -209,23 +123,23 @@
       }
       section.style.display = "block";
       toggleBtn.textContent = "Hide map";
-      if (!initialized) {
-        initialized = true;
-        app.map = L.map("gallery-leaflet-map", { scrollWheelZoom: false });
-        setTileLayer();
-        showWorld();
-        document.getElementById("gallery-back-to-world").addEventListener("click", showWorld);
-        const redrawForTheme = () => {
-          setTimeout(() => {
-            setTileLayer();
-            if (app.level === "world") showWorld();
-            else showCountry(app.activeCountry);
-          }, 0);
-        };
-        document.querySelector(".theme-toggle")?.addEventListener("click", redrawForTheme);
-        document.addEventListener("themechange", redrawForTheme);
+      if (!geoMap) {
+        geoMap = window.GeoMap.create({
+          containerId: "gallery-leaflet-map",
+          countries: mapData.countries,
+          continents: mapData.continents,
+          world,
+          onSelectCity,
+          cityTooltip: (city) => esc(city.name),
+          onLevelChange(state) {
+            document.getElementById("gallery-map-controls").style.display = state.level === "continent" ? "none" : "block";
+          },
+        });
+        document.getElementById("gallery-back-to-world").addEventListener("click", geoMap.showWorld);
+        document.querySelector(".theme-toggle")?.addEventListener("click", geoMap.redrawForTheme);
+        document.addEventListener("themechange", geoMap.redrawForTheme);
       }
-      setTimeout(() => app.map.invalidateSize(), 0);
+      setTimeout(() => geoMap.map.invalidateSize(), 0);
     });
   }
 
@@ -236,22 +150,22 @@
   }
 
   async function init() {
-    let galleryData, mapData;
+    let galleryData, mapData, world;
     try {
-      [galleryData, mapData] = await Promise.all([
+      [galleryData, mapData, world] = await Promise.all([
         loadData("data/gallery.json", "__GALLERY__"),
         loadData("data/map-data.json", "__MAP_DATA__"),
+        loadData("data/world.json", "__WORLD__"),
       ]);
     } catch (err) {
       showLoadError();
       return;
     }
     app.images = galleryData.images;
-    app.countries = mapData.countries;
 
     renderGrid();
     initSearch();
-    initMapToggle();
+    initMapToggle(mapData, world);
   }
 
   if (document.getElementById("gallery-grid")) {

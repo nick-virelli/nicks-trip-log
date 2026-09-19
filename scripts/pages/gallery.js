@@ -28,5 +28,5 @@ module.exports = {
       <p id="gallery-count" class="post-meta"></p>
       <div id="gallery-grid" class="gallery-grid"></div>
     </div>`,
-  scripts: ['data/gallery.js', 'data/map-data.js', 'js/lightbox.js', 'js/gallery.js'],
+  scripts: ['data/gallery.js', 'data/map-data.js', 'data/world.js', 'js/lightbox.js', 'js/gallery.js'],
 };

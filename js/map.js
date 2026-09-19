@@ -1,8 +1,7 @@
 (function () {
   const isFile = window.location.protocol === "file:";
-  // Shared with the static trip pages (js/render-trip.js, js/trip-ui.js).
-  const { esc, fmtDateRange, renderTripHtml } = window.TripRender;
-  const { initCarousels, initImageLightboxTriggers, initActiveTripIndicator } = window.TripUI;
+  // Shared with the static trip pages (js/render-trip.js) and the map (js/geo-map.js).
+  const { esc, fmtDateRange } = window.TripRender;
 
   async function loadData(jsonPath, globalVar) {
     if (isFile) {
@@ -13,161 +12,37 @@
     return res.json();
   }
 
-  function currentTheme() {
-    return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-  }
-
-  const app = {
-    posts: [],
-    countries: {},
-    map: null,
-    markerLayer: null,
-    tileLayer: null,
-    level: "world", // world | country
-    activeCountry: null,
-  };
-
-  function tileUrlFor(theme) {
-    return theme === "dark"
-      ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-      : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
-  }
-
-  function setTileLayer() {
-    const url = tileUrlFor(currentTheme());
-    if (app.tileLayer) app.map.removeLayer(app.tileLayer);
-    app.tileLayer = L.tileLayer(url, {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: "abcd",
-      maxZoom: 19,
-    }).addTo(app.map);
-  }
-
-  function countryCentroid(country) {
-    const cities = [];
-    for (const regionKey in country.regions) {
-      for (const c of country.regions[regionKey].cities) cities.push(c);
-    }
-    const lat = cities.reduce((s, c) => s + c.lat, 0) / cities.length;
-    const lon = cities.reduce((s, c) => s + c.lon, 0) / cities.length;
-    return [lat, lon];
-  }
-
-  function clearMarkers() {
-    if (app.markerLayer) app.map.removeLayer(app.markerLayer);
-    app.markerLayer = L.layerGroup().addTo(app.map);
-  }
-
-  function showWorld() {
-    app.level = "world";
-    app.activeCountry = null;
-    clearMarkers();
-    document.getElementById("map-controls").style.display = "none";
-
-    const allBounds = [];
-    for (const key in app.countries) {
-      const country = app.countries[key];
-      const [lat, lon] = countryCentroid(country);
-      const postCount = app.posts.filter((p) => p.country === key).length;
-      const marker = L.circleMarker([lat, lon], {
-        radius: 9,
-        color: getComputedColor(),
-        fillColor: getComputedColor(),
-        fillOpacity: 0.9,
-        weight: 2,
-      }).addTo(app.markerLayer);
-      marker.bindTooltip(`${esc(country.label)} (${postCount})`, { direction: "top", className: "trip-pin-label" });
-      marker.on("click", () => showCountry(key));
-      allBounds.push([lat, lon]);
-      if (country.bounds) allBounds.push(country.bounds[0], country.bounds[1]);
-    }
-    if (allBounds.length) app.map.fitBounds(allBounds, { padding: [30, 30] });
-  }
-
-  function getComputedColor() {
-    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#2d5a4a";
-  }
-
-  function showCountry(countryKey) {
-    const country = app.countries[countryKey];
-    if (!country) return;
-    app.level = "country";
-    app.activeCountry = countryKey;
-    clearMarkers();
-    document.getElementById("map-controls").style.display = "block";
-
-    // Every place a trip touched gets its own pin (no single "main" pin). When two
-    // different trips touch the exact same place, that one pin lists both - click
-    // opens a small chooser instead of guessing or dumping every article at once.
-    const bounds = [];
-    for (const regionKey in country.regions) {
-      const region = country.regions[regionKey];
-      for (const city of region.cities) {
-        const marker = L.circleMarker([city.lat, city.lon], {
-          radius: 8,
-          color: getComputedColor(),
-          fillColor: getComputedColor(),
-          fillOpacity: 0.85,
-          weight: 2,
-        }).addTo(app.markerLayer);
-
-        if (city.tripIds.length === 1) {
-          const post = app.posts.find((p) => p.id === city.tripIds[0]);
-          marker.bindTooltip(`${esc(city.name)}${post ? " - " + esc(post.title) : ""}`, { direction: "top", className: "trip-pin-label" });
-          marker.on("click", () => showTrip(city.tripIds[0]));
-        } else {
-          marker.bindTooltip(`${esc(city.name)} (${city.tripIds.length} trips)`, { direction: "top", className: "trip-pin-label" });
-          marker.bindPopup(chooserPopupHtml(city));
-          marker.on("popupopen", (e) => wireChooserPopup(e.popup, city));
-        }
-        bounds.push([city.lat, city.lon]);
-      }
-    }
-    if (country.bounds) {
-      app.map.fitBounds(country.bounds, { padding: [20, 20] });
-    } else if (bounds.length) {
-      app.map.fitBounds(bounds, { padding: [40, 40] });
-    }
-  }
+  const app = { posts: [] };
 
   function chooserPopupHtml(city) {
     const items = city.tripIds
       .map((id) => {
         const post = app.posts.find((p) => p.id === id);
         if (!post) return "";
-        return `<a href="#" data-trip="${esc(id)}" style="display:block;padding:0.3rem 0;">${esc(post.title)}<br><span style="font-size:0.85em;color:var(--text-muted);">${esc(fmtDateRange(post))}</span></a>`;
+        return `<a href="trip/${esc(id)}.html" style="display:block;padding:0.3rem 0;">${esc(post.title)}<br><span style="font-size:0.85em;color:var(--text-muted);">${esc(fmtDateRange(post))}</span></a>`;
       })
       .join('<hr style="margin:0.3rem 0;border:none;border-top:1px solid var(--border);">');
     return `<div class="map-popup"><strong>${esc(city.name)}</strong><hr style="margin:0.4rem 0;border:none;border-top:1px solid var(--border);">${items}</div>`;
   }
 
-  function wireChooserPopup(popup, city) {
-    const el = popup.getElement();
-    if (!el) return;
-    el.querySelectorAll("a[data-trip]").forEach((a) => {
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        showTrip(a.dataset.trip);
-        popup.close();
-      });
-    });
-  }
-
-  function showTrip(tripId) {
-    const post = app.posts.find((p) => p.id === tripId);
-    renderPosts(post ? [post] : []);
-    document.getElementById("post-display").scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function renderPosts(posts) {
-    const el = document.getElementById("post-display");
-    if (!posts.length) {
-      el.innerHTML = "";
+  // A city with one trip goes straight to its page. A city more than one trip
+  // touched (e.g. Zion inside both the Southwest road trip and its own trip,
+  // or London/Barcelona from two separate trips) shows the choice instead of
+  // guessing which one the visitor wants.
+  function onSelectCity(city, marker) {
+    if (city.tripIds.length === 1) {
+      window.location.href = `trip/${city.tripIds[0]}.html`;
       return;
     }
-    el.innerHTML = posts.map(renderTripHtml).join('<hr style="margin:2.5rem 0;border:none;border-top:1px solid var(--border);">');
-    initCarousels(el);
-    initImageLightboxTriggers(el);
+    marker.bindPopup(chooserPopupHtml(city)).openPopup();
+  }
+
+  function cityTooltip(city) {
+    if (city.tripIds.length === 1) {
+      const post = app.posts.find((p) => p.id === city.tripIds[0]);
+      return `${esc(city.name)}${post ? " - " + esc(post.title) : ""}`;
+    }
+    return `${esc(city.name)} (${city.tripIds.length} trips)`;
   }
 
   function renderHero(posts) {
@@ -234,18 +109,18 @@
   }
 
   async function init() {
-    let postsData, mapData;
+    let postsData, mapData, world;
     try {
-      [postsData, mapData] = await Promise.all([
+      [postsData, mapData, world] = await Promise.all([
         loadData("data/posts.json", "__POSTS__"),
         loadData("data/map-data.json", "__MAP_DATA__"),
+        loadData("data/world.json", "__WORLD__"),
       ]);
     } catch (err) {
       showLoadError();
       return;
     }
     app.posts = postsData.posts;
-    app.countries = mapData.countries;
 
     renderHero(app.posts);
     renderRecentList(app.posts);
@@ -253,25 +128,26 @@
 
     const container = document.getElementById("map-container");
     container.innerHTML = '<div id="leaflet-map" class="leaflet-map"></div>';
-    app.map = L.map("leaflet-map", { scrollWheelZoom: false });
-    setTileLayer();
-    showWorld();
 
-    document.getElementById("back-to-world").addEventListener("click", showWorld);
+    const geoMap = window.GeoMap.create({
+      containerId: "leaflet-map",
+      countries: mapData.countries,
+      continents: mapData.continents,
+      world,
+      onSelectCity,
+      cityTooltip,
+      onLevelChange(state) {
+        document.getElementById("map-controls").style.display = state.level === "continent" ? "none" : "block";
+      },
+    });
 
-    // keep tiles + marker colors in sync with the theme toggle, or with anything
-    // else that swaps the color tokens (it dispatches "themechange" on document)
-    const redrawForTheme = () => {
-      setTimeout(() => {
-        setTileLayer();
-        if (app.level === "world") showWorld();
-        else showCountry(app.activeCountry);
-      }, 0);
-    };
-    document.querySelector(".theme-toggle")?.addEventListener("click", redrawForTheme);
-    document.addEventListener("themechange", redrawForTheme);
+    document.getElementById("back-to-world").addEventListener("click", geoMap.showWorld);
 
-    initActiveTripIndicator();
+    // recolor the map when the theme toggle or the palette switcher changes tokens
+    document.querySelector(".theme-toggle")?.addEventListener("click", geoMap.redrawForTheme);
+    document.addEventListener("themechange", geoMap.redrawForTheme);
+
+    window.TripUI.initActiveTripIndicator();
   }
 
   if (document.getElementById("map-container")) {

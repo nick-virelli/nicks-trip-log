@@ -19,6 +19,7 @@ const MIRRORS = [
   ['map-data', '__MAP_DATA__'],
   ['gallery', '__GALLERY__'],
   ['search-index', '__SEARCH_INDEX__'],
+  ['world', '__WORLD__'],
 ];
 for (const [name, globalVar] of MIRRORS) {
   const jsonPath = path.join(DATA, `${name}.json`);
@@ -154,6 +155,17 @@ if (fs.existsSync(path.join(ROOT, 'trip'))) {
   const expected = 3 + posts.length + (collections || []).length;
   if (locs !== expected) fail(`sitemap has ${locs} URLs, expected ${expected}`);
   for (const p of posts) if (!sitemap.includes(`/trip/${p.id}.html<`)) fail(`sitemap missing trip/${p.id}.html`);
+}
+
+// World geometry (present from Phase 4 on): every visited country's isoNumeric
+// must resolve to an actual polygon, so the map never has a country with no shape.
+if (fs.existsSync(path.join(DATA, 'world.json'))) {
+  const world = readJson('world.json');
+  const ids = new Set(world.objects.countries.geometries.map((g) => g.id));
+  for (const [key, c] of Object.entries(mapData.countries)) {
+    if (!c.isoNumeric) fail(`country ${key} has no isoNumeric to join against world.json`);
+    else if (!ids.has(c.isoNumeric)) fail(`country ${key} isoNumeric ${c.isoNumeric} has no polygon in world.json`);
+  }
 }
 
 const countries = Object.keys(mapData.countries).length;

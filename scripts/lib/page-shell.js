@@ -10,6 +10,9 @@ const DEFAULT_OG_IMAGE = `${SITE_URL}images/trips/mt-rainier-2026/8E69F307-B2FC-
 const GA_ID = 'G-Y1F7ZMFZVE';
 const LEAFLET_CSS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
 const LEAFLET_JS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+// Converts the world TopoJSON to GeoJSON in the browser (js/geo-map.js), so
+// the published data stays the smaller TopoJSON form.
+const TOPOJSON_JS = 'https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js';
 
 // TEMPORARY (Phase 3): the palette switcher. Remove this entry in Phase 8 along
 // with js/palette-switcher.js.
@@ -113,7 +116,11 @@ function renderPage(o) {
   const canonical = o.canonicalPath != null ? `${SITE_URL}${o.canonicalPath}` : null;
   const ogImage = o.ogImage || DEFAULT_OG_IMAGE;
   const scriptTags = [];
-  if (o.leaflet) scriptTags.push(`  <script src="${LEAFLET_JS}" crossorigin=""></script>`);
+  if (o.leaflet) {
+    scriptTags.push(`  <script src="${LEAFLET_JS}" crossorigin=""></script>`);
+    scriptTags.push(`  <script src="${TOPOJSON_JS}"></script>`);
+    scriptTags.push(`  <script src="${prefix}js/geo-map.js"></script>`);
+  }
   for (const s of ['js/theme.js', ...(PALETTE_SWITCHER ? [PALETTE_SWITCHER] : []), ...(o.scripts || [])]) {
     scriptTags.push(`  <script src="${prefix}${s}"></script>`);
   }
