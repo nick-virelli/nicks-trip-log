@@ -16,11 +16,13 @@
     query: "",
     locationFilter: null,
     currentList: [],
+    countryLabels: {},
   };
 
   function matchesQuery(img, q) {
     if (!q) return true;
-    const haystack = `${img.tripTitle} ${img.locations.join(" ")} ${fmtDate(img.date_start, img.date_precision)}`.toLowerCase();
+    const countries = (img.countries || [img.country]).map((c) => app.countryLabels[c] || c).join(" ");
+    const haystack = `${img.tripTitle} ${img.locations.join(" ")} ${countries} ${fmtDate(img.date_start, img.date_precision)}`.toLowerCase();
     return haystack.includes(q);
   }
 
@@ -157,6 +159,7 @@
       return;
     }
     app.images = galleryData.images;
+    for (const [key, c] of Object.entries(mapData.countries)) app.countryLabels[key] = c.label;
 
     renderGrid();
     initSearch();

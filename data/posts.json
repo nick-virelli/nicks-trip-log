@@ -3,6 +3,9 @@
     {
       "id": "mt-rainier-2026",
       "country": "usa",
+      "countries": [
+        "usa"
+      ],
       "region": "washington",
       "location": "Mount Rainier / Seattle",
       "title": "MT RAINIER 2026",
@@ -69,6 +72,9 @@
     {
       "id": "machu-picchu-2026",
       "country": "peru",
+      "countries": [
+        "peru"
+      ],
       "region": "cusco-region",
       "location": "Cusco / Ollantaytambo / Machu Picchu",
       "title": "MACHU PICCHU 2026",
@@ -145,6 +151,9 @@
     {
       "id": "puerto-rico-spring-break-2026",
       "country": "usa",
+      "countries": [
+        "usa"
+      ],
       "region": "puerto-rico",
       "location": "San Juan / El Yunque",
       "title": "PUERTO RICO SPRING BREAK 2026",
@@ -186,6 +195,9 @@
     {
       "id": "southwest-road-trip-2025",
       "country": "usa",
+      "countries": [
+        "usa"
+      ],
       "region": "southwest",
       "location": "Capitol Reef / Moab / Antelope Canyon / Zion",
       "title": "SOUTHWEST ROAD TRIP 2025",
@@ -288,6 +300,10 @@
     {
       "id": "france-monaco-2025",
       "country": "france",
+      "countries": [
+        "france",
+        "monaco"
+      ],
       "region": "ile-de-france",
       "location": "Paris / Nice / Èze / Monaco",
       "title": "FRANCE-MONACO",
@@ -336,6 +352,9 @@
     {
       "id": "croatia-2025",
       "country": "croatia",
+      "countries": [
+        "croatia"
+      ],
       "region": "split-dalmatia",
       "location": "Split / Hvar / Krka",
       "title": "CROATIA",
@@ -377,6 +396,10 @@
     {
       "id": "salzburg-munich-2025",
       "country": "austria",
+      "countries": [
+        "austria",
+        "germany"
+      ],
       "region": "salzburg-region",
       "location": "Salzburg / Munich / Neuschwanstein",
       "title": "SALZBURG-MUNICH",
@@ -425,6 +448,9 @@
     {
       "id": "palma-2025",
       "country": "spain",
+      "countries": [
+        "spain"
+      ],
       "region": "balearic-islands",
       "location": "Palma de Mallorca",
       "title": "PALMA",
@@ -473,6 +499,9 @@
     {
       "id": "netherlands-2025",
       "country": "netherlands",
+      "countries": [
+        "netherlands"
+      ],
       "region": "north-holland",
       "location": "Amsterdam / Eindhoven / Utrecht",
       "title": "NETHERLANDS",
@@ -514,6 +543,9 @@
     {
       "id": "barcelona-2025",
       "country": "spain",
+      "countries": [
+        "spain"
+      ],
       "region": "catalonia",
       "location": "Barcelona",
       "title": "BARCELONA",
@@ -555,6 +587,10 @@
     {
       "id": "morocco-malaga-2025",
       "country": "morocco",
+      "countries": [
+        "morocco",
+        "spain"
+      ],
       "region": "marrakesh-safi",
       "location": "Marrakesh / Málaga",
       "title": "MOROCCO-MALAGA",
@@ -603,6 +639,9 @@
     {
       "id": "potsdam-2025",
       "country": "germany",
+      "countries": [
+        "germany"
+      ],
       "region": "brandenburg",
       "location": "Potsdam",
       "title": "POTSDAM",
@@ -630,6 +669,11 @@
     {
       "id": "vienna-athens-2025",
       "country": "austria",
+      "countries": [
+        "austria",
+        "slovakia",
+        "greece"
+      ],
       "region": "vienna-region",
       "location": "Vienna / Bratislava / Athens",
       "title": "VIENNA-ATHENS",
@@ -692,6 +736,9 @@
     {
       "id": "western-germany-2025",
       "country": "germany",
+      "countries": [
+        "germany"
+      ],
       "region": "north-rhine-westphalia",
       "location": "Dortmund / Aachen / Cologne",
       "title": "WESTERN GERMANY",
@@ -733,6 +780,10 @@
     {
       "id": "portugal-manchester-2025",
       "country": "portugal",
+      "countries": [
+        "portugal",
+        "uk"
+      ],
       "region": "lisbon-region",
       "location": "Lisbon / Porto / Manchester",
       "title": "PORTUGAL-MANCHESTER",
@@ -774,6 +825,9 @@
     {
       "id": "norway-2025",
       "country": "norway",
+      "countries": [
+        "norway"
+      ],
       "region": "troms",
       "location": "Tromsø",
       "title": "NORWAY",
@@ -815,6 +869,10 @@
     {
       "id": "stockholm-copenhagen-2025",
       "country": "sweden",
+      "countries": [
+        "sweden",
+        "denmark"
+      ],
       "region": "stockholm-region",
       "location": "Stockholm / Copenhagen",
       "title": "STOCKHOLM-COPENHAGEN",
@@ -863,6 +921,9 @@
     {
       "id": "italy-2025",
       "country": "italy",
+      "countries": [
+        "italy"
+      ],
       "region": "lombardy",
       "location": "Milan / Lake Como / Venice / Florence / Naples / Rome",
       "title": "ITALY",
@@ -925,6 +986,9 @@
     {
       "id": "switzerland-2025",
       "country": "switzerland",
+      "countries": [
+        "switzerland"
+      ],
       "region": "bernese-oberland",
       "location": "Interlaken / Grindelwald",
       "title": "SWITZERLAND",
@@ -973,6 +1037,10 @@
     {
       "id": "prague-budapest-2025",
       "country": "czechia",
+      "countries": [
+        "czechia",
+        "hungary"
+      ],
       "region": "prague-region",
       "location": "Prague / Budapest",
       "title": "PRAGUE-BUDAPEST",
@@ -1021,6 +1089,9 @@
     {
       "id": "london-2025",
       "country": "uk",
+      "countries": [
+        "uk"
+      ],
       "region": "england",
       "location": "London",
       "title": "LONDON",
@@ -1055,6 +1126,9 @@
     {
       "id": "leipzig-2025",
       "country": "germany",
+      "countries": [
+        "germany"
+      ],
       "region": "saxony",
       "location": "Leipzig",
       "title": "LEIPZIG",
@@ -1082,6 +1156,9 @@
     {
       "id": "tetons",
       "country": "usa",
+      "countries": [
+        "usa"
+      ],
       "region": "wyoming",
       "location": "Grand Teton National Park",
       "title": "TETONS",
@@ -1151,6 +1228,10 @@
     {
       "id": "europe-may-2023",
       "country": "uk",
+      "countries": [
+        "uk",
+        "spain"
+      ],
       "region": "england",
       "location": "London / Barcelona / Madrid",
       "title": "EUROPE MAY 2023",
@@ -1241,6 +1322,9 @@
     {
       "id": "glacier-2023",
       "country": "usa",
+      "countries": [
+        "usa"
+      ],
       "region": "montana",
       "location": "Glacier National Park",
       "title": "GLACIER 2023",
@@ -1333,6 +1417,9 @@
     {
       "id": "zion-2024",
       "country": "usa",
+      "countries": [
+        "usa"
+      ],
       "region": "utah",
       "location": "Zion National Park / Bryce Canyon",
       "title": "ZION 2024",

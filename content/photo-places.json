@@ -1,0 +1,15 @@
+{
+  "_notes": "Tells the build which city a day's photos (or one photo) belong to when GPS and the day heading can't. days uses the day's number in the note (Day 1 is 1). photos uses the file name without its extension. The city must be one of the trip's pinned cities. Photos here override everything else.",
+  "vienna-athens-2025": {
+    "days": {
+      "2": "Bratislava"
+    }
+  },
+  "salzburg-munich-2025": {
+    "photos": {
+      "D09CDFD4-0110-401E-8FF5-11AF279A77E3": "Neuschwanstein Castle",
+      "57751973-0722-4EFF-9428-C1FC892089A9": "Neuschwanstein Castle",
+      "9B5403BD-49A0-4D3E-91FC-CC7305711A9A": "Neuschwanstein Castle"
+    }
+  }
+}

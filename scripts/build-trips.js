@@ -6,6 +6,7 @@ const { mergeMediaIntoDays } = require('./lib/merge-media');
 const { renderDayHtml, dayMiles, extractTrails, collectMediaFiles } = require('./lib/render');
 const { scanTripPhotos, resolveTripDates } = require('./lib/exif-dates');
 const { buildSearchIndex } = require('./lib/search-index');
+const { readGps, explicitLocations, resolveDay } = require('./lib/photo-places');
 
 const ROOT = path.join(__dirname, '..');
 const TRIPS_DIR = path.join(ROOT, 'Trips');
@@ -17,6 +18,8 @@ const COVER_OVERRIDES_FILE = path.join(ROOT, 'content', 'cover-overrides.json');
 // Per-trip step and walking totals, made from an Apple Health export by
 // scripts/build-health.js. Optional: a machine without it just leaves them null.
 const HEALTH_FILE = path.join(ROOT, 'content', 'health-summary.json');
+// Hand-made corrections for where photos were taken; see the notes inside the file.
+const PHOTO_PLACES_FILE = path.join(ROOT, 'content', 'photo-places.json');
 
 const STUDY_ABROAD_FILE = 'STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md';
 const STUDY_ABROAD_ATT = 'STUDY ABROAD SPRING 2025/Attachments';
@@ -37,7 +40,7 @@ const CONTINENTS = {
 // Natural Earth's ISO_A3 is "-99" for France and Norway in the 110m set; join on
 // ADM0_A3 / ISO_A3_EH or on the numeric id instead.
 const PLACES = {
-  usa: { label: 'United States', continent: 'north-america', iso3: 'USA', isoNumeric: '840', bounds: [[17, -125], [49, -65]] },
+  usa: { label: 'United States', continent: 'north-america', iso3: 'USA', isoNumeric: '840', extraIsoNumeric: ['630'], bounds: [[17, -125], [49, -65]] }, // 630 is Puerto Rico, drawn as its own shape in the world file
   peru: { label: 'Peru', continent: 'south-america', iso3: 'PER', isoNumeric: '604', bounds: [[-18, -81], [0, -68]] },
   uk: { label: 'United Kingdom', continent: 'europe', iso3: 'GBR', isoNumeric: '826', bounds: [[49, -11], [61, 2]] },
   germany: { label: 'Germany', continent: 'europe', iso3: 'DEU', isoNumeric: '276', bounds: [[47, 5.5], [55, 15.5]] },
@@ -51,7 +54,7 @@ const PLACES = {
   portugal: { label: 'Portugal', continent: 'europe', iso3: 'PRT', isoNumeric: '620', bounds: [[36.8, -9.6], [42.2, -6]] },
   austria: { label: 'Austria', continent: 'europe', iso3: 'AUT', isoNumeric: '040', bounds: [[46.4, 9.5], [49.1, 17.2]] },
   slovakia: { label: 'Slovakia', continent: 'europe', iso3: 'SVK', isoNumeric: '703', bounds: [[47.7, 16.8], [49.6, 22.6]] },
-  morocco: { label: 'Morocco', continent: 'africa', iso3: 'MAR', isoNumeric: '504', bounds: [[27.6, -13.2], [35.9, -1]] },
+  morocco: { label: 'Morocco', continent: 'africa', iso3: 'MAR', isoNumeric: '504', clipToBounds: true, bounds: [[27.6, -13.2], [35.9, -1]] }, // the outline runs south into Western Sahara, drawn separately
   spain: { label: 'Spain', continent: 'europe', iso3: 'ESP', isoNumeric: '724', bounds: [[36, -9.5], [43.8, 4.3]] },
   netherlands: { label: 'Netherlands', continent: 'europe', iso3: 'NLD', isoNumeric: '528', bounds: [[50.7, 3.3], [53.6, 7.3]] },
   croatia: { label: 'Croatia', continent: 'europe', iso3: 'HRV', isoNumeric: '191', bounds: [[42.4, 13.5], [46.6, 19.5]] },
@@ -362,41 +365,36 @@ function slugFile(name) {
   return name.replace(/[^A-Za-z0-9.\-]/g, '_');
 }
 
-// Multi-city trips don't tag each day with a location field, but most day labels
-// already name the city in parens ("Friday (Salzburg)", "Sunday (Nice-Èze-Monaco)").
-// Pull those hints out and match them against the trip's location list so gallery
-// photos can be filtered by place, not just by trip; falls back to the trip's
-// primary location when a day doesn't name one (e.g. "Day 1 - Travel").
-function matchDayLocations(label, locations) {
-  const parenMatch = label.match(/\(([^)]+)\)/);
-  if (!parenMatch) return [locations[0]];
-  const candidates = parenMatch[1].split(/[\/,-]/).map((s) => s.trim()).filter(Boolean);
-  const matched = [];
-  for (const loc of locations) {
-    const locLower = loc.name.toLowerCase();
-    const isMatch = candidates.some((c) => {
-      const cLower = c.toLowerCase();
-      return locLower.includes(cLower) || cLower.includes(locLower);
-    });
-    if (isMatch) matched.push(loc);
-  }
-  return matched.length ? matched : [locations[0]];
-}
-
-function collectGalleryImages(days, locations, mediaMap) {
+// Which of a trip's cities each photo belongs to. See scripts/lib/photo-places.js
+// for the order of evidence (GPS first, then day headings, then neighbours).
+function collectGalleryImages(days, locations, mediaMap, gpsByDest, overrides) {
   const entries = [];
-  for (const day of days) {
-    const dayLocations = matchDayLocations(day.label, locations);
+  const named = (name) => {
+    const loc = locations.find((l) => l.name === name);
+    if (!loc) throw new Error(`photo-places.json: "${name}" is not a pinned city of this trip`);
+    return [loc];
+  };
+  for (const [dayIndex, day] of days.entries()) {
+    const explicit = explicitLocations(day.label, locations);
+    const photos = [];
     const scan = (nodes) => {
       for (const n of nodes) {
         if (n.media && n.media.type === 'image') {
           const dest = mediaMap.get(n.media.file);
-          if (dest) entries.push({ src: dest, locations: dayLocations });
+          if (dest) photos.push(dest);
         }
         scan(n.children);
       }
     };
     scan(day.children);
+    const placed = resolveDay(photos.map((d) => gpsByDest.get(d) || null), explicit, locations);
+    const dayOverride = overrides && overrides.days && overrides.days[String(dayIndex + 1)];
+    photos.forEach((dest, i) => {
+      const stem = dest.split('/').pop().replace(/\.[^.]+$/, '');
+      const photoOverride = overrides && overrides.photos && overrides.photos[stem];
+      const chosen = photoOverride ? named(photoOverride) : dayOverride ? named(dayOverride) : placed[i];
+      entries.push({ src: dest, locations: chosen });
+    });
   }
   return entries;
 }
@@ -405,6 +403,8 @@ async function main() {
   fs.mkdirSync(OUT_DATA, { recursive: true });
   fs.mkdirSync(OUT_BUILD, { recursive: true });
 
+  const photoPlaces = fs.existsSync(PHOTO_PLACES_FILE) ? JSON.parse(fs.readFileSync(PHOTO_PLACES_FILE, 'utf8')) : {};
+  for (const id of Object.keys(photoPlaces)) if (id !== '_notes' && !trips.some((t) => t.slug === id)) throw new Error(`photo-places.json: unknown trip "${id}"`);
   const health = fs.existsSync(HEALTH_FILE) ? JSON.parse(fs.readFileSync(HEALTH_FILE, 'utf8')) : { trips: {}, totals: null };
   const posts = [];
   const mediaManifest = []; // { src: abs path, dest: relative "images/trips/slug/name" }
@@ -471,6 +471,14 @@ async function main() {
       if (loose.length) console.log(`  gallery only: ${loose.length} unreferenced photos from ${attachmentsDir}`);
     }
 
+    // GPS from the original photos places each one in the right city.
+    const gpsByDest = new Map();
+    for (const m of tripPhotos) if (m.kind !== 'video') gpsByDest.set(m.dest, await readGps(m.src));
+    if (extraGallery.length) {
+      const placed = resolveDay(extraGallery.map((e) => gpsByDest.get(e.src) || null), null, t.locations);
+      extraGallery.forEach((e, i) => { e.locations = placed[i]; });
+    }
+
     // Dates: EXIF from the originals can fill a null range or tighten a month
     // placeholder, never override a typed day-precision range.
     const scan = await scanTripPhotos(tripPhotos.filter((m) => m.kind !== 'video').map((m) => m.src));
@@ -496,6 +504,9 @@ async function main() {
     posts.push({
       id: t.slug,
       country: primary.country,
+      // Every country the trip touched, first one first, so a trip that goes
+      // Stockholm to Copenhagen shows up under Denmark too.
+      countries: [...new Set(t.locations.map((l) => l.country))],
       region: primary.region,
       location: t.location,
       title: t.title,
@@ -519,7 +530,7 @@ async function main() {
     }
 
     tripGallerySrcs.set(t.slug, []);
-    for (const img of [...collectGalleryImages(days, t.locations, mediaMap), ...extraGallery]) {
+    for (const img of [...collectGalleryImages(days, t.locations, mediaMap, gpsByDest, photoPlaces[t.slug]), ...extraGallery]) {
       tripGallerySrcs.get(t.slug).push(img.src);
       galleryImages.push({
         src: img.src,
@@ -527,7 +538,9 @@ async function main() {
         tripId: t.slug,
         tripTitle: t.title,
         locations: img.locations.map((l) => l.name),
-        country: primary.country,
+        // The photo's own country (from its city), not the trip's first one.
+        country: img.locations[0].country,
+        countries: [...new Set(img.locations.map((l) => l.country))],
         date_start: dates.date_start,
         date_end: dates.date_end,
         date_precision: dates.date_precision,
@@ -593,6 +606,9 @@ async function main() {
         continent: place.continent,
         iso3: place.iso3,
         isoNumeric: place.isoNumeric,
+        // Other world-map shapes that belong to this country (Puerto Rico for the USA).
+        ...(place.extraIsoNumeric ? { extraIsoNumeric: place.extraIsoNumeric } : {}),
+        ...(place.clipToBounds ? { clipToBounds: true } : {}),
         bounds: place.bounds,
         regions: {},
       };

@@ -1150,3 +1150,48 @@ mark {
   border-radius: 3px;
   padding: 0 0.1em;
 }
+
+/* Region buttons above the map, shown inside a country with several regions */
+.map-regions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.map-regions[hidden] {
+  display: none;
+}
+
+.map-regions-label {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: var(--space-xs);
+}
+
+.region-chip {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: var(--radius-pill);
+  padding: 0.15rem 0.7rem;
+  font: inherit;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+}
+
+.region-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.region-chip[aria-pressed="true"] {
+  background: var(--map-active-bg);
+  border-color: var(--map-active);
+  color: var(--map-active);
+}

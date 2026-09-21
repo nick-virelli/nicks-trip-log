@@ -39,7 +39,7 @@ module.exports = {
         <h2>Explore by place</h2>
         <button type="button" class="map-back" id="toggle-home-map">Show map</button>
       </div>
-      <p class="map-instruction" id="map-instruction" hidden>Click a country to zoom in, then click a city to read the trip.</p>
+      <p class="map-instruction" id="map-instruction" hidden>Scroll or pinch to zoom. Click a country, then a region or a city, to see its trips.</p>
       <div class="map-controls" id="map-controls" style="display:none;">
         <button type="button" class="map-back" id="back-to-world">&larr; Back to world</button>
       </div>

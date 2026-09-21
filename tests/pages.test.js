@@ -75,6 +75,7 @@ test('scripts load in an order that satisfies what each one uses', () => {
     TripRender: 'js/render-trip.js',
     TripEntries: 'js/trip-entries.js',
     GeoMap: 'js/geo-map.js',
+    GeoShapes: 'js/geo-shapes.js',
     TripLightbox: 'js/lightbox.js',
     TripUI: 'js/trip-ui.js',
     TripSearch: 'js/search.js',

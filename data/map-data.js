@@ -59,6 +59,9 @@ window.__MAP_DATA__ = {
       "continent": "north-america",
       "iso3": "USA",
       "isoNumeric": "840",
+      "extraIsoNumeric": [
+        "630"
+      ],
       "bounds": [
         [
           17,
@@ -883,6 +886,7 @@ window.__MAP_DATA__ = {
       "continent": "africa",
       "iso3": "MAR",
       "isoNumeric": "504",
+      "clipToBounds": true,
       "bounds": [
         [
           27.6,

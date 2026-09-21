@@ -118,6 +118,7 @@ function renderPage(o) {
   if (o.leaflet) {
     scriptTags.push(`  <script src="${LEAFLET_JS}" crossorigin=""></script>`);
     scriptTags.push(`  <script src="${TOPOJSON_JS}"></script>`);
+    scriptTags.push(`  <script src="${prefix}js/geo-shapes.js"></script>`);
     scriptTags.push(`  <script src="${prefix}js/geo-map.js"></script>`);
   }
   for (const s of ['js/theme.js', ...(o.scripts || [])]) {

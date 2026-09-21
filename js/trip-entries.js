@@ -23,14 +23,15 @@
         date_end: p.date_end,
         date_precision: p.date_precision,
         cover: p.cover,
-        countries: [p.country],
-        continents: [continentOf(p.country)].filter(Boolean),
+        // Every country the trip touched, not just the first one.
+        countries: p.countries || [p.country],
+        continents: [...new Set((p.countries || [p.country]).map(continentOf))].filter(Boolean),
       }));
 
     const collectionEntries = (collections || []).map((c) => {
       const members = c.tripIds.map((id) => posts.find((p) => p.id === id)).filter(Boolean);
       const cover = (members.find((m) => m.cover) || {}).cover || null;
-      const countries = [...new Set(members.map((m) => m.country))];
+      const countries = [...new Set(members.flatMap((m) => m.countries || [m.country]))];
       const continents = [...new Set(countries.map(continentOf).filter(Boolean))];
       return {
         type: "collection",

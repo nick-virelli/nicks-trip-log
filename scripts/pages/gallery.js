@@ -10,10 +10,10 @@ module.exports = {
   lightbox: true,
   main: `    <div class="page-content">
       <h1>Gallery</h1>
-      <p class="map-instruction">Every photo from every trip, newest first. Search by name, place, or date, or browse by map.</p>
+      <p class="map-instruction">Every photo from every trip, newest first. Search by name, city, country, or date, or browse by map.</p>
 
       <div class="gallery-controls">
-        <input type="search" id="gallery-search" class="trip-search" placeholder="Search by trip, place, or date">
+        <input type="search" id="gallery-search" class="trip-search" placeholder="Search by trip, city, country, or date">
         <button type="button" id="toggle-gallery-map" class="map-back">Browse by map</button>
       </div>
 
