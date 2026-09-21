@@ -1,72 +1,57 @@
-// TEMPORARY palette switcher for choosing the site's color scheme (Phase 3).
-// Cycles five named schemes by swapping token values only; nothing else on the
-// site knows it exists. To remove: delete this file, the one <script> line in
-// scripts/lib/page-shell.js, and rebuild. Whichever scheme wins gets folded into
-// the :root tokens in css/style.css.
+// TEMPORARY palette switcher for choosing the site's color scheme (Phase 3,
+// reworked Phase 7). Five named schemes, two of them green (Forest, Moss) and
+// three warm (Ember, Copper, Amber). Light and dark mode remember their own
+// scheme, so "Ember in light, Forest in dark" is one click in each mode.
+//
+// To remove: delete this file, the PALETTE_SWITCHER line in
+// scripts/lib/page-shell.js, and rebuild. Whichever scheme wins for each mode
+// gets folded into the :root and [data-theme="dark"] tokens in css/style.css.
 (function () {
-  const STORAGE_KEY = "trip-log-palette";
+  const STORAGE_LIGHT = "trip-log-palette-light";
+  const STORAGE_DARK = "trip-log-palette-dark";
 
-  // Each scheme sets the same token names as :root / [data-theme="dark"] in
-  // css/style.css. "forest" is the current look, so it sets nothing.
+  // Builds a full token set. Accent-derived tokens (map highlight) follow the
+  // accent so a scheme is described by its handful of real choices.
+  function tokens(t) {
+    const [r, g, b] = t.accent.replace("#", "").match(/../g).map((h) => parseInt(h, 16));
+    return {
+      "--bg": t.bg, "--surface": t.surface, "--text": t.text, "--text-muted": t.muted, "--border": t.border,
+      "--accent": t.accent, "--accent-hover": t.hover, "--on-accent": t.on,
+      "--map-bg": t.mapBg, "--map-hover": t.mapHover, "--map-active": t.accent,
+      "--map-active-bg": `rgba(${r}, ${g}, ${b}, ${t.alpha})`,
+    };
+  }
+
+  // "forest" is the current look and sets nothing: it is whatever css/style.css says.
   const SCHEMES = [
-    { id: "forest", label: "Forest (current)", light: {}, dark: {} },
+    { id: "forest", label: "Forest", light: {}, dark: {} },
     {
-      id: "slate",
-      label: "Slate",
-      light: {
-        "--bg": "#f6f7f9", "--surface": "#ffffff", "--text": "#14171c", "--text-muted": "#5b6472",
-        "--border": "#dfe3ea", "--accent": "#2b6cb0", "--accent-hover": "#1f4f85", "--on-accent": "#fff",
-        "--map-bg": "#eceff3", "--map-hover": "#dde2ea", "--map-active": "#2b6cb0", "--map-active-bg": "rgba(43, 108, 176, 0.12)",
-      },
-      dark: {
-        "--bg": "#0f1115", "--surface": "#181b21", "--text": "#e8eaf0", "--text-muted": "#9aa3b2",
-        "--border": "#2a2f3a", "--accent": "#6ea8fe", "--accent-hover": "#8fbcff", "--on-accent": "#0f1115",
-        "--map-bg": "#14171d", "--map-hover": "#1f242d", "--map-active": "#6ea8fe", "--map-active-bg": "rgba(110, 168, 254, 0.22)",
-      },
+      id: "moss", label: "Moss",
+      light: tokens({ bg: "#f7f8f3", surface: "#ffffff", text: "#1b1f16", muted: "#5f6655", border: "#dde1d3", accent: "#4a6b2f", hover: "#385222", on: "#ffffff", mapBg: "#eef0e6", mapHover: "#e1e5d4", alpha: 0.12 }),
+      dark: tokens({ bg: "#12140f", surface: "#1c1f17", text: "#eef0e6", muted: "#b3b8a4", border: "#363b2c", accent: "#8fb85c", hover: "#a9cf78", on: "#12140f", mapBg: "#171a12", mapHover: "#232719", alpha: 0.25 }),
     },
     {
-      id: "ember",
-      label: "Ember",
-      light: {
-        "--bg": "#faf7f3", "--surface": "#ffffff", "--text": "#1f1a15", "--text-muted": "#6b5f54",
-        "--border": "#e8e0d6", "--accent": "#b4682a", "--accent-hover": "#8f4f1b", "--on-accent": "#fff",
-        "--map-bg": "#f1ebe4", "--map-hover": "#e6ddd2", "--map-active": "#b4682a", "--map-active-bg": "rgba(180, 104, 42, 0.12)",
-      },
-      dark: {
-        "--bg": "#141210", "--surface": "#1e1a17", "--text": "#f2ebe3", "--text-muted": "#b5a99b",
-        "--border": "#3a322b", "--accent": "#e0a458", "--accent-hover": "#f0bd7a", "--on-accent": "#141210",
-        "--map-bg": "#191613", "--map-hover": "#25201c", "--map-active": "#e0a458", "--map-active-bg": "rgba(224, 164, 88, 0.22)",
-      },
+      id: "ember", label: "Ember",
+      light: tokens({ bg: "#faf7f3", surface: "#ffffff", text: "#1f1a15", muted: "#6b5f54", border: "#e8e0d6", accent: "#9a5520", hover: "#7a4118", on: "#ffffff", mapBg: "#f1ebe4", mapHover: "#e6ddd2", alpha: 0.12 }),
+      dark: tokens({ bg: "#141210", surface: "#1e1a17", text: "#f2ebe3", muted: "#b5a99b", border: "#3a322b", accent: "#e0a458", hover: "#f0bd7a", on: "#141210", mapBg: "#191613", mapHover: "#25201c", alpha: 0.25 }),
     },
     {
-      id: "fjord",
-      label: "Fjord",
-      light: {
-        "--bg": "#f4f8fb", "--surface": "#ffffff", "--text": "#10202d", "--text-muted": "#56707f",
-        "--border": "#d9e4ec", "--accent": "#1a8a8a", "--accent-hover": "#12676b", "--on-accent": "#fff",
-        "--map-bg": "#e9f0f5", "--map-hover": "#d9e4ec", "--map-active": "#1a8a8a", "--map-active-bg": "rgba(26, 138, 138, 0.12)",
-      },
-      dark: {
-        "--bg": "#0b1620", "--surface": "#12212e", "--text": "#e6eef5", "--text-muted": "#98acbd",
-        "--border": "#22364a", "--accent": "#4fc3c3", "--accent-hover": "#7ad9d9", "--on-accent": "#0b1620",
-        "--map-bg": "#0f1c27", "--map-hover": "#182a39", "--map-active": "#4fc3c3", "--map-active-bg": "rgba(79, 195, 195, 0.22)",
-      },
+      id: "copper", label: "Copper",
+      light: tokens({ bg: "#fbf6f3", surface: "#ffffff", text: "#221814", muted: "#6b5a52", border: "#eadfd9", accent: "#a4462a", hover: "#82361f", on: "#ffffff", mapBg: "#f2e9e4", mapHover: "#e7dbd4", alpha: 0.12 }),
+      dark: tokens({ bg: "#151110", surface: "#1f1917", text: "#f4ebe6", muted: "#b8a69e", border: "#3d322e", accent: "#e8836b", hover: "#f19c87", on: "#151110", mapBg: "#1a1513", mapHover: "#26201d", alpha: 0.25 }),
     },
     {
-      id: "mono",
-      label: "Mono",
-      light: {
-        "--bg": "#fbfbfb", "--surface": "#ffffff", "--text": "#111111", "--text-muted": "#666666",
-        "--border": "#e3e3e3", "--accent": "#222222", "--accent-hover": "#000000", "--on-accent": "#fff",
-        "--map-bg": "#f0f0f0", "--map-hover": "#e2e2e2", "--map-active": "#222222", "--map-active-bg": "rgba(0, 0, 0, 0.08)",
-      },
-      dark: {
-        "--bg": "#0e0e0e", "--surface": "#191919", "--text": "#ededed", "--text-muted": "#9c9c9c",
-        "--border": "#2c2c2c", "--accent": "#d8d8d8", "--accent-hover": "#ffffff", "--on-accent": "#0e0e0e",
-        "--map-bg": "#141414", "--map-hover": "#222222", "--map-active": "#d8d8d8", "--map-active-bg": "rgba(255, 255, 255, 0.14)",
-      },
+      id: "amber", label: "Amber",
+      light: tokens({ bg: "#fffaf0", surface: "#ffffff", text: "#1f1a0e", muted: "#6a5f48", border: "#eee3c9", accent: "#8a6400", hover: "#6b4e00", on: "#ffffff", mapBg: "#f6eedb", mapHover: "#ebe0c3", alpha: 0.14 }),
+      dark: tokens({ bg: "#14120d", surface: "#1e1b13", text: "#f4efe0", muted: "#b8ae94", border: "#3b3524", accent: "#f0b429", hover: "#f6c75a", on: "#14120d", mapBg: "#19160f", mapHover: "#252017", alpha: 0.25 }),
     },
   ];
+
+  // Lets the tests read the schemes without a browser.
+  if (typeof document === "undefined") {
+    module.exports = { SCHEMES };
+    return;
+  }
 
   function block(selector, vars) {
     const body = Object.entries(vars).map(([k, v]) => `  ${k}: ${v};`).join("\n");
@@ -76,8 +61,8 @@
   function injectStyles() {
     let css = "";
     for (const s of SCHEMES) {
-      css += block(`[data-palette="${s.id}"]`, s.light);
-      css += block(`[data-palette="${s.id}"][data-theme="dark"]`, s.dark);
+      css += block(`[data-palette-light="${s.id}"]:not([data-theme="dark"])`, s.light);
+      css += block(`[data-palette-dark="${s.id}"][data-theme="dark"]`, s.dark);
     }
     css += `
 .palette-switcher {
@@ -102,6 +87,9 @@
 .palette-switcher span {
   color: var(--text-muted);
 }
+.palette-switcher b {
+  color: var(--accent);
+}
 `;
     const style = document.createElement("style");
     style.id = "palette-switcher-styles";
@@ -109,27 +97,32 @@
     document.head.appendChild(style);
   }
 
-  function readStored() {
+  function read(key) {
     try {
-      return localStorage.getItem(STORAGE_KEY);
+      return localStorage.getItem(key);
     } catch (_) {
       return null;
     }
   }
 
-  function store(id) {
+  function write(key, value) {
     try {
-      localStorage.setItem(STORAGE_KEY, id);
+      localStorage.setItem(key, value);
     } catch (_) {}
   }
 
-  function apply(id, btn) {
-    document.documentElement.setAttribute("data-palette", id);
-    const scheme = SCHEMES.find((s) => s.id === id) || SCHEMES[0];
-    if (btn) btn.innerHTML = `<span>Palette:</span> ${scheme.label}`;
-    // Maps draw their pins from the accent token at draw time; they listen for
-    // this the same way they listen for the theme toggle.
-    document.dispatchEvent(new Event("themechange"));
+  const root = document.documentElement;
+  const isDark = () => root.getAttribute("data-theme") === "dark";
+  const known = (id) => SCHEMES.some((s) => s.id === id);
+  const labelOf = (id) => (SCHEMES.find((s) => s.id === id) || SCHEMES[0]).label;
+
+  function render(btn) {
+    const light = root.getAttribute("data-palette-light");
+    const dark = root.getAttribute("data-palette-dark");
+    const now = isDark() ? "dark" : "light";
+    const part = (mode, id) => (mode === now ? `<b>${mode === "light" ? "Light" : "Dark"}: ${labelOf(id)}</b>` : `${mode === "light" ? "Light" : "Dark"}: ${labelOf(id)}`);
+    btn.innerHTML = `<span>Palette</span> ${part("light", light)} &middot; ${part("dark", dark)}`;
+    btn.title = `Click to change the ${now} mode palette. The other mode keeps its own.`;
   }
 
   function init() {
@@ -137,18 +130,26 @@
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "palette-switcher";
-    btn.setAttribute("aria-label", "Cycle color palette");
     document.body.appendChild(btn);
 
-    const stored = readStored();
-    let index = Math.max(0, SCHEMES.findIndex((s) => s.id === stored));
-    apply(SCHEMES[index].id, btn);
+    const savedLight = read(STORAGE_LIGHT);
+    const savedDark = read(STORAGE_DARK);
+    root.setAttribute("data-palette-light", known(savedLight) ? savedLight : "forest");
+    root.setAttribute("data-palette-dark", known(savedDark) ? savedDark : "forest");
+    render(btn);
 
     btn.addEventListener("click", () => {
-      index = (index + 1) % SCHEMES.length;
-      store(SCHEMES[index].id);
-      apply(SCHEMES[index].id, btn);
+      const attr = isDark() ? "data-palette-dark" : "data-palette-light";
+      const next = SCHEMES[(SCHEMES.findIndex((s) => s.id === root.getAttribute(attr)) + 1) % SCHEMES.length].id;
+      root.setAttribute(attr, next);
+      write(isDark() ? STORAGE_DARK : STORAGE_LIGHT, next);
+      render(btn);
+      // Maps draw pins from the accent token; they redraw on this event.
+      document.dispatchEvent(new Event("themechange"));
     });
+
+    // Flipping light/dark changes which half of the label is current.
+    new MutationObserver(() => render(btn)).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
