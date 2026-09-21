@@ -28,10 +28,17 @@ function applyEmphasis(escaped) {
 function renderNode(node, mediaMap, altText, groupPrefix, counter) {
   if (node.media) {
     const groupId = `${groupPrefix}-g${counter.n++}`;
-    return `<li class="trip-media">${renderSingleMedia(node, mediaMap, altText, groupId, 0)}</li>`;
+    return `<li class="trip-media">${renderSingleMedia(node, mediaMap, altText, groupId, 0)}</li>${renderMediaNotes(node, mediaMap, altText, groupPrefix, counter)}`;
   }
   const childHtml = node.children.length ? `<ul>${renderChildrenList(node.children, mediaMap, altText, groupPrefix, counter)}</ul>` : '';
   return `<li>${applyEmphasis(escapeHtml(node.text || ''))}${childHtml}</li>`;
+}
+
+// In the notes, bullets and further photos are often indented under a photo.
+// They belong on the page, right after that photo, as a list of their own.
+function renderMediaNotes(node, mediaMap, altText, groupPrefix, counter) {
+  if (!node.children.length) return '';
+  return `<li class="trip-notes"><ul>${renderChildrenList(node.children, mediaMap, altText, groupPrefix, counter)}</ul></li>`;
 }
 
 function renderSingleMedia(node, mediaMap, altText, groupId, index) {
@@ -55,7 +62,7 @@ function renderChildrenList(children, mediaMap, altText, groupPrefix, counter) {
     if (node.media && node.media.type === 'image') {
       const run = [node];
       let j = i + 1;
-      while (j < children.length && children[j].media && children[j].media.type === 'image') {
+      while (j < children.length && !children[j - 1].children.length && children[j].media && children[j].media.type === 'image') {
         run.push(children[j]);
         j++;
       }
@@ -65,6 +72,7 @@ function renderChildrenList(children, mediaMap, altText, groupPrefix, counter) {
           ? renderCarousel(run, mediaMap, altText, groupId)
           : `<li class="trip-media">${renderSingleMedia(run[0], mediaMap, altText, groupId, 0)}</li>`
       );
+      parts.push(renderMediaNotes(run[run.length - 1], mediaMap, altText, groupPrefix, counter));
       i = j;
     } else {
       parts.push(renderNode(node, mediaMap, altText, groupPrefix, counter));

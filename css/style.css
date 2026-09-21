@@ -1073,3 +1073,9 @@ main {
 .load-error button:hover {
   background: var(--accent-hover);
 }
+
+/* Notes and photos indented under a photo in the source note */
+.trip-day li.trip-notes {
+  list-style: none;
+  margin-left: 0;
+}
