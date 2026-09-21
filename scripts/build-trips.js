@@ -25,7 +25,7 @@ const PICS2_ATT = 'PICS PART 2 STUDY ABROAD 2025/Attachments';
 const CONTINENTS = {
   'north-america': { label: 'North America', bounds: [[7, -170], [72, -52]] },
   'south-america': { label: 'South America', bounds: [[-56, -82], [13, -34]] },
-  europe: { label: 'Europe', bounds: [[35, -11], [71.5, 32]] },
+  europe: { label: 'Europe', bounds: [[34, -11], [71.5, 32]] },
   africa: { label: 'Africa', bounds: [[-35, -18], [37.5, 52]] },
 };
 
@@ -34,7 +34,7 @@ const CONTINENTS = {
 // Natural Earth's ISO_A3 is "-99" for France and Norway in the 110m set; join on
 // ADM0_A3 / ISO_A3_EH or on the numeric id instead.
 const PLACES = {
-  usa: { label: 'United States', continent: 'north-america', iso3: 'USA', isoNumeric: '840', bounds: [[24, -125], [49, -66]] },
+  usa: { label: 'United States', continent: 'north-america', iso3: 'USA', isoNumeric: '840', bounds: [[17, -125], [49, -65]] },
   peru: { label: 'Peru', continent: 'south-america', iso3: 'PER', isoNumeric: '604', bounds: [[-18, -81], [0, -68]] },
   uk: { label: 'United Kingdom', continent: 'europe', iso3: 'GBR', isoNumeric: '826', bounds: [[49, -11], [61, 2]] },
   germany: { label: 'Germany', continent: 'europe', iso3: 'DEU', isoNumeric: '276', bounds: [[47, 5.5], [55, 15.5]] },

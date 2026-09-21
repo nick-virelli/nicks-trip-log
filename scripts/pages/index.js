@@ -21,11 +21,11 @@ module.exports = {
     })();
   </script>`,
   main: `    <section class="stats-bar" aria-label="Trip stats">
-      <div class="stat-tile"><span class="stat-value" id="stat-trips">–</span><span class="stat-label">Trips</span></div>
-      <div class="stat-tile"><span class="stat-value" id="stat-countries">–</span><span class="stat-label">Countries</span></div>
-      <div class="stat-tile"><span class="stat-value" id="stat-continents">–</span><span class="stat-label">Continents</span></div>
-      <div class="stat-tile"><span class="stat-value" id="stat-photos">–</span><span class="stat-label">Photos</span></div>
-      <div class="stat-tile"><span class="stat-value" id="stat-miles">–</span><span class="stat-label" id="stat-miles-label">Miles</span></div>
+      <div class="stat-tile"><span class="stat-value" id="stat-trips">&nbsp;</span><span class="stat-label">Trips</span></div>
+      <div class="stat-tile"><span class="stat-value" id="stat-countries">&nbsp;</span><span class="stat-label">Countries</span></div>
+      <div class="stat-tile"><span class="stat-value" id="stat-continents">&nbsp;</span><span class="stat-label">Continents</span></div>
+      <div class="stat-tile"><span class="stat-value" id="stat-photos">&nbsp;</span><span class="stat-label">Photos</span></div>
+      <div class="stat-tile"><span class="stat-value" id="stat-miles">&nbsp;</span><span class="stat-label" id="stat-miles-label">Miles</span></div>
     </section>
 
     <section class="map-section">

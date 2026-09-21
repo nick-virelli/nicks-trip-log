@@ -30,7 +30,7 @@ window.__MAP_DATA__ = {
       "label": "Europe",
       "bounds": [
         [
-          35,
+          34,
           -11
         ],
         [
@@ -61,12 +61,12 @@ window.__MAP_DATA__ = {
       "isoNumeric": "840",
       "bounds": [
         [
-          24,
+          17,
           -125
         ],
         [
           49,
-          -66
+          -65
         ]
       ],
       "regions": {
