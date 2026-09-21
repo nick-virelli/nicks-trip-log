@@ -5,3 +5,8 @@ node_modules/
 .DS_Store
 Thumbs.db
 npm-debug.log*
+
+# Personal Apple Health export, never commit
+apple_health_export/
+export.xml
+export_cda.xml

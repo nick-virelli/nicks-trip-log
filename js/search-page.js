@@ -9,10 +9,10 @@
   const MAX_LINES = 3;
 
   async function loadData(jsonPath, globalVar) {
-    if (isFile) {
-      if (window[globalVar]) return window[globalVar];
-      throw new Error(`Missing inline data ${globalVar} for file:// mode`);
-    }
+    // Each page already loads data/*.js, so nothing is downloaded twice. Only
+    // fetch the .json if that script is somehow missing (never in file:// mode).
+    if (window[globalVar]) return window[globalVar];
+    if (isFile) throw new Error(`Missing inline data ${globalVar} for file:// mode`);
     const res = await fetch(jsonPath);
     return res.json();
   }

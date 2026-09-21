@@ -46,7 +46,9 @@
       fmtDateRange(p) ? " - " + fmtDateRange(p) : ""
     }">${esc(p.title)}</h2>
       <p class="post-meta">${esc(p.location)}${fmtDateRange(p) ? " &middot; " + fmtDateRange(p) : ""}${
-      p.total_miles ? ` &middot; <span class="post-miles">${p.total_miles} miles</span>` : ""
+      p.total_miles ? ` &middot; <span class="post-miles">${p.total_miles} miles hiked</span>` : ""
+    }${
+      p.steps ? ` &middot; <span class="post-steps">${p.steps.toLocaleString("en-US")} steps, ${p.walking_miles} miles walked</span>` : ""
     }</p>
       ${days}
     `;

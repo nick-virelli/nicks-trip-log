@@ -11,6 +11,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 48.4,
+      "steps": 112821,
+      "walking_miles": 51.2,
       "days": [
         {
           "label": "Day 1 - 7/15 (9.4 miles)",
@@ -75,6 +77,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 28,
+      "steps": 121024,
+      "walking_miles": 49.5,
       "days": [
         {
           "label": "Day 1 - Travel 5/12",
@@ -149,6 +153,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "exif-tightened",
       "total_miles": 0,
+      "steps": 42484,
+      "walking_miles": 17.3,
       "days": [
         {
           "label": "Day 1 - Travel",
@@ -188,6 +194,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 29.1,
+      "steps": 80052,
+      "walking_miles": 35.6,
       "days": [
         {
           "label": "Day 1 - Monday (Travel)",
@@ -288,6 +296,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 104861,
+      "walking_miles": 45,
       "days": [
         {
           "label": "Thursday (Travel)",
@@ -334,6 +344,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 58840,
+      "walking_miles": 23,
       "days": [
         {
           "label": "Tuesday (Travel)",
@@ -373,6 +385,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 60283,
+      "walking_miles": 24.4,
       "days": [
         {
           "label": "Thursday (Travel)",
@@ -419,6 +433,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 49524,
+      "walking_miles": 21.6,
       "days": [
         {
           "label": "Friday (Travel)",
@@ -465,6 +481,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 89383,
+      "walking_miles": 37.2,
       "days": [
         {
           "label": "Friday (Amsterdam)",
@@ -504,6 +522,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 57633,
+      "walking_miles": 23.8,
       "days": [
         {
           "label": "Tuesday (Travel)",
@@ -543,6 +563,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 58898,
+      "walking_miles": 23.8,
       "days": [
         {
           "label": "Friday (Travel)",
@@ -589,6 +611,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 19229,
+      "walking_miles": 7.7,
       "days": [
         {
           "label": "Friday (Potsdam)",
@@ -614,6 +638,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 89834,
+      "walking_miles": 36.6,
       "days": [
         {
           "label": "Friday (Vienna)",
@@ -674,6 +700,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 60196,
+      "walking_miles": 24.5,
       "days": [
         {
           "label": "Friday (Dortmund)",
@@ -713,6 +741,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 57361,
+      "walking_miles": 25.1,
       "days": [
         {
           "label": "Friday (Lisbon)",
@@ -752,6 +782,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 33148,
+      "walking_miles": 13.4,
       "days": [
         {
           "label": "Friday",
@@ -791,6 +823,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 69346,
+      "walking_miles": 28.6,
       "days": [
         {
           "label": "Thursday (Travel)",
@@ -837,6 +871,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 145660,
+      "walking_miles": 60.5,
       "days": [
         {
           "label": "Thursday (Travel)",
@@ -897,6 +933,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 56261,
+      "walking_miles": 22.4,
       "days": [
         {
           "label": "Thursday",
@@ -943,6 +981,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 63837,
+      "walking_miles": 26.1,
       "days": [
         {
           "label": "Thursday (Travel)",
@@ -989,6 +1029,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 46919,
+      "walking_miles": 19.1,
       "days": [
         {
           "label": "Saturday",
@@ -1021,6 +1063,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 20017,
+      "walking_miles": 7.4,
       "days": [
         {
           "label": "Friday",
@@ -1046,6 +1090,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "exif-tightened",
       "total_miles": 0,
+      "steps": 90316,
+      "walking_miles": 38.5,
       "days": [
         {
           "label": "DAY 1",
@@ -1113,6 +1159,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
+      "steps": 175343,
+      "walking_miles": 74.4,
       "days": [
         {
           "label": "Day 1",
@@ -1201,6 +1249,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": null,
       "total_miles": 63.9,
+      "steps": null,
+      "walking_miles": null,
       "days": [
         {
           "label": "DAY 1 (Tuesday)",
@@ -1291,6 +1341,8 @@ window.__POSTS__ = {
       "date_precision": "day",
       "date_source": null,
       "total_miles": 27.3,
+      "steps": null,
+      "walking_miles": null,
       "days": [
         {
           "label": "DAY 1 (TRAVEL)",
@@ -1400,5 +1452,11 @@ window.__POSTS__ = {
         "france-monaco-2025"
       ]
     }
-  ]
+  ],
+  "health_totals": {
+    "steps": 1725062,
+    "walking_miles": 721.3,
+    "days_counted": 92,
+    "trips_counted": 24
+  }
 };

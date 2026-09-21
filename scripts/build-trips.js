@@ -14,6 +14,9 @@ const OUT_BUILD = path.join(ROOT, '.build');
 // Optional per-trip cover choice: { "<trip-id>": "images/trips/<trip-id>/<file>.jpg" }.
 // Edit this file to change a cover; the build validates it and never needs a code change.
 const COVER_OVERRIDES_FILE = path.join(ROOT, 'content', 'cover-overrides.json');
+// Per-trip step and walking totals, made from an Apple Health export by
+// scripts/build-health.js. Optional: a machine without it just leaves them null.
+const HEALTH_FILE = path.join(ROOT, 'content', 'health-summary.json');
 
 const STUDY_ABROAD_FILE = 'STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md';
 const STUDY_ABROAD_ATT = 'STUDY ABROAD SPRING 2025/Attachments';
@@ -402,6 +405,7 @@ async function main() {
   fs.mkdirSync(OUT_DATA, { recursive: true });
   fs.mkdirSync(OUT_BUILD, { recursive: true });
 
+  const health = fs.existsSync(HEALTH_FILE) ? JSON.parse(fs.readFileSync(HEALTH_FILE, 'utf8')) : { trips: {}, totals: null };
   const posts = [];
   const mediaManifest = []; // { src: abs path, dest: relative "images/trips/slug/name" }
   const galleryImages = [];
@@ -500,6 +504,8 @@ async function main() {
       date_precision: dates.date_precision,
       date_source: dates.date_source,
       total_miles: Math.round(totalMiles * 100) / 100,
+      steps: health.trips[t.slug] ? health.trips[t.slug].steps : null,
+      walking_miles: health.trips[t.slug] ? health.trips[t.slug].walking_miles : null,
       days: dayObjs,
       source_note: t.megaSection ? `Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#${t.megaSection}` : `Trips/${t.sourceFile}`,
     });
@@ -568,7 +574,7 @@ async function main() {
   withDate.sort((a, b) => (a.date_start < b.date_start ? 1 : -1));
   const sortedPosts = [...withDate, ...withoutDate];
 
-  const postsData = { posts: sortedPosts, collections };
+  const postsData = { posts: sortedPosts, collections, health_totals: health.totals };
   fs.writeFileSync(path.join(OUT_DATA, 'posts.json'), JSON.stringify(postsData, null, 2));
   fs.writeFileSync(path.join(OUT_DATA, 'posts.js'), `window.__POSTS__ = ${JSON.stringify(postsData, null, 2)};\n`);
 

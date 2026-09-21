@@ -1,0 +1,132 @@
+{
+  "generated": "2026-09-21",
+  "source": "Apple Health export, steps and walking plus running distance",
+  "trips": {
+    "mt-rainier-2026": {
+      "steps": 112821,
+      "walking_miles": 51.2,
+      "days_counted": 4
+    },
+    "machu-picchu-2026": {
+      "steps": 121024,
+      "walking_miles": 49.5,
+      "days_counted": 8
+    },
+    "puerto-rico-spring-break-2026": {
+      "steps": 42484,
+      "walking_miles": 17.3,
+      "days_counted": 3
+    },
+    "southwest-road-trip-2025": {
+      "steps": 80052,
+      "walking_miles": 35.6,
+      "days_counted": 6
+    },
+    "france-monaco-2025": {
+      "steps": 104861,
+      "walking_miles": 45,
+      "days_counted": 4
+    },
+    "croatia-2025": {
+      "steps": 58840,
+      "walking_miles": 23,
+      "days_counted": 3
+    },
+    "salzburg-munich-2025": {
+      "steps": 60283,
+      "walking_miles": 24.4,
+      "days_counted": 4
+    },
+    "palma-2025": {
+      "steps": 49524,
+      "walking_miles": 21.6,
+      "days_counted": 4
+    },
+    "netherlands-2025": {
+      "steps": 89383,
+      "walking_miles": 37.2,
+      "days_counted": 3
+    },
+    "barcelona-2025": {
+      "steps": 57633,
+      "walking_miles": 23.8,
+      "days_counted": 3
+    },
+    "morocco-malaga-2025": {
+      "steps": 58898,
+      "walking_miles": 23.8,
+      "days_counted": 4
+    },
+    "potsdam-2025": {
+      "steps": 19229,
+      "walking_miles": 7.7,
+      "days_counted": 1
+    },
+    "vienna-athens-2025": {
+      "steps": 89834,
+      "walking_miles": 36.6,
+      "days_counted": 6
+    },
+    "western-germany-2025": {
+      "steps": 60196,
+      "walking_miles": 24.5,
+      "days_counted": 3
+    },
+    "portugal-manchester-2025": {
+      "steps": 57361,
+      "walking_miles": 25.1,
+      "days_counted": 3
+    },
+    "norway-2025": {
+      "steps": 33148,
+      "walking_miles": 13.4,
+      "days_counted": 3
+    },
+    "stockholm-copenhagen-2025": {
+      "steps": 69346,
+      "walking_miles": 28.6,
+      "days_counted": 3
+    },
+    "italy-2025": {
+      "steps": 145660,
+      "walking_miles": 60.5,
+      "days_counted": 6
+    },
+    "switzerland-2025": {
+      "steps": 56261,
+      "walking_miles": 22.4,
+      "days_counted": 3
+    },
+    "prague-budapest-2025": {
+      "steps": 63837,
+      "walking_miles": 26.1,
+      "days_counted": 3
+    },
+    "london-2025": {
+      "steps": 46919,
+      "walking_miles": 19.1,
+      "days_counted": 2
+    },
+    "leipzig-2025": {
+      "steps": 20017,
+      "walking_miles": 7.4,
+      "days_counted": 1
+    },
+    "tetons": {
+      "steps": 90316,
+      "walking_miles": 38.5,
+      "days_counted": 4
+    },
+    "europe-may-2023": {
+      "steps": 175343,
+      "walking_miles": 74.4,
+      "days_counted": 10
+    }
+  },
+  "totals": {
+    "steps": 1725062,
+    "walking_miles": 721.3,
+    "days_counted": 92,
+    "trips_counted": 24
+  }
+}

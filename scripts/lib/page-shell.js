@@ -14,9 +14,6 @@ const LEAFLET_JS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 // the published data stays the smaller TopoJSON form.
 const TOPOJSON_JS = 'https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js';
 
-// TEMPORARY (Phase 3): the palette switcher. Remove this entry in Phase 8 along
-// with js/palette-switcher.js.
-const PALETTE_SWITCHER = 'js/palette-switcher.js';
 
 function escAttr(s) {
   return String(s == null ? '' : s)
@@ -123,7 +120,7 @@ function renderPage(o) {
     scriptTags.push(`  <script src="${TOPOJSON_JS}"></script>`);
     scriptTags.push(`  <script src="${prefix}js/geo-map.js"></script>`);
   }
-  for (const s of ['js/theme.js', ...(PALETTE_SWITCHER ? [PALETTE_SWITCHER] : []), ...(o.scripts || [])]) {
+  for (const s of ['js/theme.js', ...(o.scripts || [])]) {
     scriptTags.push(`  <script src="${prefix}${s}"></script>`);
   }
 

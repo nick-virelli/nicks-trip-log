@@ -5,10 +5,10 @@
   const { esc, fmtDateRange, tripTileHtml } = window.TripRender;
 
   async function loadData(jsonPath, globalVar) {
-    if (isFile) {
-      if (window[globalVar]) return window[globalVar];
-      throw new Error(`Missing inline data ${globalVar} for file:// mode`);
-    }
+    // Each page already loads data/*.js, so nothing is downloaded twice. Only
+    // fetch the .json if that script is somehow missing (never in file:// mode).
+    if (window[globalVar]) return window[globalVar];
+    if (isFile) throw new Error(`Missing inline data ${globalVar} for file:// mode`);
     const res = await fetch(jsonPath);
     return res.json();
   }
@@ -46,11 +46,10 @@
     return `${esc(city.name)} (${city.tripIds.length} trips)`;
   }
 
-  // Miles are only logged on a handful of trips, so the stat says how many
-  // rather than implying it covers the whole log.
-  function renderStats(posts, mapData, photoCount) {
-    const withMiles = posts.filter((p) => p.total_miles > 0);
-    const totalMiles = withMiles.reduce((s, p) => s + p.total_miles, 0);
+  // Steps and miles come from Apple Health and only exist for trips that have
+  // dates, so the label says how many trips they cover rather than implying all.
+  // Totals count each calendar day once, since two legs can share a day.
+  function renderStats(posts, mapData, photoCount, health) {
     const set = (id, value) => {
       const el = document.getElementById(id);
       if (el) el.textContent = value;
@@ -59,9 +58,12 @@
     set("stat-countries", Object.keys(mapData.countries).length);
     set("stat-continents", Object.keys(mapData.continents).length);
     set("stat-photos", photoCount.toLocaleString());
-    set("stat-miles", Math.round(totalMiles).toLocaleString() + "+");
-    const milesLabel = document.getElementById("stat-miles-label");
-    if (milesLabel) milesLabel.textContent = `Miles, ${withMiles.length} trip${withMiles.length === 1 ? "" : "s"} tracked`;
+    if (health) {
+      set("stat-steps", health.steps.toLocaleString());
+      set("stat-miles", Math.round(health.walking_miles).toLocaleString());
+      const milesLabel = document.getElementById("stat-miles-label");
+      if (milesLabel) milesLabel.textContent = `Miles walked, ${health.trips_counted} trips`;
+    }
   }
 
   function renderRecentTrips(posts, collections, mapData) {
@@ -129,7 +131,7 @@
     }
     app.posts = postsData.posts;
 
-    renderStats(postsData.posts, mapData, galleryData.images.length);
+    renderStats(postsData.posts, mapData, galleryData.images.length, postsData.health_totals);
     renderRecentTrips(postsData.posts, postsData.collections, mapData);
     initMapToggle(mapData, world);
   }

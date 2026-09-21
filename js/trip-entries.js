@@ -18,7 +18,7 @@
         type: "trip",
         href: `trip/${p.id}.html`,
         title: p.title,
-        meta: `${p.location}${p.total_miles ? ` &middot; ${p.total_miles} miles` : ""}`,
+        meta: `${p.location}${p.total_miles ? ` &middot; ${p.total_miles} miles hiked` : ""}`,
         date_start: p.date_start,
         date_end: p.date_end,
         date_precision: p.date_precision,
