@@ -9,6 +9,7 @@ module.exports = {
   main: `    <div class="page-content">
       <h1>About</h1>
       <p>This is a log of hiking trips, study abroad trips, and a handful of other travels.</p>
+      <p><a href="mailto:nickvirelli@gmail.com">nickvirelli@gmail.com</a></p>
     </div>`,
   scripts: [],
 };

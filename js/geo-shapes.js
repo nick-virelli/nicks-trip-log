@@ -94,5 +94,87 @@
     };
   }
 
-  return { ringCenter, inBounds, clipRing, splitShape };
+  // Left off the map entirely: Antarctica's outline circles the pole and would
+  // draw as a band across the whole bottom of the world.
+  const NEVER_DRAWN = ["010"];
+
+  // Outlines that cross the date line (Russia's far east, Fiji) have edges that
+  // jump from +180 to -180 and would draw as a line right across the map. This
+  // splits such a shape in two at the date line so each half draws normally.
+  function fixDateLine(feature) {
+    const geometry = feature.geometry;
+    if (!geometry) return feature;
+    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
+    const wraps = (polygon) => polygon.some((ring) => ring.some((point, i) => i > 0 && Math.abs(point[0] - ring[i - 1][0]) > 180));
+    if (!polygons.some(wraps)) return feature;
+    const out = [];
+    for (const polygon of polygons) {
+      if (!wraps(polygon)) {
+        out.push(polygon);
+        continue;
+      }
+      const shifted = polygon.map((ring) => ring.map(([lon, lat]) => [lon < 0 ? lon + 360 : lon, lat]));
+      const west = shifted.map((ring) => clipRing(ring, [[-90, 0], [90, 180]])).filter(Boolean);
+      const east = shifted
+        .map((ring) => clipRing(ring, [[-90, 180], [90, 360]]))
+        .filter(Boolean)
+        .map((ring) => ring.map(([lon, lat]) => [lon - 360, lat]));
+      if (west.length) out.push(west);
+      if (east.length) out.push(east);
+    }
+    return { ...feature, geometry: { type: "MultiPolygon", coordinates: out } };
+  }
+
+  // Russia's outline runs across Asia to the Pacific, so it is left out of the
+  // Europe outline rather than lighting up half of Asia.
+  const EXCLUDE_IDS = ["643"];
+  // Hawaii is part of the USA but not part of the North America you would draw.
+  const EXCLUDE_BOXES = { "north-america": [[[18, -162], [23, -154]]] };
+
+  // One merged outline per continent, so the world view can show "Europe" as a
+  // single shape instead of forty countries. Each piece of each country goes to
+  // the continent it sits in: normally the continent world data files it under,
+  // plus overseas pieces of visited countries (French Guiana joins South
+  // America, the Canary Islands join Africa) by where they physically are.
+  //
+  // topo is the world TopoJSON, lib is topojson-client (passed in so this runs in
+  // both the browser and Node), continents is map-data.json's continents block
+  // (bounds, and an optional shapeBounds used instead when the zoom frame is
+  // tighter than the continent), visitedIds is a Set of the country ids visited.
+  // Returns { features, covered }: one Feature per continent, and the set of
+  // country ids that contributed a piece.
+  function continentShapes(topo, lib, continents, visitedIds) {
+    const geometries = topo.objects.countries.geometries;
+    const features = lib.feature(topo, topo.objects.countries).features;
+    const boundsOf = (key) => continents[key].shapeBounds || continents[key].bounds;
+    const groups = {};
+    const covered = new Set();
+    features.forEach((feature, i) => {
+      if (EXCLUDE_IDS.includes(feature.id)) return;
+      const arcs = geometries[i].type === "Polygon" ? [geometries[i].arcs] : geometries[i].arcs;
+      const coordinates = feature.geometry.type === "Polygon" ? [feature.geometry.coordinates] : feature.geometry.coordinates;
+      coordinates.forEach((polygon, j) => {
+        const [lat, lon] = ringCenter(polygon[0]);
+        const own = feature.properties && feature.properties.continent;
+        let target = null;
+        if (own && continents[own] && inBounds(lat, lon, boundsOf(own))) target = own;
+        else if (visitedIds.has(feature.id)) target = Object.keys(continents).find((key) => inBounds(lat, lon, boundsOf(key))) || null;
+        if (!target) return;
+        if ((EXCLUDE_BOXES[target] || []).some((box) => inBounds(lat, lon, box))) return;
+        (groups[target] = groups[target] || []).push({ type: "Polygon", arcs: arcs[j] });
+        covered.add(feature.id);
+      });
+    });
+    return {
+      features: Object.entries(groups).map(([key, geometry]) => ({
+        type: "Feature",
+        id: `continent-${key}`,
+        properties: { continent: key },
+        geometry: lib.merge(topo, geometry),
+      })),
+      covered,
+    };
+  }
+
+  return { ringCenter, inBounds, clipRing, splitShape, continentShapes, fixDateLine, NEVER_DRAWN };
 });

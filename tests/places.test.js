@@ -137,9 +137,17 @@ test('the gallery search can find photos by country, and the trips filter uses e
   assert.ok(read('js/trip-entries.js').includes('p.countries'));
 });
 
-test('the About page has just the one sentence, with no contact line', () => {
+test('the About page has its sentence and just the email, with no lead-in line', () => {
   const about = read('about.html');
   assert.ok(about.includes('This is a log of hiking trips'));
-  assert.ok(!about.includes('mailto:'));
+  assert.ok(about.includes('<a href="mailto:nickvirelli@gmail.com">nickvirelli@gmail.com</a>'));
   assert.ok(!about.includes('get in contact'));
+  const body = about.slice(about.indexOf('<main>'), about.indexOf('</main>'));
+  assert.equal((body.match(/<p>/g) || []).length, 2, 'the sentence and the email, nothing else');
+});
+
+test('Get in touch in the footer goes to the About page, where the email is', () => {
+  for (const page of ['index.html', 'trip/london-2025.html']) {
+    assert.match(read(page), /Contact: <a href="(\.\.\/)?about\.html">Get in touch<\/a>/);
+  }
 });

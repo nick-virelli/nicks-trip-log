@@ -1,20 +1,35 @@
-// Shared drill-down map: continent -> country -> city, drawn from a GeoJSON
-// countries layer (no tile provider, no API key, no quota). Used by both the
-// home page and the gallery's browse-by-place map, which differ only in what
-// happens when a city is finally selected (window.GeoMap.create's onSelectCity).
+// Shared drill-down map, drawn from world outlines (no tile provider, no API
+// key, no quota). Used by both the home page and the gallery's browse-by-place
+// map, which differ only in what happens when a city is finally selected
+// (window.GeoMap.create's onSelectCity).
 //
-// Where a country holds only one city, clicking it skips straight to that city
-// without an interstitial "here are this country's cities" view. Where a
-// continent holds only one visited country (South America: Peru; North America:
-// the USA; Africa: Morocco), clicking any of its countries does the same -
-// there is nothing else in that continent to choose between.
+// Three steps, the same for every continent:
+//   1. World view: each continent you have visited is one merged outline with
+//      its name on it. Click one to zoom in.
+//   2. Continent view: countries appear individually. Countries you visited are
+//      outlined, highlighted, and named clearly; the rest are dim, named faintly,
+//      and cannot be clicked. Click a visited country.
+//   3. Country view: city pins. Where a country holds only one city, step 3
+//      is skipped and the click goes straight to that city.
 //
 // Inside a country with more than one region (the USA, Italy, Spain...), each
 // region with two or more cities gets a dashed halo you can click, and there is
 // a row of region buttons, both of which zoom to that region's trips.
 //
+// Names appear only where they fit: visited countries first, then the rest once
+// you are zoomed in further, and any name that would overlap another is left out.
+//
 // Scroll wheel, trackpad pinch, and ctrl + scroll all zoom; drag to pan.
 window.GeoMap = (function () {
+  const MIN_ZOOM_VISITED = 3; // names of countries you visited
+  const MIN_ZOOM_OTHER = 5; // names of every other country
+
+  // Continents you have not visited still get a faint name on the world view.
+  const OTHER_CONTINENT_LABELS = [
+    { text: "Asia", lat: 45, lon: 90 },
+    { text: "Oceania", lat: -25, lon: 135 },
+  ];
+
   function getVar(name, fallback) {
     const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
     return v || fallback;
@@ -35,6 +50,28 @@ window.GeoMap = (function () {
     return cities.map((c) => [c.lat, c.lon]);
   }
 
+  // [lat, lon] of the middle of a feature's biggest piece, where its name goes.
+  function labelPoint(feature) {
+    const polygons = feature.geometry.type === "Polygon" ? [feature.geometry.coordinates] : feature.geometry.coordinates;
+    let best = null;
+    let bestArea = -1;
+    for (const polygon of polygons) {
+      let minLon = Infinity, maxLon = -Infinity, minLat = Infinity, maxLat = -Infinity;
+      for (const [lon, lat] of polygon[0]) {
+        if (lon < minLon) minLon = lon;
+        if (lon > maxLon) maxLon = lon;
+        if (lat < minLat) minLat = lat;
+        if (lat > maxLat) maxLat = lat;
+      }
+      const area = (maxLon - minLon) * (maxLat - minLat);
+      if (area > bestArea) {
+        bestArea = area;
+        best = { lat: (minLat + maxLat) / 2, lon: (minLon + maxLon) / 2 };
+      }
+    }
+    return best ? { ...best, area: bestArea } : null;
+  }
+
   /**
    * @param {object} o
    * @param {string} o.containerId Leaflet map element id (must already exist)
@@ -44,20 +81,29 @@ window.GeoMap = (function () {
    * @param {(city: object, marker: object) => void} o.onSelectCity called with a
    *   map-data city object ({name, lat, lon, tripIds}) and its Leaflet marker
    *   once a specific city is chosen, whether by clicking its marker or by the
-   *   country-skip shortcut above
+   *   single-city shortcut above
    * @param {(city: object) => string} o.cityTooltip tooltip/label text for a city marker
    * @param {() => void} [o.onLevelChange] called after level/bounds change
    */
   function create(o) {
     const map = L.map(o.containerId, {
       scrollWheelZoom: true,
+      // Finer zoom steps: the world view fits the frame properly instead of
+      // snapping to a whole zoom level, and the wheel zooms smoothly.
+      zoomSnap: 0.25,
+      zoomDelta: 0.5,
+      wheelPxPerZoomLevel: 100,
       minZoom: 1,
       maxBounds: [[-85, -200], [85, 200]],
       maxBoundsViscosity: 0.7,
     });
+    // level: "continent" is the world view, "country" is zoomed to a continent,
+    // "city" is inside one country.
     const state = { level: "continent", activeContinent: null, activeCountry: null, activeRegion: null };
     let markerLayer = L.layerGroup().addTo(map);
+    const labelLayer = L.layerGroup().addTo(map);
     let geoLayer = null;
+    let continentLayer = null;
 
     // Region buttons sit just above the map and only show inside a country
     // that has more than one region.
@@ -73,26 +119,112 @@ window.GeoMap = (function () {
       if (c.isoNumeric) isoToKey[c.isoNumeric] = key;
       for (const extra of c.extraIsoNumeric || []) isoToKey[extra] = key;
     }
+    const baseId = (id) => String(id).replace(/^outlying-/, "");
 
-    function siblingCount(continentKey) {
-      return Object.values(o.countries).filter((c) => c.continent === continentKey).length;
+    // ---- shapes ----
+
+    // Trim distant territories off visited countries (French Guiana, Alaska,
+    // Hawaii, Svalbard, Madeira...) so only the recognisable country lights up.
+    const world = o.world;
+    const shown = [];
+    for (const original of topojson.feature(world, world.objects.countries).features) {
+      if (window.GeoShapes.NEVER_DRAWN.includes(original.id)) continue;
+      const feature = window.GeoShapes.fixDateLine(original);
+      const key = isoToKey[feature.id];
+      if (key && o.countries[key].isoNumeric === feature.id) {
+        const { core, outlying } = window.GeoShapes.splitShape(feature, o.countries[key].bounds, { clip: !!o.countries[key].clipToBounds });
+        shown.push(core);
+        if (outlying) shown.push(outlying);
+      } else {
+        shown.push(feature);
+      }
     }
 
-    function styleFor(feature) {
+    // One merged outline per visited continent, for the world view. The
+    // countries folded into them are hidden there so borders do not show through.
+    const continentData = window.GeoShapes.continentShapes(world, topojson, o.continents, new Set(Object.keys(isoToKey)));
+
+    // ---- styles ----
+
+    const accent = () => getVar("--map-active", "#2d5a4a");
+    const accentFill = () => getVar("--map-active-bg", "rgba(45,90,74,.2)");
+
+    function countryStyle(feature) {
       const key = isoToKey[feature.id];
       const base = { weight: 1, className: "geo-country" };
-      if (!key) return { ...base, color: getVar("--border", "#ccc"), fillColor: getVar("--map-bg", "#eee"), fillOpacity: 0.4, interactive: false };
-      if (key === state.activeCountry) {
-        return { ...base, weight: 2, color: getVar("--map-active", "#2d5a4a"), fillColor: getVar("--map-active-bg", "rgba(45,90,74,.2)"), fillOpacity: 1 };
-      }
-      const inFocus = state.level === "continent" || o.countries[key].continent === state.activeContinent;
-      if (!inFocus) return { ...base, color: getVar("--border", "#ccc"), fillColor: getVar("--map-bg", "#eee"), fillOpacity: 0.35, interactive: true };
-      return { ...base, color: getVar("--text-muted", "#888"), fillColor: getVar("--map-bg", "#eee"), fillOpacity: 0.7 };
+      const plain = { ...base, color: getVar("--border", "#ccc"), fillColor: getVar("--map-bg", "#eee"), fillOpacity: 0.4, interactive: false };
+      // World view: the continent outlines stand in for the countries inside them.
+      if (state.level === "continent" && continentData.covered.has(baseId(feature.id))) return { ...base, opacity: 0, fillOpacity: 0, interactive: false };
+      if (!key) return plain;
+      if (key === state.activeCountry) return { ...base, weight: 3, color: accent(), fillColor: accent(), fillOpacity: 0.3 };
+      const inFocus = o.countries[key].continent === state.activeContinent;
+      if (!inFocus) return { ...base, color: getVar("--text-muted", "#888"), fillColor: getVar("--map-bg", "#eee"), fillOpacity: 0.5 };
+      return { ...base, weight: 1.5, color: accent(), fillColor: accentFill(), fillOpacity: 1 };
+    }
+
+    function continentStyle() {
+      return { weight: 2, color: accent(), fillColor: accentFill(), fillOpacity: 1, className: "geo-continent" };
     }
 
     function restyle() {
-      if (geoLayer) geoLayer.eachLayer((l) => l.setStyle(styleFor(l.feature)));
+      if (geoLayer) geoLayer.eachLayer((l) => l.setStyle(countryStyle(l.feature)));
+      if (continentLayer) {
+        const wanted = state.level === "continent";
+        if (wanted && !map.hasLayer(continentLayer)) continentLayer.addTo(map);
+        if (!wanted && map.hasLayer(continentLayer)) map.removeLayer(continentLayer);
+        continentLayer.eachLayer((l) => l.setStyle(continentStyle()));
+      }
     }
+
+    // ---- names ----
+
+    // Where each country's name goes, best candidates first: countries you
+    // visited, then the rest from biggest to smallest.
+    const countryLabels = [];
+    for (const feature of shown) {
+      if (feature.properties && feature.properties.outlying) continue;
+      const key = isoToKey[feature.id];
+      if (key && o.countries[key].isoNumeric !== feature.id) continue; // Puerto Rico and other extras
+      const point = labelPoint(feature);
+      const text = key ? o.countries[key].label : feature.properties && feature.properties.name;
+      if (point && text) countryLabels.push({ text, lat: point.lat, lon: point.lon, area: point.area, key });
+    }
+    countryLabels.sort((a, b) => (b.key ? 1 : 0) - (a.key ? 1 : 0) || b.area - a.area);
+
+    function updateLabels() {
+      labelLayer.clearLayers();
+      const placed = [];
+      const view = map.getBounds().pad(0.05);
+      const zoom = map.getZoom();
+      function place(item, className, charWidth, height) {
+        if (!view.contains([item.lat, item.lon])) return;
+        const at = map.latLngToContainerPoint([item.lat, item.lon]);
+        const width = item.text.length * charWidth + 10;
+        const box = { x1: at.x - width / 2, x2: at.x + width / 2, y1: at.y - height / 2, y2: at.y + height / 2 };
+        if (placed.some((p) => box.x2 > p.x1 && box.x1 < p.x2 && box.y2 > p.y1 && box.y1 < p.y2)) return;
+        placed.push(box);
+        L.marker([item.lat, item.lon], {
+          interactive: false,
+          keyboard: false,
+          icon: L.divIcon({ className: `map-label ${className}`, html: escapeHtml(item.text), iconSize: [width, height] }),
+        }).addTo(labelLayer);
+      }
+      if (state.level === "continent") {
+        for (const [key, c] of Object.entries(o.continents)) if (c.labelAt) place({ text: c.label, lat: c.labelAt[0], lon: c.labelAt[1] }, "map-label--continent", 10, 22);
+        for (const c of OTHER_CONTINENT_LABELS) place(c, "map-label--continent map-label--dim", 10, 22);
+        return;
+      }
+      for (const item of countryLabels) {
+        if (state.level === "city" && item.key && item.key === state.activeCountry) continue; // its cities are the labels
+        if (item.key) {
+          if (zoom >= MIN_ZOOM_VISITED) place(item, "map-label--visited", 7.2, 16);
+        } else if (zoom >= MIN_ZOOM_OTHER) {
+          place(item, "map-label--dim", 6.2, 14);
+        }
+      }
+    }
+
+    // ---- markers ----
 
     function clearMarkers() {
       map.removeLayer(markerLayer);
@@ -102,8 +234,8 @@ window.GeoMap = (function () {
     function drawCityMarker(city) {
       const marker = L.circleMarker([city.lat, city.lon], {
         radius: 8,
-        color: getVar("--map-active", "#2d5a4a"),
-        fillColor: getVar("--map-active", "#2d5a4a"),
+        color: accent(),
+        fillColor: accent(),
         fillOpacity: 0.9,
         weight: 2,
       }).addTo(markerLayer);
@@ -171,8 +303,7 @@ window.GeoMap = (function () {
         const lat = region.cities.reduce((s, c) => s + c.lat, 0) / region.cities.length;
         const lon = region.cities.reduce((s, c) => s + c.lon, 0) / region.cities.length;
         const farthest = Math.max(...region.cities.map((c) => map.distance([lat, lon], [c.lat, c.lon])));
-        const accent = getVar("--map-active", "#2d5a4a");
-        const halo = L.circle([lat, lon], { radius: farthest * 1.3 + 20000, color: accent, weight: 1, dashArray: "4 4", fillColor: accent, fillOpacity: 0.07 }).addTo(markerLayer);
+        const halo = L.circle([lat, lon], { radius: farthest * 1.3 + 20000, color: accent(), weight: 1, dashArray: "4 4", fillColor: accent(), fillOpacity: 0.07 }).addTo(markerLayer);
         halo.bindTooltip(`${escapeHtml(region.label)}: click to zoom`, { sticky: true, className: "trip-pin-label" });
         halo.on("click", () => focusRegion(countryKey, regionKey));
       }
@@ -201,17 +332,17 @@ window.GeoMap = (function () {
         showRegionBar(key);
         fitTo(country.bounds || countryBoundsFallback(country), country.bounds ? [20, 20] : [40, 40]);
       }
+      updateLabels();
       if (o.onLevelChange) o.onLevelChange(state);
     }
 
+    // A visited country: from its own continent it opens; from anywhere else it
+    // first takes you to that country's continent, the same steps as always.
     function handleCountryClick(key) {
       const country = o.countries[key];
       if (!country) return;
-      if (state.level === "continent" && siblingCount(country.continent) > 1) {
-        showContinent(country.continent);
-      } else {
-        selectCountry(key);
-      }
+      if (country.continent !== state.activeContinent) showContinent(country.continent);
+      else selectCountry(key);
     }
 
     function showContinent(continentKey) {
@@ -223,6 +354,7 @@ window.GeoMap = (function () {
       clearMarkers();
       restyle();
       if (continent && continent.bounds) fitTo(continent.bounds, [20, 20]);
+      updateLabels();
       if (o.onLevelChange) o.onLevelChange(state);
     }
 
@@ -234,28 +366,14 @@ window.GeoMap = (function () {
       clearMarkers();
       restyle();
       const bounds = [];
-      for (const c of Object.values(o.countries)) if (c.bounds) bounds.push(c.bounds[0], c.bounds[1]);
-      if (bounds.length) fitTo(bounds, [30, 30]);
+      for (const c of Object.values(o.continents)) if (c.bounds) bounds.push(c.bounds[0], c.bounds[1]);
+      if (bounds.length) fitTo(bounds, [10, 10]);
+      updateLabels();
       if (o.onLevelChange) o.onLevelChange(state);
     }
 
     function redrawForTheme() {
       setTimeout(restyle, 0);
-    }
-
-    // Trim distant territories off visited countries (French Guiana, Alaska,
-    // Hawaii, Svalbard, Madeira...) so only the recognisable country lights up.
-    const world = o.world;
-    const shown = [];
-    for (const feature of topojson.feature(world, world.objects.countries).features) {
-      const key = isoToKey[feature.id];
-      if (key && o.countries[key].isoNumeric === feature.id) {
-        const { core, outlying } = window.GeoShapes.splitShape(feature, o.countries[key].bounds, { clip: !!o.countries[key].clipToBounds });
-        shown.push(core);
-        if (outlying) shown.push(outlying);
-      } else {
-        shown.push(feature);
-      }
     }
 
     // All shapes of a country light up together (the USA and Puerto Rico).
@@ -268,21 +386,36 @@ window.GeoMap = (function () {
     };
 
     geoLayer = L.geoJson({ type: "FeatureCollection", features: shown }, {
-      style: styleFor,
+      style: countryStyle,
       onEachFeature(feature, layer) {
         const key = isoToKey[feature.id];
-        if (!key) return;
-        layer.on("click", () => handleCountryClick(key));
+        if (!key) return; // countries you have not visited are background only
+        layer.on("click", () => {
+          if (state.level !== "continent") handleCountryClick(key);
+        });
         layer.on("mouseover", () => {
-          if (key === state.activeCountry) return;
-          for (const l of layersOf(key)) l.setStyle({ color: getVar("--map-active", "#2d5a4a"), fillColor: getVar("--map-active-bg", "rgba(45,90,74,.2)"), fillOpacity: 1 });
+          if (state.level === "continent" || key === state.activeCountry) return;
+          for (const l of layersOf(key)) l.setStyle({ color: accent(), fillColor: accent(), fillOpacity: 0.3, weight: 2 });
         });
         layer.on("mouseout", () => {
-          for (const l of layersOf(key)) l.setStyle(styleFor(l.feature));
+          if (state.level === "continent") return;
+          for (const l of layersOf(key)) l.setStyle(countryStyle(l.feature));
         });
       },
     }).addTo(map);
 
+    continentLayer = L.geoJson({ type: "FeatureCollection", features: continentData.features }, {
+      style: continentStyle,
+      onEachFeature(feature, layer) {
+        const key = feature.properties.continent;
+        layer.bindTooltip(`${escapeHtml(o.continents[key].label)}: click to zoom in`, { sticky: true, className: "trip-pin-label" });
+        layer.on("click", () => showContinent(key));
+        layer.on("mouseover", () => layer.setStyle({ weight: 3, fillColor: accent(), fillOpacity: 0.3 }));
+        layer.on("mouseout", () => layer.setStyle(continentStyle()));
+      },
+    });
+
+    map.on("moveend", updateLabels);
     showWorld();
 
     return { map, showWorld, showContinent, selectCountry, focusRegion, redrawForTheme, state };

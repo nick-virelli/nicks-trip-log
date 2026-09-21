@@ -29,10 +29,12 @@ const PICS2_ATT = 'PICS PART 2 STUDY ABROAD 2025/Attachments';
 // Continents give the map its top drill-down level. Bounds are [southWest, northEast]
 // in [lat, lon], sized to frame the countries visited rather than the whole landmass.
 const CONTINENTS = {
-  'north-america': { label: 'North America', bounds: [[7, -170], [72, -52]] },
-  'south-america': { label: 'South America', bounds: [[-56, -82], [13, -34]] },
-  europe: { label: 'Europe', bounds: [[34, -11], [71.5, 32]] },
-  africa: { label: 'Africa', bounds: [[-35, -18], [37.5, 52]] },
+  'north-america': { label: 'North America', bounds: [[7, -170], [72, -52]], labelAt: [50, -100] },
+  'south-america': { label: 'South America', bounds: [[-56, -82], [13, -34]], labelAt: [-13, -60] },
+  // shapeBounds is wider than the zoom frame so the outline includes Iceland and
+  // Ukraine; labelAt is where the continent's name goes on the world view.
+  europe: { label: 'Europe', bounds: [[34, -11], [71.5, 32]], shapeBounds: [[34, -25], [72, 45]], labelAt: [54, 14] },
+  africa: { label: 'Africa', bounds: [[-35, -18], [37.5, 52]], labelAt: [3, 20] },
 };
 
 // country metadata used to build data/map-data.json. iso3 and isoNumeric are there

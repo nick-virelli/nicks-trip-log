@@ -11,6 +11,10 @@ window.__MAP_DATA__ = {
           72,
           -52
         ]
+      ],
+      "labelAt": [
+        50,
+        -100
       ]
     },
     "south-america": {
@@ -24,6 +28,10 @@ window.__MAP_DATA__ = {
           13,
           -34
         ]
+      ],
+      "labelAt": [
+        -13,
+        -60
       ]
     },
     "europe": {
@@ -37,6 +45,20 @@ window.__MAP_DATA__ = {
           71.5,
           32
         ]
+      ],
+      "shapeBounds": [
+        [
+          34,
+          -25
+        ],
+        [
+          72,
+          45
+        ]
+      ],
+      "labelAt": [
+        54,
+        14
       ]
     },
     "africa": {
@@ -50,6 +72,10 @@ window.__MAP_DATA__ = {
           37.5,
           52
         ]
+      ],
+      "labelAt": [
+        3,
+        20
       ]
     }
   },

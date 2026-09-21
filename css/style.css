@@ -1195,3 +1195,40 @@ mark {
   border-color: var(--map-active);
   color: var(--map-active);
 }
+
+/* Names on the map: visited countries clearly, everything else faintly */
+.map-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1;
+  font-size: var(--fs-xs);
+  text-shadow: 0 0 3px var(--bg), 0 0 3px var(--bg), 0 0 6px var(--bg);
+}
+
+.map-label--visited {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.map-label--dim {
+  color: var(--text-muted);
+  opacity: 0.55;
+  font-weight: 400;
+  font-size: var(--fs-2xs);
+}
+
+.map-label--continent {
+  color: var(--map-active);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.map-label--continent.map-label--dim {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
