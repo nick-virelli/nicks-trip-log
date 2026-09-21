@@ -11,6 +11,11 @@ module.exports = {
       <h1>Trips</h1>
       <p class="map-instruction">Sort and filter to find a trip. Study Abroad, Spring 2025 counts as one entry here; open it to see its 18 legs.</p>
 
+      <form class="search-form" action="search.html" role="search">
+        <input type="search" name="q" class="trip-search" placeholder="Search every trip: a place, a restaurant, a trail" aria-label="Search all trips">
+        <button type="submit" class="map-back">Search</button>
+  </form>
+
       <div class="trips-controls">
         <label>Sort
           <select id="trips-sort">

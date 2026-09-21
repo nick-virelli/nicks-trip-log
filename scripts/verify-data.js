@@ -152,7 +152,7 @@ if (fs.existsSync(path.join(ROOT, 'trip'))) {
   for (const f of ['404.html', '.nojekyll', 'sitemap.xml', 'trips.html']) if (!pageFor(f)) fail(`missing ${f}`);
   const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
   const locs = (sitemap.match(/<loc>/g) || []).length;
-  const SITE_PAGE_COUNT = 4; // index, trips, gallery, about
+  const SITE_PAGE_COUNT = 5; // index, trips, search, gallery, about
   const expected = SITE_PAGE_COUNT + posts.length + (collections || []).length;
   if (locs !== expected) fail(`sitemap has ${locs} URLs, expected ${expected}`);
   for (const p of posts) if (!sitemap.includes(`/trip/${p.id}.html<`)) fail(`sitemap missing trip/${p.id}.html`);

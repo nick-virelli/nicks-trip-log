@@ -67,7 +67,7 @@
       el.addEventListener("click", () => {
         const i = parseInt(el.dataset.index, 10);
         window.TripLightbox.open(
-          list.map((img) => ({ src: img.src, caption: captionFor(img) })),
+          list.map((img) => ({ src: img.src, caption: captionFor(img), href: `trip/${img.tripId}.html` })),
           i
         );
       });

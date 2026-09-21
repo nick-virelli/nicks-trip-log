@@ -34,8 +34,8 @@
     const prefix = (options && options.assetPrefix) || "";
     const days = p.days
       .map(
-        (d) => `
-      <div class="trip-day">
+        (d, i) => `
+      <div class="trip-day" id="day-${i + 1}">
         <h3>${esc(d.label)}</h3>
         ${d.body_html}
       </div>`

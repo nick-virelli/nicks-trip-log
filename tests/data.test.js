@@ -151,6 +151,6 @@ test('the search index has every trip, its cities, and text for every day', () =
   }
 });
 
-test('the ALL_PAGES list found every page (26 trips, 1 collection, 4 site pages, 404)', () => {
-  assert.equal(ALL_PAGES.length, posts.length + collections.length + 4 + 1);
+test('the ALL_PAGES list found every page (26 trips, 1 collection, 5 site pages, 404)', () => {
+  assert.equal(ALL_PAGES.length, posts.length + collections.length + 5 + 1);
 });

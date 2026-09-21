@@ -20,7 +20,7 @@ test("every trip page carries every day label and every day's text exactly as th
   for (const p of posts) {
     const page = read(`trip/${p.id}.html`);
     if (!page.includes(`>${TripRender.esc(p.title)}</h2>`)) bad.push(`${p.id}: title`);
-    if ((page.match(/<div class="trip-day">/g) || []).length !== p.days.length) bad.push(`${p.id}: day count`);
+    if ((page.match(/<div class="trip-day" id="day-\d+">/g) || []).length !== p.days.length) bad.push(`${p.id}: day count`);
     for (const d of p.days) {
       if (!page.includes(`<h3>${TripRender.esc(d.label)}</h3>`)) bad.push(`${p.id}: label "${d.label}"`);
       if (!page.includes(d.body_html.replace(/ src="images\//g, ' src="../images/'))) bad.push(`${p.id}: body of "${d.label}"`);
@@ -85,12 +85,14 @@ test('the gallery grid uses thumbnails while the lightbox uses the full photo', 
   assert.match(js, /list\.map\(\(img\) => \(\{ src: img\.src/);
 });
 
-// The user expects to get from a gallery photo to its trip. Today the lightbox
-// shows the trip name as plain text only. Marked as a to-do so it shows in the
-// report without failing the run; delete `todo` once the link exists.
-test('a gallery photo links through to its trip page', { todo: 'the lightbox caption is plain text, there is no link to the trip yet' }, () => {
-  const lightbox = read('js/lightbox.js') + read('js/gallery.js');
-  assert.match(lightbox, /trip\/\$\{|trip\/["'`]/, 'no code builds a trip/<id>.html link from the gallery');
+// Opening a photo from the gallery offers a link to the trip it came from.
+test('a gallery photo links through to its trip page', () => {
+  assert.match(read('js/gallery.js'), /href: `trip\/\$\{img\.tripId\}\.html`/);
+  assert.match(read('js/lightbox.js'), /lightbox-trip/);
+  for (const page of ['gallery.html', ...posts.map((p) => `trip/${p.id}.html`)]) {
+    assert.ok(read(page).includes('id="lightbox-trip"'), `${page} has no trip link in its lightbox`);
+  }
+  for (const img of images) assert.ok(exists(`trip/${img.tripId}.html`), `${img.src} links to a missing trip page`);
 });
 
 // ---------- Trips list and grouping ----------

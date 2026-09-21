@@ -77,6 +77,7 @@ test('scripts load in an order that satisfies what each one uses', () => {
     GeoMap: 'js/geo-map.js',
     TripLightbox: 'js/lightbox.js',
     TripUI: 'js/trip-ui.js',
+    TripSearch: 'js/search.js',
   };
   const problems = [];
   for (const page of ALL_PAGES) {
@@ -133,8 +134,8 @@ test('the sitemap lists every page once, each one exists, and robots.txt points 
 
 // index/trips/gallery/about are build outputs. If someone edits the .html by
 // hand, the next build silently throws that edit away.
-test('the four site pages match what the build would generate right now', () => {
-  for (const name of ['index', 'trips', 'gallery', 'about']) {
+test('the five site pages match what the build would generate right now', () => {
+  for (const name of ['index', 'trips', 'search', 'gallery', 'about']) {
     const def = require(`../scripts/pages/${name}`);
     const onDisk = read(def.file).replace(/\r\n/g, '\n');
     assert.equal(onDisk, renderPage(def), `${def.file} differs from scripts/pages/${name}.js. Edit that file and run npm run build.`);

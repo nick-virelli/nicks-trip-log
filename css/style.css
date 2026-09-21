@@ -70,6 +70,7 @@
   --content-max: 1200px;
   --sidebar-width: 220px;
   --header-height: 81px;
+  --media-max-height: max(20rem, calc(100vh - var(--header-height) - var(--space-2xl)));
   --map-height: 480px;
   --gallery-map-height: 420px;
   --indicator-max: 240px;
@@ -95,7 +96,7 @@
   --border: #3a3a3a;
   --accent: #5a9a82;
   --accent-hover: #7ab8a0;
-  --on-accent: #fff;
+  --on-accent: #121212; /* white on this green scored 3.3, below the 4.5 needed to read */
   --map-bg: #1a1a1a;
   --map-hover: #2a2a2a;
   --map-active: #5a9a82;
@@ -424,6 +425,8 @@ main {
 
 .trip-day {
   margin-bottom: var(--space-2xl);
+  /* Search results link to a specific day; keep it clear of the sticky header. */
+  scroll-margin-top: calc(var(--header-height) + var(--space-lg));
 }
 
 .trip-day h3 {
@@ -453,9 +456,14 @@ main {
   margin-left: -1.25rem;
 }
 
+/* A photo is never taller than the room under the sticky header, so a whole
+   landscape picture fits on screen without scrolling or zooming out. */
 .trip-day img,
 .trip-day video {
+  width: auto;
+  height: auto;
   max-width: 100%;
+  max-height: var(--media-max-height);
   border-radius: var(--radius-lg);
   margin: var(--space-xs) 0;
   display: block;
@@ -469,6 +477,8 @@ main {
 .carousel {
   position: relative;
   margin: var(--space-xs) 0;
+  /* Slides are 4:3, so this width keeps a slide no taller than a single photo. */
+  max-width: calc(var(--media-max-height) * 4 / 3);
 }
 
 .carousel-track {
@@ -1078,4 +1088,64 @@ main {
 .trip-day li.trip-notes {
   list-style: none;
   margin-left: 0;
+}
+
+/* ---------- Search ---------- */
+.search-form {
+  display: flex;
+  gap: var(--space-sm);
+  margin: 0 0 var(--space-xl);
+}
+
+.search-form .trip-search {
+  flex: 1 1 240px;
+  margin-bottom: 0;
+}
+
+.search-result {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--surface);
+  margin-bottom: var(--space-md);
+}
+
+.search-result h2 {
+  font-size: var(--fs-lg);
+  margin: 0;
+}
+
+.search-result .post-meta {
+  margin-bottom: var(--space-sm);
+}
+
+.search-days,
+.search-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-day > a {
+  font-weight: 600;
+  font-size: var(--fs-md);
+}
+
+.search-lines {
+  margin: var(--space-2xs) 0 var(--space-sm);
+  padding-left: var(--space-lg);
+  color: var(--text-muted);
+  font-size: var(--fs-md);
+}
+
+.search-more {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+mark {
+  background: var(--map-active-bg);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 0.1em;
 }

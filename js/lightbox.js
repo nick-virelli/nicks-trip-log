@@ -27,6 +27,12 @@ window.TripLightbox = (function () {
     const dl = document.getElementById("lightbox-download");
     dl.href = item.src;
     dl.download = item.src.split("/").pop();
+    // Photos opened from the gallery carry a link to their trip; trip pages don't need one.
+    const tripLink = document.getElementById("lightbox-trip");
+    if (tripLink) {
+      tripLink.style.display = item.href ? "" : "none";
+      if (item.href) tripLink.href = item.href;
+    }
     const prevBtn = document.getElementById("lightbox-prev");
     const nextBtn = document.getElementById("lightbox-next");
     if (prevBtn) prevBtn.style.display = items.length > 1 ? "" : "none";

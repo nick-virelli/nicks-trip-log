@@ -41,6 +41,7 @@ const LIGHTBOX = `
       <div class="lightbox-meta">
         <span id="lightbox-caption"></span>
         <div class="lightbox-actions">
+          <a id="lightbox-trip" href="#" style="display:none;">View trip</a>
           <button type="button" id="lightbox-share">Share</button>
           <a id="lightbox-download" download>Download</a>
           <button type="button" id="lightbox-print">Print</button>

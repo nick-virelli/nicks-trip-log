@@ -18,7 +18,7 @@ function listHtml(dir) {
 }
 
 // Every generated page: the four site pages, the 404, collections, and trips.
-const ALL_PAGES = [...TOP_PAGES, '404.html', ...listHtml('collections'), ...listHtml('trip')];
+const ALL_PAGES = [...TOP_PAGES, 'search.html', '404.html', ...listHtml('collections'), ...listHtml('trip')];
 
 // Attribute values of the form name="value" for the given attribute names.
 function attrs(html, names) {

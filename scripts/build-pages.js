@@ -14,7 +14,7 @@ const { esc, fmtDate, fmtDateRange, renderTripHtml } = require('../js/render-tri
 
 const ROOT = path.join(__dirname, '..');
 const TRIP_DIR = path.join(ROOT, 'trip');
-const SITE_PAGES = ['index', 'trips', 'gallery', 'about'].map((name) => require(`./pages/${name}`));
+const SITE_PAGES = ['index', 'trips', 'search', 'gallery', 'about'].map((name) => require(`./pages/${name}`));
 const COLLECTION_DIR = path.join(ROOT, 'collections');
 const SITE_TITLE = "Nick's Trip Log";
 

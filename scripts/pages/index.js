@@ -28,6 +28,11 @@ module.exports = {
       <div class="stat-tile"><span class="stat-value" id="stat-miles">&nbsp;</span><span class="stat-label" id="stat-miles-label">Miles</span></div>
     </section>
 
+    <form class="search-form" action="search.html" role="search">
+      <input type="search" name="q" class="trip-search" placeholder="Search every trip: a place, a restaurant, a trail" aria-label="Search all trips">
+      <button type="submit" class="map-back">Search</button>
+    </form>
+
     <section class="map-section">
       <div class="section-head">
         <h2>Explore by place</h2>

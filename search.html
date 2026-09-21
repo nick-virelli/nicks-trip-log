@@ -11,13 +11,13 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All trips - Nick's Trip Log</title>
-  <meta name="description" content="Every trip, sortable and filterable by date, country, continent, and collection.">
-  <meta property="og:title" content="All trips - Nick's Trip Log">
-  <meta property="og:description" content="Every trip, sortable and filterable by date, country, continent, and collection.">
+  <title>Search - Nick's Trip Log</title>
+  <meta name="description" content="Search every trip for a place, restaurant, trail, or anything else in the trip notes.">
+  <meta property="og:title" content="Search - Nick's Trip Log">
+  <meta property="og:description" content="Search every trip for a place, restaurant, trail, or anything else in the trip notes.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://nick-virelli.github.io/nicks-trip-log/trips.html">
-  <link rel="canonical" href="https://nick-virelli.github.io/nicks-trip-log/trips.html">
+  <meta property="og:url" content="https://nick-virelli.github.io/nicks-trip-log/search.html">
+  <link rel="canonical" href="https://nick-virelli.github.io/nicks-trip-log/search.html">
   <meta property="og:image" content="https://nick-virelli.github.io/nicks-trip-log/images/trips/mt-rainier-2026/8E69F307-B2FC-495A-A8B1-EAD2134651B3.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
@@ -28,7 +28,7 @@
     <h1 class="site-title"><a href="index.html">Nick's Trip Log</a></h1>
     <nav class="site-nav">
       <a href="index.html">Home</a>
-      <a href="trips.html" class="active" aria-current="page">Trips</a>
+      <a href="trips.html">Trips</a>
       <a href="gallery.html">Gallery</a>
       <a href="about.html">About</a>
       <button type="button" class="theme-toggle" aria-label="Toggle theme">
@@ -40,51 +40,20 @@
 
   <main>
     <div class="page-content">
-      <h1>Trips</h1>
-      <p class="map-instruction">Sort and filter to find a trip. Study Abroad, Spring 2025 counts as one entry here; open it to see its 18 legs.</p>
-
+      <h1>Search</h1>
+      <p class="map-instruction">Finds trip titles, places, cities, and anything written in the trip notes. Every word you type has to appear as typed.</p>
       <form class="search-form" action="search.html" role="search">
-        <input type="search" name="q" class="trip-search" placeholder="Search every trip: a place, a restaurant, a trail" aria-label="Search all trips">
-        <button type="submit" class="map-back">Search</button>
-  </form>
-
-      <div class="trips-controls">
-        <label>Sort
-          <select id="trips-sort">
-            <option value="date-desc">Newest first</option>
-            <option value="date-asc">Oldest first</option>
-            <option value="az">A to Z</option>
-          </select>
-        </label>
-        <label>Continent
-          <select id="trips-continent">
-            <option value="">All continents</option>
-          </select>
-        </label>
-        <label>Country
-          <select id="trips-country">
-            <option value="">All countries</option>
-          </select>
-        </label>
-        <label>Collection
-          <select id="trips-collection">
-            <option value="">All trips</option>
-            <option value="none">Standalone trips</option>
-          </select>
-        </label>
-      </div>
-
-      <p id="trips-count" class="post-meta"></p>
-      <div id="trips-grid" class="trip-grid">
-        <p class="post-meta">Loading…</p>
-      </div>
+        <input type="search" id="search-input" name="q" class="trip-search" placeholder="Try a restaurant, a trail, or a city" autocomplete="off">
+      </form>
+      <p id="search-summary" class="post-meta" aria-live="polite"></p>
+      <div id="search-results"></div>
     </div>
   </main>
 
   <footer class="site-footer">
     <nav>
       <a href="index.html">Home</a>
-      <a href="trips.html" class="active" aria-current="page">Trips</a>
+      <a href="trips.html">Trips</a>
       <a href="gallery.html">Gallery</a>
       <a href="about.html">About</a>
     </nav>
@@ -95,11 +64,9 @@
 
   <script src="js/theme.js"></script>
   <script src="js/palette-switcher.js"></script>
-  <script src="data/posts.js"></script>
-  <script src="data/map-data.js"></script>
-  <script src="data/gallery.js"></script>
+  <script src="data/search-index.js"></script>
   <script src="js/render-trip.js"></script>
-  <script src="js/trip-entries.js"></script>
-  <script src="js/trips-index.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/search-page.js"></script>
 </body>
 </html>
