@@ -5,6 +5,7 @@ const { extractSection } = require('./lib/extract-section');
 const { mergeMediaIntoDays } = require('./lib/merge-media');
 const { renderDayHtml, dayMiles, extractTrails, collectMediaFiles } = require('./lib/render');
 const { scanTripPhotos, resolveTripDates } = require('./lib/exif-dates');
+const { resolveDayDates } = require('./lib/day-dates');
 const { buildSearchIndex } = require('./lib/search-index');
 const { readGps, explicitLocations, resolveDay } = require('./lib/photo-places');
 
@@ -395,7 +396,7 @@ function collectGalleryImages(days, locations, mediaMap, gpsByDest, overrides) {
       const stem = dest.split('/').pop().replace(/\.[^.]+$/, '');
       const photoOverride = overrides && overrides.photos && overrides.photos[stem];
       const chosen = photoOverride ? named(photoOverride) : dayOverride ? named(dayOverride) : placed[i];
-      entries.push({ src: dest, locations: chosen });
+      entries.push({ src: dest, locations: chosen, dayIndex });
     });
   }
   return entries;
@@ -484,7 +485,40 @@ async function main() {
     // Dates: EXIF from the originals can fill a null range or tighten a month
     // placeholder, never override a typed day-precision range.
     const scan = await scanTripPhotos(tripPhotos.filter((m) => m.kind !== 'video').map((m) => m.src));
-    const dates = resolveTripDates({ dateStart: t.dateStart, dateEnd: t.dateEnd, datePrecision: t.datePrecision }, scan);
+    const typedDates = { dateStart: t.dateStart, dateEnd: t.dateEnd, datePrecision: t.datePrecision };
+    const dates = resolveTripDates(typedDates, scan);
+
+    // Each day's own date, from its photos and its heading. When the trip has
+    // no typed day-precision range, the days also set the range: the photo
+    // dates alone would cut off days that have no photos (travel days).
+    const photoDateByDest = new Map();
+    tripPhotos.forEach((m) => {
+      const found = scan.photos.find((p) => p.file === path.basename(m.src));
+      if (m.kind !== 'video' && found && found.date) photoDateByDest.set(m.dest, found.date);
+    });
+    const dayDates = resolveDayDates(
+      days.map((d) => {
+        const photoDates = [];
+        const walk = (nodes) => {
+          for (const n of nodes) {
+            const dest = n.media && n.media.type === 'image' ? mediaMap.get(n.media.file) : null;
+            if (dest && photoDateByDest.has(dest)) photoDates.push(photoDateByDest.get(dest));
+            walk(n.children);
+          }
+        };
+        walk(d.children);
+        return { label: d.label, photoDates };
+      }),
+      typedDates
+    );
+    dates.notes.push(...dayDates.notes);
+    if (dayDates.start && dates.date_source !== 'manual') {
+      dates.date_start = dayDates.start;
+      dates.date_end = dayDates.end;
+      dates.date_precision = 'day';
+      dates.date_source = 'photo-days';
+      dates.notes.push(`range set from the dated days: ${dayDates.start}..${dayDates.end}`);
+    }
     console.log(`  dates: ${dates.date_start || 'null'}..${dates.date_end || 'null'} (${dates.date_precision}, ${dates.date_source}) from ${scan.found}/${scan.total} dated photos`);
     for (const n of dates.notes) console.log(`    ${n}`);
     if (dates.date_source !== 'manual' || dates.notes.some((n) => n.startsWith('WARNING'))) {
@@ -494,7 +528,7 @@ async function main() {
     const altText = `${t.title} - ${t.location}`;
     const dayObjs = days.map((d, dayIdx) => ({
       label: d.label,
-      date: null,
+      date: dayDates.dates[dayIdx],
       miles: dayMiles(d),
       body_html: renderDayHtml(d, mediaMap, altText, `${t.slug}-d${dayIdx}`),
       trails: extractTrails(d),
@@ -539,6 +573,9 @@ async function main() {
         thumb: img.src.replace(/^images\/trips\//, 'images/thumbs/'),
         tripId: t.slug,
         tripTitle: t.title,
+        // The day the photo was taken: its own capture date, else the date of
+        // the day it sits under in the note, else null (the trip range is used).
+        date: photoDateByDest.get(img.src) || (img.dayIndex !== undefined ? dayDates.dates[img.dayIndex] : null) || null,
         locations: img.locations.map((l) => l.name),
         // The photo's own country (from its city), not the trip's first one.
         country: img.locations[0].country,

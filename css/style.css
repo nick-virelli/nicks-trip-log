@@ -438,6 +438,12 @@ main {
   border-bottom: 1px solid var(--border);
 }
 
+.trip-day .day-date {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  margin: calc(-1 * var(--space-xs)) 0 var(--space-md);
+}
+
 .trip-day ul {
   margin: 0;
   padding-left: 1.25rem;
@@ -685,11 +691,16 @@ main {
 
 .trip-tile-media {
   display: block;
+  position: relative;
   aspect-ratio: 4 / 3;
   background: var(--map-bg);
 }
 
+/* Taken out of the flow so the photo's own shape can't stretch the 4:3 box.
+   Left in the flow, a portrait cover made its tile (and its whole row) taller. */
 .trip-tile-media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;

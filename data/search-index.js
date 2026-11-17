@@ -676,8 +676,8 @@ window.__SEARCH_INDEX__ = {
       "title": "TETONS",
       "location": "Grand Teton National Park",
       "collectionId": null,
-      "date_start": "2023-07-17",
-      "date_end": "2023-07-20",
+      "date_start": "2023-07-15",
+      "date_end": "2023-07-21",
       "date_precision": "day",
       "cities": [
         "Grand Teton National Park"

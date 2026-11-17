@@ -28,6 +28,13 @@
     return `${fmtDate(p.date_start, p.date_precision)} - ${fmtDate(p.date_end, p.date_precision)}`;
   }
 
+  // The day's date, under its heading. Skipped when the heading already has
+  // the date typed in it ("Day 2 - 7/16").
+  function dayDateHtml(d) {
+    if (!d.date || /\d{1,2}\/\d{1,2}/.test(d.label)) return "";
+    return `\n        <p class="day-date">${esc(fmtDate(d.date))}</p>`;
+  }
+
   // options.assetPrefix: prepended to every "images/..." src when the page lives
   // in a subfolder (trip pages use "../"). body_html always emits src="images/...".
   function renderTripHtml(p, options) {
@@ -36,7 +43,7 @@
       .map(
         (d, i) => `
       <div class="trip-day" id="day-${i + 1}">
-        <h3>${esc(d.label)}</h3>
+        <h3>${esc(d.label)}</h3>${dayDateHtml(d)}
         ${d.body_html}
       </div>`
       )

@@ -19,10 +19,15 @@
     countryLabels: {},
   };
 
+  // A photo's own date when it has one, otherwise its trip's start date.
+  function photoDate(img) {
+    return img.date ? fmtDate(img.date) : fmtDate(img.date_start, img.date_precision);
+  }
+
   function matchesQuery(img, q) {
     if (!q) return true;
     const countries = (img.countries || [img.country]).map((c) => app.countryLabels[c] || c).join(" ");
-    const haystack = `${img.tripTitle} ${img.locations.join(" ")} ${countries} ${fmtDate(img.date_start, img.date_precision)}`.toLowerCase();
+    const haystack = `${img.tripTitle} ${img.locations.join(" ")} ${countries} ${photoDate(img)}`.toLowerCase();
     return haystack.includes(q);
   }
 
@@ -60,7 +65,7 @@
         (img, i) => `
       <button type="button" class="gallery-item" data-index="${i}">
         <img src="${esc(img.thumb || img.src)}" alt="${esc(altTextFor(img))}" loading="lazy">
-        <span class="caption">${esc(img.tripTitle)}${fmtDate(img.date_start, img.date_precision) ? " - " + esc(fmtDate(img.date_start, img.date_precision)) : ""}</span>
+        <span class="caption">${esc(img.tripTitle)}${photoDate(img) ? " - " + esc(photoDate(img)) : ""}</span>
       </button>`
       )
       .join("");
@@ -79,13 +84,13 @@
   // A screen reader gets the trip, the specific place, and the date, not just
   // the trip title repeated on every one of its photos.
   function altTextFor(img) {
-    const date = fmtDate(img.date_start, img.date_precision);
+    const date = photoDate(img);
     const where = img.locations.length ? img.locations.join(", ") : img.tripTitle;
     return `${img.tripTitle}, ${where}${date ? ", " + date : ""}`;
   }
 
   function captionFor(img) {
-    const date = fmtDate(img.date_start, img.date_precision);
+    const date = photoDate(img);
     return `${img.tripTitle}${img.locations.length ? " - " + img.locations.join(", ") : ""}${date ? " - " + date : ""}`;
   }
 
