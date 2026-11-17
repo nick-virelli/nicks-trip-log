@@ -32,6 +32,19 @@
         const countrySelect = document.getElementById("trips-country");
         const collectionSelect = document.getElementById("trips-collection");
         const sortSelect = document.getElementById("trips-sort");
+        const yearSelect = document.getElementById("trips-year");
+
+        // An entry counts for every year it touches (a collection can span two).
+        const yearsOf = (e) => {
+          if (!e.date_start) return [];
+          const first = Number(e.date_start.slice(0, 4));
+          const last = Number((e.date_end || e.date_start).slice(0, 4));
+          const out = [];
+          for (let y = first; y <= last; y++) out.push(String(y));
+          return out;
+        };
+        const yearEntries = [...new Set(entries.flatMap(yearsOf))].sort().reverse().map((y) => [y, y]);
+        populateSelect(yearSelect, yearEntries, "All years");
         const grid = document.getElementById("trips-grid");
         const countEl = document.getElementById("trips-count");
 
@@ -50,7 +63,9 @@
           const continent = continentSelect.value;
           const country = countrySelect.value;
           const collection = collectionSelect.value;
+          const year = yearSelect.value;
           let list = entries.filter((e) => {
+            if (year && !yearsOf(e).includes(year)) return false;
             if (continent && !e.continents.includes(continent)) return false;
             if (country && !e.countries.includes(country)) return false;
             if (collection === "none" && e.type === "collection") return false;
@@ -61,6 +76,7 @@
           countEl.textContent = `${list.length} ${list.length === 1 ? "entry" : "entries"} (${postsData.posts.length} trips total)`;
         }
 
+        yearSelect.addEventListener("change", apply);
         continentSelect.addEventListener("change", apply);
         countrySelect.addEventListener("change", apply);
         collectionSelect.addEventListener("change", apply);

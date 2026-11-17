@@ -24,6 +24,11 @@ module.exports = {
             <option value="az">A to Z</option>
           </select>
         </label>
+        <label>Year
+          <select id="trips-year">
+            <option value="">All years</option>
+          </select>
+        </label>
         <label>Continent
           <select id="trips-continent">
             <option value="">All continents</option>

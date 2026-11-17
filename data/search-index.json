@@ -500,7 +500,7 @@
       "title": "STOCKHOLM-COPENHAGEN",
       "location": "Stockholm / Copenhagen",
       "collectionId": "study-abroad-2025",
-      "date_start": "2025-02-28",
+      "date_start": "2025-02-27",
       "date_end": "2025-03-02",
       "date_precision": "day",
       "cities": [
@@ -575,7 +575,7 @@
       "location": "Interlaken / Grindelwald",
       "collectionId": "study-abroad-2025",
       "date_start": "2025-01-30",
-      "date_end": "2025-02-01",
+      "date_end": "2025-02-02",
       "date_precision": "day",
       "cities": [
         "Interlaken",
@@ -605,7 +605,7 @@
       "title": "PRAGUE-BUDAPEST",
       "location": "Prague / Budapest",
       "collectionId": "study-abroad-2025",
-      "date_start": "2025-01-24",
+      "date_start": "2025-01-23",
       "date_end": "2025-01-26",
       "date_precision": "day",
       "cities": [
@@ -668,6 +668,41 @@
         {
           "label": "Friday",
           "text": "Gathered at Hauptbahnhof Berlin with CIEE at 9am\nAbout a 1.5 hr train ride\nTook a guided tour of the city with a small group\nSaw old churches\nLearned a bit about Bach as a kid\nMet more CIEE people for lunch at Leo's Brasserie\nFish and chips were good\nMahathi ate the cup they served the guac in\nEveryone split up into their excursions, we chose the apotheken museum\nInteresting history about different medical practices like draining \"sick\" blood until someone was better\nSometimes they just died from blood loss\nExplored on our own at the mall and around the town\nVery nice place to walk, modern but still very old on the outside\nMet back up with everyone to leave\nMahathi didn't feel well for a while until right before we got on the train home"
+        }
+      ]
+    },
+    {
+      "id": "zion-2024",
+      "title": "ZION 2024",
+      "location": "Zion National Park / Bryce Canyon",
+      "collectionId": null,
+      "date_start": "2024-05-05",
+      "date_end": "2024-05-09",
+      "date_precision": "day",
+      "cities": [
+        "Zion National Park",
+        "Bryce Canyon National Park"
+      ],
+      "days": [
+        {
+          "label": "DAY 1 (TRAVEL)",
+          "text": "1:45 flight to Vegas was rerouted after the Vegas airport was too windy to land us and we used too much fuel waiting around for them to land us\nrerouted to Ontario CA and waited for like 30 min while we refueled and took off again for Vegas\nAte chipotle, got groceries and drove from Vegas to Springdale, UT 2.5 hrs"
+        },
+        {
+          "label": "DAY 2 (ZION) - 13.1 miles",
+          "text": "Woke up 6:30ish to get breakfast at Oscar's Cafe\nreally good Mexican breakfast food\nTook a shuttle at 8:00 to The Grotto and walked (1.5 miles) to Hidden Canyon trailhead\ntried to do Hidden Canyon but it was closed\nwalked up the road (0.2 miles) to the closest bus stop but they never picked us up at Big Bend\nWalked back down the road (1.7 miles) to the grotto stop and did Emerald Pools (3 miles) hike\nthe pools were kind of underwhelming\nHiked to Scout's Lookout and Angel's Landing (5.2 miles)\nsteep switchbacks most of the way up\nAngel's Landing was daunting on the way up but smooth on the way down\nthey tried to medevac someone out who had a seizure and became unconscious\nrangers kicked everyone out of Scout's Lookout and Angel's Landing back sending them back to The Grotto bus stop where we started 5 miles away\nthe man ended up passing away\nwe ran most of the way down and took a bus up to the temple stop and did a silly paved path hike along the river called Riverside Walk (1.5 miles)\ntook a bus back to the visitor center\nWe ate dinner at Bit and Spur\ngot sweet potato tacos with a black bean spread on the tortilla, pretty good\nthey had a farmer's market out back"
+        },
+        {
+          "label": "DAY 3 (BRYCE CANYON) - 7.2 miles",
+          "text": "Slept in a bit to catch up on lost sleep from the first night\nAte leftover Chipotle for breakfast\nDrove 2 hrs to Bryce\nAte lunch at Pines near Bryce\ngood breakfast food\nDrove to Sunset Point to start the Figure 8 (6.2 miles)\nfirst part was meh\ninteresting to look at and think about the erosion that formed the Hoodoos\nsecond part (Peek a boo loop) was amazing\nstunning views of the whole canyon\ncould see for tens of miles across to other mountains in the distance\nreally steep coming back uphill to Sunset point\nDrove 1.5 hrs back to Canyon Overlook (1 mile)\neasy and crowded\nok views but ruined by a big road in the middle of the valley\nDrove 30 mins back to Springdale and ate dinner at Meme's Cafe\nGood philly sandwich and fries\nDipped my feet in ice bath back at the hotel\nWalked to Bumbleberry Cafe for ice cream"
+        },
+        {
+          "label": "DAY 4 (ZION) - 7 miles",
+          "text": "Woke up and dad went to get permits for The Subway and was successful\nAte our free breakfast with vouchers at Porter's and went to Sol Market for packaged wraps for the hike\nDrove 30 min to Left Fork Trailhead and started the steep 400 ft descent (36 min) on The Subway (7 miles)\n2.5 more hrs to get there (3.5 miles)\nlots of crossing back and forth across the river slows you down\ntrail goes along the river but loosely marked and we just walked through the water a lot of times rather than trying to stay dry\n600 ft ascent was very gradual and didn't get steep at all for a while until the very end\nlots of waterfalls and cascading pools\nwe entered \"The Subway\" and spent 21 min there\ncool looking cave feel with lots of little pools\nwe left and turned around cuz dad forgot his cane and left again after 24 min\nthe top down hikers had it and were resting ahead of us\nwe flew through the rest of the way back (1.5 hrs) and started our 400 ft ascent (40 min)\nfinished the \"10 hour hike\" in 6 hrs\nWent to Balcony One for dinner\nnice restaurant, great service\ngood pork shank wings"
+        },
+        {
+          "label": "DAY 5 (TRAVEL)",
+          "text": "Woke up and packed and got breakfast at Porter's again\nGot on the road and drove to the airport to fly home at 1:55\nflight was smooth and on time"
         }
       ]
     },
@@ -770,12 +805,12 @@
       ]
     },
     {
-      "id": "glacier-2023",
-      "title": "GLACIER 2023",
+      "id": "glacier-2022",
+      "title": "GLACIER 2022",
       "location": "Glacier National Park",
       "collectionId": null,
-      "date_start": null,
-      "date_end": null,
+      "date_start": "2022-08-09",
+      "date_end": "2022-08-13",
       "date_precision": "day",
       "cities": [
         "Glacier National Park"
@@ -800,41 +835,6 @@
         {
           "label": "DAY 5 (Saturday)",
           "text": "St Mary falls and Virginia falls (3.9 miles)\ngot out earlier than anyone else\nsaw no wildlife but the falls were amazing\nflew back home\n63.9 total miles hiking"
-        }
-      ]
-    },
-    {
-      "id": "zion-2024",
-      "title": "ZION 2024",
-      "location": "Zion National Park / Bryce Canyon",
-      "collectionId": null,
-      "date_start": null,
-      "date_end": null,
-      "date_precision": "day",
-      "cities": [
-        "Zion National Park",
-        "Bryce Canyon National Park"
-      ],
-      "days": [
-        {
-          "label": "DAY 1 (TRAVEL)",
-          "text": "1:45 flight to Vegas was rerouted after the Vegas airport was too windy to land us and we used too much fuel waiting around for them to land us\nrerouted to Ontario CA and waited for like 30 min while we refueled and took off again for Vegas\nAte chipotle, got groceries and drove from Vegas to Springdale, UT 2.5 hrs"
-        },
-        {
-          "label": "DAY 2 (ZION) - 13.1 miles",
-          "text": "Woke up 6:30ish to get breakfast at Oscar's Cafe\nreally good Mexican breakfast food\nTook a shuttle at 8:00 to The Grotto and walked (1.5 miles) to Hidden Canyon trailhead\ntried to do Hidden Canyon but it was closed\nwalked up the road (0.2 miles) to the closest bus stop but they never picked us up at Big Bend\nWalked back down the road (1.7 miles) to the grotto stop and did Emerald Pools (3 miles) hike\nthe pools were kind of underwhelming\nHiked to Scout's Lookout and Angel's Landing (5.2 miles)\nsteep switchbacks most of the way up\nAngel's Landing was daunting on the way up but smooth on the way down\nthey tried to medevac someone out who had a seizure and became unconscious\nrangers kicked everyone out of Scout's Lookout and Angel's Landing back sending them back to The Grotto bus stop where we started 5 miles away\nthe man ended up passing away\nwe ran most of the way down and took a bus up to the temple stop and did a silly paved path hike along the river called Riverside Walk (1.5 miles)\ntook a bus back to the visitor center\nWe ate dinner at Bit and Spur\ngot sweet potato tacos with a black bean spread on the tortilla, pretty good\nthey had a farmer's market out back"
-        },
-        {
-          "label": "DAY 3 (BRYCE CANYON) - 7.2 miles",
-          "text": "Slept in a bit to catch up on lost sleep from the first night\nAte leftover Chipotle for breakfast\nDrove 2 hrs to Bryce\nAte lunch at Pines near Bryce\ngood breakfast food\nDrove to Sunset Point to start the Figure 8 (6.2 miles)\nfirst part was meh\ninteresting to look at and think about the erosion that formed the Hoodoos\nsecond part (Peek a boo loop) was amazing\nstunning views of the whole canyon\ncould see for tens of miles across to other mountains in the distance\nreally steep coming back uphill to Sunset point\nDrove 1.5 hrs back to Canyon Overlook (1 mile)\neasy and crowded\nok views but ruined by a big road in the middle of the valley\nDrove 30 mins back to Springdale and ate dinner at Meme's Cafe\nGood philly sandwich and fries\nDipped my feet in ice bath back at the hotel\nWalked to Bumbleberry Cafe for ice cream"
-        },
-        {
-          "label": "DAY 4 (ZION) - 7 miles",
-          "text": "Woke up and dad went to get permits for The Subway and was successful\nAte our free breakfast with vouchers at Porter's and went to Sol Market for packaged wraps for the hike\nDrove 30 min to Left Fork Trailhead and started the steep 400 ft descent (36 min) on The Subway (7 miles)\n2.5 more hrs to get there (3.5 miles)\nlots of crossing back and forth across the river slows you down\ntrail goes along the river but loosely marked and we just walked through the water a lot of times rather than trying to stay dry\n600 ft ascent was very gradual and didn't get steep at all for a while until the very end\nlots of waterfalls and cascading pools\nwe entered \"The Subway\" and spent 21 min there\ncool looking cave feel with lots of little pools\nwe left and turned around cuz dad forgot his cane and left again after 24 min\nthe top down hikers had it and were resting ahead of us\nwe flew through the rest of the way back (1.5 hrs) and started our 400 ft ascent (40 min)\nfinished the \"10 hour hike\" in 6 hrs\nWent to Balcony One for dinner\nnice restaurant, great service\ngood pork shank wings"
-        },
-        {
-          "label": "DAY 5 (TRAVEL)",
-          "text": "Woke up and packed and got breakfast at Porter's again\nGot on the road and drove to the airport to fly home at 1:55\nflight was smooth and on time"
         }
       ]
     }

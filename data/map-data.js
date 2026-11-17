@@ -128,7 +128,7 @@ window.__MAP_DATA__ = {
               "lat": 48.7596,
               "lon": -113.787,
               "tripIds": [
-                "glacier-2023"
+                "glacier-2022"
               ]
             }
           ]

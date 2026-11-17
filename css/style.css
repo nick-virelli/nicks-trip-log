@@ -855,6 +855,10 @@ main {
   flex-wrap: wrap;
 }
 
+.gallery-filters {
+  margin-top: 0;
+}
+
 .gallery-controls .trip-search {
   flex: 1 1 280px;
   margin-bottom: 0;

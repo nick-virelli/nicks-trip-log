@@ -131,8 +131,9 @@ const trips = [
     ],
   },
   {
-    slug: 'glacier-2023', title: 'GLACIER 2023',
-    location: 'Glacier National Park', dateStart: null, dateEnd: null,
+    // The note is titled "GLACIER 2023", but the trip was August 2022.
+    slug: 'glacier-2022', title: 'GLACIER 2022',
+    location: 'Glacier National Park', dateStart: '2022-08-09', dateEnd: '2022-08-13',
     sourceFile: 'GLACIER 2023/GLACIER 2023.md', attachmentsDir: null,
     locations: [{ name: 'Glacier National Park', country: 'usa', region: 'montana', lat: 48.7596, lon: -113.787 }],
   },
@@ -175,7 +176,7 @@ const trips = [
   },
   {
     slug: 'zion-2024', title: 'ZION 2024',
-    location: 'Zion National Park / Bryce Canyon', dateStart: null, dateEnd: null,
+    location: 'Zion National Park / Bryce Canyon', dateStart: '2024-05-05', dateEnd: '2024-05-09',
     sourceFile: 'ZION 2024/ZION 2024.md', attachmentsDir: 'ZION 2024/Attachments',
     locations: [
       { name: 'Zion National Park', country: 'usa', region: 'utah', lat: 37.2982, lon: -113.0263 },
@@ -194,6 +195,9 @@ const trips = [
   },
 
   // --- Study Abroad Spring 2025 mega-note legs ---
+  // megaSection is the section's title in the note and must match it exactly.
+  // Where a section title leaves off a travel day, dateStart/dateEnd follow the
+  // day headings instead (Prague, Switzerland, Stockholm).
   {
     slug: 'leipzig-2025', title: 'LEIPZIG', location: 'Leipzig',
     dateStart: '2025-01-10', dateEnd: '2025-01-10', megaSection: 'Leipzig 1/10',
@@ -206,7 +210,7 @@ const trips = [
   },
   {
     slug: 'prague-budapest-2025', title: 'PRAGUE-BUDAPEST', location: 'Prague / Budapest',
-    dateStart: '2025-01-24', dateEnd: '2025-01-26', megaSection: 'Prague-Budapest 1/24-1/26',
+    dateStart: '2025-01-23', dateEnd: '2025-01-26', megaSection: 'Prague-Budapest 1/24-1/26',
     locations: [
       { name: 'Prague', country: 'czechia', region: 'prague-region', lat: 50.0755, lon: 14.4378 },
       { name: 'Budapest', country: 'hungary', region: 'budapest-region', lat: 47.4979, lon: 19.0402 },
@@ -214,7 +218,7 @@ const trips = [
   },
   {
     slug: 'switzerland-2025', title: 'SWITZERLAND', location: 'Interlaken / Grindelwald',
-    dateStart: '2025-01-30', dateEnd: '2025-02-01', megaSection: 'Switzerland 1/30-2/1',
+    dateStart: '2025-01-30', dateEnd: '2025-02-02', megaSection: 'Switzerland 1/30-2/1',
     locations: [
       { name: 'Interlaken', country: 'switzerland', region: 'bernese-oberland', lat: 46.6863, lon: 7.8632 },
       { name: 'Grindelwald', country: 'switzerland', region: 'bernese-oberland', lat: 46.6244, lon: 8.0414 },
@@ -234,7 +238,7 @@ const trips = [
   },
   {
     slug: 'stockholm-copenhagen-2025', title: 'STOCKHOLM-COPENHAGEN', location: 'Stockholm / Copenhagen',
-    dateStart: '2025-02-28', dateEnd: '2025-03-02', megaSection: 'Stockholm-Copenhagen 2/28-3/2',
+    dateStart: '2025-02-27', dateEnd: '2025-03-02', megaSection: 'Stockholm-Copenhagen 2/28-3/2',
     locations: [
       { name: 'Stockholm', country: 'sweden', region: 'stockholm-region', lat: 59.3293, lon: 18.0686 },
       { name: 'Copenhagen', country: 'denmark', region: 'copenhagen-region', lat: 55.6761, lon: 12.5683 },

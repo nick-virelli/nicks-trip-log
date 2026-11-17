@@ -33,10 +33,15 @@ test('the Health export itself is kept out of the repo', () => {
   assert.deepEqual(found, []);
 });
 
+// Dated by hand after the Health export was made. Their step counts are left
+// out on purpose; remove an id from here once the export is re-run for it.
+const NO_HEALTH_NUMBERS = ['glacier-2022', 'zion-2024'];
+
 test('every trip with numbers is a dated trip, and every dated trip has numbers', () => {
   for (const id of Object.keys(summary.trips)) assert.ok(byId.get(id) && byId.get(id).date_start, `${id} has Health numbers but no dates`);
   for (const p of posts) {
-    if (p.date_start) assert.ok(summary.trips[p.id], `${p.id} is dated but has no Health numbers`);
+    if (NO_HEALTH_NUMBERS.includes(p.id)) assert.equal(p.steps, null, `${p.id} is listed as having no Health numbers but has steps`);
+    else if (p.date_start) assert.ok(summary.trips[p.id], `${p.id} is dated but has no Health numbers`);
     else assert.equal(p.steps, null, `${p.id} has no dates so it must not have steps`);
   }
 });

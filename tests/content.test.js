@@ -121,7 +121,8 @@ test('filtering the trips list by a country finds the collection when any of its
 });
 
 test('sorting: newest first, oldest first, A to Z, and undated trips always come last', () => {
-  const entries = TripEntries.build(posts, collections, mapData);
+  // Every real trip is dated now, so add an undated one to keep that rule tested.
+  const entries = [...TripEntries.build(posts, collections, mapData), { title: 'Undated', date_start: null, date_end: null }];
   const desc = TripEntries.sort(entries, 'date-desc');
   const asc = TripEntries.sort(entries, 'date-asc');
   const dated = (list) => list.filter((e) => e.date_start).map((e) => e.date_start);
@@ -129,6 +130,7 @@ test('sorting: newest first, oldest first, A to Z, and undated trips always come
   assert.deepEqual(dated(asc), [...dated(asc)].sort());
   for (const list of [desc, asc]) {
     const firstUndated = list.findIndex((e) => !e.date_start);
+    assert.equal(firstUndated, list.length - 1, 'the undated trip is not last');
     assert.ok(list.slice(firstUndated).every((e) => !e.date_start), 'an undated trip sits between dated ones');
   }
   const az = TripEntries.sort(entries, 'az').map((e) => e.title);

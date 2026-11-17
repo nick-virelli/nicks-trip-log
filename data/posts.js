@@ -876,7 +876,7 @@ window.__POSTS__ = {
       "region": "stockholm-region",
       "location": "Stockholm / Copenhagen",
       "title": "STOCKHOLM-COPENHAGEN",
-      "date_start": "2025-02-28",
+      "date_start": "2025-02-27",
       "date_end": "2025-03-02",
       "date_precision": "day",
       "date_source": "manual",
@@ -993,7 +993,7 @@ window.__POSTS__ = {
       "location": "Interlaken / Grindelwald",
       "title": "SWITZERLAND",
       "date_start": "2025-01-30",
-      "date_end": "2025-02-01",
+      "date_end": "2025-02-02",
       "date_precision": "day",
       "date_source": "manual",
       "total_miles": 0,
@@ -1044,7 +1044,7 @@ window.__POSTS__ = {
       "region": "prague-region",
       "location": "Prague / Budapest",
       "title": "PRAGUE-BUDAPEST",
-      "date_start": "2025-01-24",
+      "date_start": "2025-01-23",
       "date_end": "2025-01-26",
       "date_precision": "day",
       "date_source": "manual",
@@ -1151,6 +1151,103 @@ window.__POSTS__ = {
       "source_note": "Trips/STUDY ABROAD SPRING 2025/STUDY ABROAD SPRING 2025.md#Leipzig 1/10",
       "collectionId": "study-abroad-2025",
       "cover": "images/trips/leipzig-2025/84C9DA87-4D5A-4F5E-B8EC-C0B69C9499F3.jpg",
+      "coverOverride": null
+    },
+    {
+      "id": "zion-2024",
+      "country": "usa",
+      "countries": [
+        "usa"
+      ],
+      "region": "utah",
+      "location": "Zion National Park / Bryce Canyon",
+      "title": "ZION 2024",
+      "date_start": "2024-05-05",
+      "date_end": "2024-05-09",
+      "date_precision": "day",
+      "date_source": "manual",
+      "total_miles": 27.3,
+      "steps": null,
+      "walking_miles": null,
+      "days": [
+        {
+          "label": "DAY 1 (TRAVEL)",
+          "date": "2024-05-05",
+          "miles": null,
+          "body_html": "<ul><li>1:45 flight to Vegas was rerouted after the Vegas airport was too windy to land us and we used too much fuel waiting around for them to land us<ul><li>rerouted to Ontario CA and waited for like 30 min while we refueled and took off again for Vegas</li></ul></li><li>Ate chipotle, got groceries and drove from Vegas to Springdale, UT 2.5 hrs</li></ul>",
+          "trails": []
+        },
+        {
+          "label": "DAY 2 (ZION) - 13.1 miles",
+          "date": "2024-05-06",
+          "miles": 13.1,
+          "body_html": "<ul><li>Woke up 6:30ish to get breakfast at Oscar's Cafe<ul><li>really good Mexican breakfast food</li></ul></li><li>Took a shuttle at 8:00 to The Grotto and walked <strong>(1.5 miles)</strong> to Hidden Canyon trailhead<ul><li>tried to do Hidden Canyon but it was closed</li><li>walked up the road (<strong>0.2 miles</strong>) to the closest bus stop but they never picked us up at Big Bend</li></ul></li><li>Walked back down the road (1.7 miles) to the grotto stop and did <strong>Emerald Pools (3 miles) </strong>hike<ul><li>the pools were kind of underwhelming</li></ul></li><li>Hiked to <strong>Scout's</strong> <strong>Lookout and Angel's Landing (5.2 miles</strong>)</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g0\" data-index=\"0\" src=\"images/trips/zion-2024/C06E7E6C-D561-47AD-A2CE-B8EADFD84388.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li>steep switchbacks most of the way up</li><li>Angel's Landing was daunting on the way up but smooth on the way down</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g1\" data-index=\"0\" src=\"images/trips/zion-2024/6588F610-660E-4F0E-9115-5F8CCFE6B66A.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li class=\"trip-media\">\n    <div class=\"carousel\" data-count=\"7\">\n      <div class=\"carousel-track\"><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"0\" src=\"images/trips/zion-2024/5689BE02-8266-4259-AB0F-C9B7B0BB8BBC.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"1\" src=\"images/trips/zion-2024/F1D85097-B3D8-4125-8D32-045B8DE9B86A.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"2\" src=\"images/trips/zion-2024/2F96AF47-571A-40B9-978D-8B21BBA2B67F.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"3\" src=\"images/trips/zion-2024/07AE9F16-910B-4916-BF5F-90F84220D273.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"4\" src=\"images/trips/zion-2024/D68E776D-0801-4482-AAE0-2E1C4046C6AB.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"5\" src=\"images/trips/zion-2024/A268A646-B66B-4BBB-A1E9-7D0E68731A97.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"6\" src=\"images/trips/zion-2024/650AF169-DCB2-44A1-ABA1-68E209B0793D.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div></div>\n      <button type=\"button\" class=\"carousel-arrow carousel-prev\" aria-label=\"Previous photo\">&#8249;</button>\n      <button type=\"button\" class=\"carousel-arrow carousel-next\" aria-label=\"Next photo\">&#8250;</button>\n      <span class=\"carousel-counter\">1 / 7</span>\n    </div>\n  </li><li class=\"trip-media\"><video controls preload=\"metadata\" src=\"images/trips/zion-2024/B71A6A5A-AF22-4D2C-A817-63BD06971623.mp4\"></video></li></ul></li><li>they tried to medevac someone out who had a seizure and became unconscious<ul><li>rangers kicked everyone out of Scout's Lookout and Angel's Landing back sending them back to The Grotto bus stop where we started 5 miles away</li><li>the man ended up passing away</li></ul></li><li>we ran most of the way down and took a bus up to the temple stop and did a silly paved path hike along the river called <strong>Riverside Walk (1.5 miles)</strong></li><li>took a bus back to the visitor center</li></ul></li><li>We ate dinner at Bit and Spur<ul><li>got sweet potato tacos with a black bean spread on the tortilla, pretty good</li><li>they had a farmer's market out back</li></ul></li></ul>",
+          "trails": [
+            {
+              "name": "Took a shuttle at 8:00 to The Grotto and walked **** to Hidden Canyon trailhead",
+              "miles": 1.5
+            },
+            {
+              "name": "walked up the road (**0.2 miles**) to the closest bus stop but they never picked us up at Big Bend",
+              "miles": 0.2
+            },
+            {
+              "name": "Walked back down the road (1.7 miles) to the grotto stop and did **Emerald Pools (3 miles) **hike",
+              "miles": 1.7
+            },
+            {
+              "name": "**Scout's** **Lookout and Angel's Landing",
+              "miles": 5.2
+            },
+            {
+              "name": "we ran most of the way down and took a bus up to the temple stop and did a silly paved path hike along the river called **Riverside Walk (1.5 miles)**",
+              "miles": 1.5
+            }
+          ]
+        },
+        {
+          "label": "DAY 3 (BRYCE CANYON) - 7.2 miles",
+          "date": "2024-05-07",
+          "miles": 7.2,
+          "body_html": "<ul><li>Slept in a bit to catch up on lost sleep from the first night</li><li>Ate leftover Chipotle for breakfast</li><li>Drove 2 hrs to Bryce</li><li>Ate lunch at Pines near Bryce<ul><li>good breakfast food</li></ul></li><li>Drove to Sunset Point to start the <strong>Figure 8 (6.2 miles)</strong></li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d2-g0\" data-index=\"0\" src=\"images/trips/zion-2024/BF38F0E9-AF53-4878-B0D9-4E589DBE4D6A.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li>first part was meh<ul><li>interesting to look at and think about the erosion that formed the Hoodoos</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d2-g1\" data-index=\"0\" src=\"images/trips/zion-2024/6A13106F-A2F0-47E1-8A00-35A9BF502166.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li></ul></li><li>second part (Peek a boo loop) was amazing</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d2-g2\" data-index=\"0\" src=\"images/trips/zion-2024/710C588C-3033-455A-AF3F-7EB52247C0C0.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d2-g3\" data-index=\"0\" src=\"images/trips/zion-2024/669518DD-55A6-4C5E-ABB8-4F0A861FF8EB.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li>stunning views of the whole canyon</li><li>could see for tens of miles across to other mountains in the distance</li></ul></li><li>really steep coming back uphill to Sunset point</li></ul></li><li>Drove 1.5 hrs back to <strong>Canyon Overlook (1 mile)</strong><ul><li>easy and crowded</li><li>ok views but ruined by a big road in the middle of the valley</li></ul></li><li>Drove 30 mins back to Springdale and ate dinner at Meme's Cafe<ul><li>Good philly sandwich and fries</li></ul></li><li>Dipped my feet in ice bath back at the hotel</li><li>Walked to Bumbleberry Cafe for ice cream</li></ul>",
+          "trails": [
+            {
+              "name": "Sunset Point to start the **Figure 8**",
+              "miles": 6.2
+            },
+            {
+              "name": "Drove 1.5 hrs back to **Canyon Overlook**",
+              "miles": 1
+            }
+          ]
+        },
+        {
+          "label": "DAY 4 (ZION) - 7 miles",
+          "date": "2024-05-08",
+          "miles": 7,
+          "body_html": "<ul><li>Woke up and dad went to get permits for The Subway and was successful</li><li>Ate our free breakfast with vouchers at Porter's and went to Sol Market for packaged wraps for the hike</li><li>Drove 30 min to Left Fork Trailhead and started the steep 400 ft descent (36 min) on <strong>The Subway (7 miles)</strong><ul><li>2.5 more hrs to get there (3.5 miles)</li><li>lots of crossing back and forth across the river slows you down</li><li>trail goes along the river but loosely marked and we just walked through the water a lot of times rather than trying to stay dry</li><li>600 ft ascent was very gradual and didn't get steep at all for a while until the very end</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g0\" data-index=\"0\" src=\"images/trips/zion-2024/4C06CF60-FF65-4939-9B07-2A65F9C3F59F.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li class=\"trip-media\">\n    <div class=\"carousel\" data-count=\"3\">\n      <div class=\"carousel-track\"><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g1\" data-index=\"0\" src=\"images/trips/zion-2024/F5CE4146-609B-457D-A776-37F811379618.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g1\" data-index=\"1\" src=\"images/trips/zion-2024/4317F883-786F-45D0-9298-1FADA8A2F957.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g1\" data-index=\"2\" src=\"images/trips/zion-2024/83C072F8-F93D-4348-9897-4BC5EF09CD6F.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div></div>\n      <button type=\"button\" class=\"carousel-arrow carousel-prev\" aria-label=\"Previous photo\">&#8249;</button>\n      <button type=\"button\" class=\"carousel-arrow carousel-next\" aria-label=\"Next photo\">&#8250;</button>\n      <span class=\"carousel-counter\">1 / 3</span>\n    </div>\n  </li><li>lots of waterfalls and cascading pools</li></ul></li><li>we entered \"The Subway\" and spent 21 min there</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g2\" data-index=\"0\" src=\"images/trips/zion-2024/119B41E4-3FFB-4760-AE18-0AB61B91E8C8.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li class=\"trip-media\">\n    <div class=\"carousel\" data-count=\"2\">\n      <div class=\"carousel-track\"><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g3\" data-index=\"0\" src=\"images/trips/zion-2024/460F975B-1A0D-4970-B2ED-CEA93351A4E3.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g3\" data-index=\"1\" src=\"images/trips/zion-2024/FED39B46-FBE8-47B8-8680-F9EA17D42ABD.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div></div>\n      <button type=\"button\" class=\"carousel-arrow carousel-prev\" aria-label=\"Previous photo\">&#8249;</button>\n      <button type=\"button\" class=\"carousel-arrow carousel-next\" aria-label=\"Next photo\">&#8250;</button>\n      <span class=\"carousel-counter\">1 / 2</span>\n    </div>\n  </li><li>cool looking cave feel with lots of little pools</li></ul></li><li>we left and turned around cuz dad forgot his cane and left again after 24 min<ul><li>the top down hikers had it and were resting ahead of us</li></ul></li><li>we flew through the rest of the way back (1.5 hrs) and started our 400 ft ascent (40 min)</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g4\" data-index=\"0\" src=\"images/trips/zion-2024/2C4FAA3D-E9DC-4087-B67D-278B120C5906.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g5\" data-index=\"0\" src=\"images/trips/zion-2024/23ECFBF3-01F0-4DE3-B637-E6794B382935.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li></ul></li><li>finished the \"10 hour hike\" in 6 hrs</li></ul></li><li>Went to Balcony One for dinner<ul><li>nice restaurant, great service</li><li>good pork shank wings</li></ul></li></ul>",
+          "trails": [
+            {
+              "name": "Drove 30 min to Left Fork Trailhead and started the steep 400 ft descent (36 min) on **The Subway (7 miles)**",
+              "miles": 7
+            },
+            {
+              "name": "2.5 more hrs to get there",
+              "miles": 3.5
+            }
+          ]
+        },
+        {
+          "label": "DAY 5 (TRAVEL)",
+          "date": "2024-05-09",
+          "miles": null,
+          "body_html": "<ul><li>Woke up and packed and got breakfast at Porter's again</li><li>Got on the road and drove to the airport to fly home at 1:55<ul><li>flight was smooth and on time</li></ul></li></ul>",
+          "trails": []
+        }
+      ],
+      "source_note": "Trips/ZION 2024/ZION 2024.md",
+      "collectionId": null,
+      "cover": "images/trips/zion-2024/C06E7E6C-D561-47AD-A2CE-B8EADFD84388.jpg",
       "coverOverride": null
     },
     {
@@ -1320,25 +1417,25 @@ window.__POSTS__ = {
       "coverOverride": null
     },
     {
-      "id": "glacier-2023",
+      "id": "glacier-2022",
       "country": "usa",
       "countries": [
         "usa"
       ],
       "region": "montana",
       "location": "Glacier National Park",
-      "title": "GLACIER 2023",
-      "date_start": null,
-      "date_end": null,
+      "title": "GLACIER 2022",
+      "date_start": "2022-08-09",
+      "date_end": "2022-08-13",
       "date_precision": "day",
-      "date_source": null,
+      "date_source": "manual",
       "total_miles": 63.9,
       "steps": null,
       "walking_miles": null,
       "days": [
         {
           "label": "DAY 1 (Tuesday)",
-          "date": null,
+          "date": "2022-08-09",
           "miles": 4.8,
           "body_html": "<ul><li>landed</li><li><strong>hidden lake overlook </strong>(2.8 miles)</li><li>(hike to waterfall was closed 👎)</li><li>saw mountain goats in the snow</li><li>saw a marmot</li><li>saw bighorn sheep back at the bathrooms</li><li><strong>baring falls</strong> <strong>(2.0 miles)</strong></li><li>saw the falls and went to sun point and hiked back on the road</li><li>saw a cub eating berries on the side of the road</li></ul>",
           "trails": [
@@ -1354,7 +1451,7 @@ window.__POSTS__ = {
         },
         {
           "label": "DAY 2 (Wednesday)",
-          "date": null,
+          "date": "2022-08-10",
           "miles": 19.4,
           "body_html": "<ul><li>grinell glacier (9.9 miles)</li><li>saw momma moose and two babies walking at the end of Josephine lake</li><li>saw grinell glacier and lakes</li><li>got within 10 yards of a bighorn sheep</li><li>iceberg lake (9.5 miles)</li><li>saw icebergs at the lake</li></ul>",
           "trails": [
@@ -1370,7 +1467,7 @@ window.__POSTS__ = {
         },
         {
           "label": "DAY 3 (Thursday)",
-          "date": null,
+          "date": "2022-08-11",
           "miles": 15.4,
           "body_html": "<ul><li><strong>highline trail</strong> from Logan pass to the loop (15.4 miles)</li><li>(added 4 mile detour by taking trail to ahern pass from the chalet rather than going down to the loop)</li><li>saw a buck that walked in front of us on the trail</li><li>saw probably 5 more marmots</li><li>detoured about 2 miles off track</li><li>did the most brutal 4 miles of downhill of the trip</li><li>ran out of water with a mile or so left</li><li>took shuttle from loop to avalanche to MacDonald then back up to avalanche then to loop then Logan pass</li></ul>",
           "trails": [
@@ -1382,7 +1479,7 @@ window.__POSTS__ = {
         },
         {
           "label": "DAY 4 (Friday)",
-          "date": null,
+          "date": "2022-08-12",
           "miles": 20.4,
           "body_html": "<ul><li><strong>pitamakan/Dawson</strong> from two medicine (20 miles)</li><li>long and hot trek thru lightly wooded meadow valley area</li><li>filled up waters in a creek</li><li>brutal switchbacks up after 7 miles to pitamakan pass</li><li>ate MREs at the top in a rocky desert top of the mountain</li><li>hiked over to Dawson pass in Rocky desert area but under cloud cover now</li><li>horrible downhill switchback down about 3000 feet over a few miles</li><li>saw a female deer? baby buck? no, young mountain goat and followed him for about 5 miles down the trail</li><li>filled up on water at <strong>no name lake</strong> (0.4 miles)</li><li>saw a momma moose eating greens not far off the trail (pulled out near spray cuz it was so big and I got scared at first that it was a bear)</li><li>hiked the last 3 miles or so in the rain</li></ul>",
           "trails": [
@@ -1398,7 +1495,7 @@ window.__POSTS__ = {
         },
         {
           "label": "DAY 5 (Saturday)",
-          "date": null,
+          "date": "2022-08-13",
           "miles": 3.9,
           "body_html": "<ul><li><strong>St Mary falls and Virginia falls </strong>(3.9 miles)</li><li>got out earlier than anyone else</li><li>saw no wildlife but the falls were amazing</li><li>flew back home</li><li>63.9 total miles hiking</li></ul>",
           "trails": [
@@ -1412,103 +1509,6 @@ window.__POSTS__ = {
       "source_note": "Trips/GLACIER 2023/GLACIER 2023.md",
       "collectionId": null,
       "cover": null,
-      "coverOverride": null
-    },
-    {
-      "id": "zion-2024",
-      "country": "usa",
-      "countries": [
-        "usa"
-      ],
-      "region": "utah",
-      "location": "Zion National Park / Bryce Canyon",
-      "title": "ZION 2024",
-      "date_start": null,
-      "date_end": null,
-      "date_precision": "day",
-      "date_source": null,
-      "total_miles": 27.3,
-      "steps": null,
-      "walking_miles": null,
-      "days": [
-        {
-          "label": "DAY 1 (TRAVEL)",
-          "date": null,
-          "miles": null,
-          "body_html": "<ul><li>1:45 flight to Vegas was rerouted after the Vegas airport was too windy to land us and we used too much fuel waiting around for them to land us<ul><li>rerouted to Ontario CA and waited for like 30 min while we refueled and took off again for Vegas</li></ul></li><li>Ate chipotle, got groceries and drove from Vegas to Springdale, UT 2.5 hrs</li></ul>",
-          "trails": []
-        },
-        {
-          "label": "DAY 2 (ZION) - 13.1 miles",
-          "date": null,
-          "miles": 13.1,
-          "body_html": "<ul><li>Woke up 6:30ish to get breakfast at Oscar's Cafe<ul><li>really good Mexican breakfast food</li></ul></li><li>Took a shuttle at 8:00 to The Grotto and walked <strong>(1.5 miles)</strong> to Hidden Canyon trailhead<ul><li>tried to do Hidden Canyon but it was closed</li><li>walked up the road (<strong>0.2 miles</strong>) to the closest bus stop but they never picked us up at Big Bend</li></ul></li><li>Walked back down the road (1.7 miles) to the grotto stop and did <strong>Emerald Pools (3 miles) </strong>hike<ul><li>the pools were kind of underwhelming</li></ul></li><li>Hiked to <strong>Scout's</strong> <strong>Lookout and Angel's Landing (5.2 miles</strong>)</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g0\" data-index=\"0\" src=\"images/trips/zion-2024/C06E7E6C-D561-47AD-A2CE-B8EADFD84388.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li>steep switchbacks most of the way up</li><li>Angel's Landing was daunting on the way up but smooth on the way down</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g1\" data-index=\"0\" src=\"images/trips/zion-2024/6588F610-660E-4F0E-9115-5F8CCFE6B66A.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li class=\"trip-media\">\n    <div class=\"carousel\" data-count=\"7\">\n      <div class=\"carousel-track\"><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"0\" src=\"images/trips/zion-2024/5689BE02-8266-4259-AB0F-C9B7B0BB8BBC.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"1\" src=\"images/trips/zion-2024/F1D85097-B3D8-4125-8D32-045B8DE9B86A.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"2\" src=\"images/trips/zion-2024/2F96AF47-571A-40B9-978D-8B21BBA2B67F.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"3\" src=\"images/trips/zion-2024/07AE9F16-910B-4916-BF5F-90F84220D273.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"4\" src=\"images/trips/zion-2024/D68E776D-0801-4482-AAE0-2E1C4046C6AB.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"5\" src=\"images/trips/zion-2024/A268A646-B66B-4BBB-A1E9-7D0E68731A97.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d1-g2\" data-index=\"6\" src=\"images/trips/zion-2024/650AF169-DCB2-44A1-ABA1-68E209B0793D.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div></div>\n      <button type=\"button\" class=\"carousel-arrow carousel-prev\" aria-label=\"Previous photo\">&#8249;</button>\n      <button type=\"button\" class=\"carousel-arrow carousel-next\" aria-label=\"Next photo\">&#8250;</button>\n      <span class=\"carousel-counter\">1 / 7</span>\n    </div>\n  </li><li class=\"trip-media\"><video controls preload=\"metadata\" src=\"images/trips/zion-2024/B71A6A5A-AF22-4D2C-A817-63BD06971623.mp4\"></video></li></ul></li><li>they tried to medevac someone out who had a seizure and became unconscious<ul><li>rangers kicked everyone out of Scout's Lookout and Angel's Landing back sending them back to The Grotto bus stop where we started 5 miles away</li><li>the man ended up passing away</li></ul></li><li>we ran most of the way down and took a bus up to the temple stop and did a silly paved path hike along the river called <strong>Riverside Walk (1.5 miles)</strong></li><li>took a bus back to the visitor center</li></ul></li><li>We ate dinner at Bit and Spur<ul><li>got sweet potato tacos with a black bean spread on the tortilla, pretty good</li><li>they had a farmer's market out back</li></ul></li></ul>",
-          "trails": [
-            {
-              "name": "Took a shuttle at 8:00 to The Grotto and walked **** to Hidden Canyon trailhead",
-              "miles": 1.5
-            },
-            {
-              "name": "walked up the road (**0.2 miles**) to the closest bus stop but they never picked us up at Big Bend",
-              "miles": 0.2
-            },
-            {
-              "name": "Walked back down the road (1.7 miles) to the grotto stop and did **Emerald Pools (3 miles) **hike",
-              "miles": 1.7
-            },
-            {
-              "name": "**Scout's** **Lookout and Angel's Landing",
-              "miles": 5.2
-            },
-            {
-              "name": "we ran most of the way down and took a bus up to the temple stop and did a silly paved path hike along the river called **Riverside Walk (1.5 miles)**",
-              "miles": 1.5
-            }
-          ]
-        },
-        {
-          "label": "DAY 3 (BRYCE CANYON) - 7.2 miles",
-          "date": null,
-          "miles": 7.2,
-          "body_html": "<ul><li>Slept in a bit to catch up on lost sleep from the first night</li><li>Ate leftover Chipotle for breakfast</li><li>Drove 2 hrs to Bryce</li><li>Ate lunch at Pines near Bryce<ul><li>good breakfast food</li></ul></li><li>Drove to Sunset Point to start the <strong>Figure 8 (6.2 miles)</strong></li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d2-g0\" data-index=\"0\" src=\"images/trips/zion-2024/BF38F0E9-AF53-4878-B0D9-4E589DBE4D6A.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li>first part was meh<ul><li>interesting to look at and think about the erosion that formed the Hoodoos</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d2-g1\" data-index=\"0\" src=\"images/trips/zion-2024/6A13106F-A2F0-47E1-8A00-35A9BF502166.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li></ul></li><li>second part (Peek a boo loop) was amazing</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d2-g2\" data-index=\"0\" src=\"images/trips/zion-2024/710C588C-3033-455A-AF3F-7EB52247C0C0.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d2-g3\" data-index=\"0\" src=\"images/trips/zion-2024/669518DD-55A6-4C5E-ABB8-4F0A861FF8EB.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li>stunning views of the whole canyon</li><li>could see for tens of miles across to other mountains in the distance</li></ul></li><li>really steep coming back uphill to Sunset point</li></ul></li><li>Drove 1.5 hrs back to <strong>Canyon Overlook (1 mile)</strong><ul><li>easy and crowded</li><li>ok views but ruined by a big road in the middle of the valley</li></ul></li><li>Drove 30 mins back to Springdale and ate dinner at Meme's Cafe<ul><li>Good philly sandwich and fries</li></ul></li><li>Dipped my feet in ice bath back at the hotel</li><li>Walked to Bumbleberry Cafe for ice cream</li></ul>",
-          "trails": [
-            {
-              "name": "Sunset Point to start the **Figure 8**",
-              "miles": 6.2
-            },
-            {
-              "name": "Drove 1.5 hrs back to **Canyon Overlook**",
-              "miles": 1
-            }
-          ]
-        },
-        {
-          "label": "DAY 4 (ZION) - 7 miles",
-          "date": null,
-          "miles": 7,
-          "body_html": "<ul><li>Woke up and dad went to get permits for The Subway and was successful</li><li>Ate our free breakfast with vouchers at Porter's and went to Sol Market for packaged wraps for the hike</li><li>Drove 30 min to Left Fork Trailhead and started the steep 400 ft descent (36 min) on <strong>The Subway (7 miles)</strong><ul><li>2.5 more hrs to get there (3.5 miles)</li><li>lots of crossing back and forth across the river slows you down</li><li>trail goes along the river but loosely marked and we just walked through the water a lot of times rather than trying to stay dry</li><li>600 ft ascent was very gradual and didn't get steep at all for a while until the very end</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g0\" data-index=\"0\" src=\"images/trips/zion-2024/4C06CF60-FF65-4939-9B07-2A65F9C3F59F.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li class=\"trip-media\">\n    <div class=\"carousel\" data-count=\"3\">\n      <div class=\"carousel-track\"><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g1\" data-index=\"0\" src=\"images/trips/zion-2024/F5CE4146-609B-457D-A776-37F811379618.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g1\" data-index=\"1\" src=\"images/trips/zion-2024/4317F883-786F-45D0-9298-1FADA8A2F957.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g1\" data-index=\"2\" src=\"images/trips/zion-2024/83C072F8-F93D-4348-9897-4BC5EF09CD6F.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div></div>\n      <button type=\"button\" class=\"carousel-arrow carousel-prev\" aria-label=\"Previous photo\">&#8249;</button>\n      <button type=\"button\" class=\"carousel-arrow carousel-next\" aria-label=\"Next photo\">&#8250;</button>\n      <span class=\"carousel-counter\">1 / 3</span>\n    </div>\n  </li><li>lots of waterfalls and cascading pools</li></ul></li><li>we entered \"The Subway\" and spent 21 min there</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g2\" data-index=\"0\" src=\"images/trips/zion-2024/119B41E4-3FFB-4760-AE18-0AB61B91E8C8.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li class=\"trip-media\">\n    <div class=\"carousel\" data-count=\"2\">\n      <div class=\"carousel-track\"><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g3\" data-index=\"0\" src=\"images/trips/zion-2024/460F975B-1A0D-4970-B2ED-CEA93351A4E3.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div><div class=\"carousel-slide\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g3\" data-index=\"1\" src=\"images/trips/zion-2024/FED39B46-FBE8-47B8-8680-F9EA17D42ABD.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></div></div>\n      <button type=\"button\" class=\"carousel-arrow carousel-prev\" aria-label=\"Previous photo\">&#8249;</button>\n      <button type=\"button\" class=\"carousel-arrow carousel-next\" aria-label=\"Next photo\">&#8250;</button>\n      <span class=\"carousel-counter\">1 / 2</span>\n    </div>\n  </li><li>cool looking cave feel with lots of little pools</li></ul></li><li>we left and turned around cuz dad forgot his cane and left again after 24 min<ul><li>the top down hikers had it and were resting ahead of us</li></ul></li><li>we flew through the rest of the way back (1.5 hrs) and started our 400 ft ascent (40 min)</li><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g4\" data-index=\"0\" src=\"images/trips/zion-2024/2C4FAA3D-E9DC-4087-B67D-278B120C5906.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li><li class=\"trip-notes\"><ul><li class=\"trip-media\"><img class=\"lightbox-trigger\" data-group=\"zion-2024-d3-g5\" data-index=\"0\" src=\"images/trips/zion-2024/23ECFBF3-01F0-4DE3-B637-E6794B382935.jpg\" alt=\"ZION 2024 - Zion National Park / Bryce Canyon\" loading=\"lazy\"></li></ul></li><li>finished the \"10 hour hike\" in 6 hrs</li></ul></li><li>Went to Balcony One for dinner<ul><li>nice restaurant, great service</li><li>good pork shank wings</li></ul></li></ul>",
-          "trails": [
-            {
-              "name": "Drove 30 min to Left Fork Trailhead and started the steep 400 ft descent (36 min) on **The Subway (7 miles)**",
-              "miles": 7
-            },
-            {
-              "name": "2.5 more hrs to get there",
-              "miles": 3.5
-            }
-          ]
-        },
-        {
-          "label": "DAY 5 (TRAVEL)",
-          "date": null,
-          "miles": null,
-          "body_html": "<ul><li>Woke up and packed and got breakfast at Porter's again</li><li>Got on the road and drove to the airport to fly home at 1:55<ul><li>flight was smooth and on time</li></ul></li></ul>",
-          "trails": []
-        }
-      ],
-      "source_note": "Trips/ZION 2024/ZION 2024.md",
-      "collectionId": null,
-      "cover": "images/trips/zion-2024/C06E7E6C-D561-47AD-A2CE-B8EADFD84388.jpg",
       "coverOverride": null
     }
   ],

@@ -15,6 +15,9 @@
     images: [],
     query: "",
     locationFilter: null,
+    year: "",
+    country: "",
+    trip: "",
     currentList: [],
     countryLabels: {},
   };
@@ -33,7 +36,44 @@
 
   function filteredImages() {
     const q = app.query.trim().toLowerCase();
-    return app.images.filter((img) => matchesQuery(img, q) && (!app.locationFilter || img.locations.includes(app.locationFilter)));
+    return app.images.filter(
+      (img) =>
+        matchesQuery(img, q) &&
+        (!app.locationFilter || img.locations.includes(app.locationFilter)) &&
+        (!app.year || photoYear(img) === app.year) &&
+        (!app.country || (img.countries || [img.country]).includes(app.country)) &&
+        (!app.trip || img.tripId === app.trip)
+    );
+  }
+
+  // The year a photo was taken: its own date when it has one, else its trip's.
+  function photoYear(img) {
+    const d = img.date || img.date_start;
+    return d ? d.slice(0, 4) : "";
+  }
+
+  // Year, country and trip dropdowns, filled from the photos themselves so an
+  // option never leads to an empty grid on its own.
+  function initFilters() {
+    const fill = (id, key, options) => {
+      const select = document.getElementById(id);
+      if (!select) return;
+      select.insertAdjacentHTML("beforeend", options.map(([value, label]) => `<option value="${esc(value)}">${esc(label)}</option>`).join(""));
+      select.addEventListener("change", () => {
+        app[key] = select.value;
+        renderGrid();
+      });
+    };
+    const years = [...new Set(app.images.map(photoYear).filter(Boolean))].sort().reverse();
+    fill("gallery-year", "year", years.map((y) => [y, y]));
+
+    const countries = [...new Set(app.images.flatMap((img) => img.countries || [img.country]))];
+    fill("gallery-country", "country", countries.map((c) => [c, app.countryLabels[c] || c]).sort((a, b) => a[1].localeCompare(b[1])));
+
+    // trips in the gallery's own order (newest first), each listed once
+    const trips = new Map();
+    for (const img of app.images) if (!trips.has(img.tripId)) trips.set(img.tripId, img.tripTitle);
+    fill("gallery-trip", "trip", [...trips.entries()]);
   }
 
   function renderChip() {
@@ -166,6 +206,7 @@
     app.images = galleryData.images;
     for (const [key, c] of Object.entries(mapData.countries)) app.countryLabels[key] = c.label;
 
+    initFilters();
     renderGrid();
     initSearch();
     initMapToggle(mapData, world);
